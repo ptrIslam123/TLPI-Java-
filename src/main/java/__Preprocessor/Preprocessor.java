@@ -1,15 +1,19 @@
 package __Preprocessor;
 
+import __Preprocessor.CONSTANT_DIRECTIVE.Constant;
 import java.io.IOException;
+import java.util.Map;
 
 public class Preprocessor extends BaseClass {
     private StringBuilder Buffer;
     private String input;
     private int pos, length;
+    private Constant constant;
 
     public Preprocessor(String input) {
         this.input = input;
         this.length = input.length();
+        this.constant = new Constant();
     }
 
     public String preprocess() throws IOException {
@@ -35,6 +39,11 @@ public class Preprocessor extends BaseClass {
             Buffer.append(peek(0));
             pos++;
         }
+        Map<String, String> temp = constant.get_const_directive();
+        for(Map.Entry<String, String> it : temp.entrySet()){
+            System.out.println(it.getKey()+" = "+it.getValue());
+        }
+        System.out.println("size = "+temp.size());
 
         //System.out.println(Buffer.toString());
         return null;
@@ -42,14 +51,25 @@ public class Preprocessor extends BaseClass {
 
     private void directive_const() {
         StringBuilder buffer_const_name = new StringBuilder();
+        StringBuilder buffer_const_value = null;
         skip_blank_characters();
-
         while(pos < length){
             if(peek(0) == '='){ pos++; break; }
             buffer_const_name.append(peek(0));
             pos++;
         }
-        System.out.println(buffer_const_name.toString());
+        buffer_const_value = directive_const_value();
+        constant.putConst_value(buffer_const_name.toString(), buffer_const_value.toString());
+    }
+
+    private StringBuilder directive_const_value() {
+        StringBuilder buffer_const_value = new StringBuilder();
+        while(pos < length){
+            if(peek(0) == '\n')break;
+            buffer_const_value.append(peek(0));
+            pos++;
+        }
+        return buffer_const_value;
     }
 
     /// update method

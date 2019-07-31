@@ -1,3 +1,4 @@
-#const @VAR=12
+#const @VAR1=12
+#const @VAR2=134
 
 hello world1
