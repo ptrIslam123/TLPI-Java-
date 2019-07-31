@@ -1,22 +1,12 @@
-import __Preprocessor.Preprocessor;
+package __Preprocessor;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public class Main {
+public class BaseClass {
 
-    public static void main(String[] args) throws IOException {
-
-        String file_code = readFile("file.txt");
-
-        Preprocessor preprocessor = new Preprocessor(file_code);
-        preprocessor.preprocess();
-
-
-    }
-
-    private static String readFile(final String filename) throws IOException {
+    protected String readFile(final String filename) throws IOException {
         File file = new File(filename);
         if(!file.exists()){
             System.out.println("File: " + filename + " not found!");
@@ -30,4 +20,5 @@ public class Main {
         String text = new String(data);
         return text;
     }
+
 }
