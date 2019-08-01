@@ -1,4 +1,10 @@
 #const @VAR1=12
 #const @VAR2=134
 
+
+
+
+int num1 = @VAR1 + @VAR2
+@VAR2
+
 hello world1

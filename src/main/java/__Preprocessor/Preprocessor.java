@@ -19,10 +19,7 @@ public class Preprocessor extends BaseClass {
     public String preprocess() throws IOException {
         Buffer = new StringBuilder();
         while (pos < length) {
-            if (peek(0) == '\"') {
-                pos++;
-                string_type();
-            }
+            if (peek(0) == '\"') { pos++; string_type(); }
 
             if (peek(0) == '/' && peek(1) == '/') comments('\n');
             if (peek(0) == '/' && peek(1) == '*') comments();
@@ -35,18 +32,31 @@ public class Preprocessor extends BaseClass {
                 pos+=6;
                 directive_const();
             }
+            if(peek(0) == '@'){
+               String const_name = replace_const_expr();
+               String const_value = constant.getConst_Value(const_name);
 
+               Buffer.append(const_value);
+               continue;
+            }
+            System.out.println("p: "+peek(0));
             Buffer.append(peek(0));
             pos++;
         }
-        Map<String, String> temp = constant.get_const_directive();
-        for(Map.Entry<String, String> it : temp.entrySet()){
-            System.out.println(it.getKey()+" = "+it.getValue());
-        }
-        System.out.println("size = "+temp.size());
 
-        //System.out.println(Buffer.toString());
+        System.out.println("\n"+Buffer.toString());
         return null;
+    }
+
+    private String replace_const_expr() {
+        StringBuilder buffer_const_expr = new StringBuilder();
+        while(pos < length){
+            if(verificat_compliance_const_expr(peek(0)) == false)break;
+            buffer_const_expr.append(peek(0));
+            pos++;
+        }
+       // System.out.println(buffer_const_expr.toString()+"\t"+buffer_const_expr.toString().length());
+        return buffer_const_expr.toString();
     }
 
     private void directive_const() {
