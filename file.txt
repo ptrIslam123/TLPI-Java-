@@ -1,10 +1,10 @@
-#const @VAR1=12
-#const @VAR2=134
+#def @SUM(a,b){a+b};
+#def @SUB(c,d){c-d};
+
+#def @MULT(){1-2};
 
 
+int main(){
 
-
-int num1 = @VAR1 + @VAR2
-@VAR2
-
-hello world1
+    return 0;
+}

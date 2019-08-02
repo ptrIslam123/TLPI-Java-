@@ -1,136 +1,63 @@
 package __Preprocessor;
 
-import __Preprocessor.CONSTANT_DIRECTIVE.Constant;
+import __Preprocessor.MACROSS.Define;
+import __Preprocessor.MACROSS.Macross;
 import java.io.IOException;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Preprocessor extends BaseClass {
-    private StringBuilder Buffer;
     private String input;
-    private int pos, length;
-    private Constant constant;
+    private List<Define> define_table;
 
     public Preprocessor(String input) {
+        this.define_table = new ArrayList<Define>();
         this.input = input;
-        this.length = input.length();
-        this.constant = new Constant();
+        setText(this.input);
     }
 
     public String preprocess() throws IOException {
-        Buffer = new StringBuilder();
-        while (pos < length) {
-            if (peek(0) == '\"') { pos++; string_type(); }
+       StringBuilder Buffer = new StringBuilder();
+        while(peek(0) != '\0'){
 
-            if (peek(0) == '/' && peek(1) == '/') comments('\n');
-            if (peek(0) == '/' && peek(1) == '*') comments();
-
-            if (peek(0) == '#' && peek(1) == 'i' && peek(2) == 'm' && peek(3) == 'p'
-                    && peek(4) == 'o' && peek(5) == 'r' && peek(6) == 't') {}
-
-            if(peek(0) == '#' && peek(1) == 'c' && peek(2) == 'o' && peek(3)
-                    == 'n' && peek(4) == 's' && peek(5) == 't'){
-                pos+=6;
-                directive_const();
+            if(same("#def")){ // парсинг макроса
+                Macross macross = new Macross(input, getPos());
+                define_table.add(macross.parsing_macross());
             }
-            if(peek(0) == '@'){
-               String const_name = replace_const_expr();
-               String const_value = constant.getConst_Value(const_name);
 
-               Buffer.append(const_value);
-               continue;
-            }
-            System.out.println("p: "+peek(0));
             Buffer.append(peek(0));
-            pos++;
+            next();
         }
-
-        System.out.println("\n"+Buffer.toString());
+        /*
+        Define temp = null;
+        for(int i=0; i<define_table.size(); i++){
+            temp = define_table.get(i);
+            System.out.println(temp.getName()+"(");
+            for(String it : temp.getLocal_params()){
+                System.out.println(it);
+            }
+            System.out.println(")"+temp.getBody());
+            System.out.println("===============");
+        }
+        */
+        //System.out.println(Buffer.toString());
         return null;
     }
 
-    private String replace_const_expr() {
-        StringBuilder buffer_const_expr = new StringBuilder();
-        while(pos < length){
-            if(verificat_compliance_const_expr(peek(0)) == false)break;
-            buffer_const_expr.append(peek(0));
-            pos++;
+    private boolean same(final String chars){
+        int tep_pos = getPos();
+        for(int i=0; i<chars.length(); i++){
+            if(peek(0) != chars.charAt(i)){
+                setPos(tep_pos);
+                return false;
+            }
+            next();
         }
-       // System.out.println(buffer_const_expr.toString()+"\t"+buffer_const_expr.toString().length());
-        return buffer_const_expr.toString();
+        return true;
     }
 
-    private void directive_const() {
-        StringBuilder buffer_const_name = new StringBuilder();
-        StringBuilder buffer_const_value = null;
-        skip_blank_characters();
-        while(pos < length){
-            if(peek(0) == '='){ pos++; break; }
-            buffer_const_name.append(peek(0));
-            pos++;
-        }
-        buffer_const_value = directive_const_value();
-        constant.putConst_value(buffer_const_name.toString(), buffer_const_value.toString());
-    }
-
-    private StringBuilder directive_const_value() {
-        StringBuilder buffer_const_value = new StringBuilder();
-        while(pos < length){
-            if(peek(0) == '\n')break;
-            buffer_const_value.append(peek(0));
-            pos++;
-        }
-        return buffer_const_value;
-    }
-
-    /// update method
-    private StringBuilder getImport_FileName() {
-        StringBuilder buffer_import_filename = new StringBuilder();
-        skip_blank_characters();
-        while (pos < length) {
-            if (Character.isWhitespace(peek(0)) == true || peek(0) == '\n') {
-                break;
-            }
-            buffer_import_filename.append(peek(0));
-            pos++;
-        }
-        return buffer_import_filename;
-    }
-    private void comments(final char current) {
-        while (pos < length) {
-            if (peek(0) == current) {
-                pos++;
-                break;
-            }
-            pos++;
-        }
-    }
-    private void comments() {
-        while (pos < length) {
-            if (peek(0) == '*' && peek(1) == '/') {
-                pos += 2;
-                break;
-            }
-            pos++;
-        }
-    }
-    private void string_type() {
-        while (true) {
-            if (peek(0) == '\"') {
-                pos++;
-                break;
-            }
-            pos++;
-        }
-    }
-    private void skip_blank_characters() {
-        while (pos < length) {
-            if (Character.isWhitespace(peek(0)) == false) break;
-            pos++;
-        }
-    }
-    private char peek(final int position_relative) {
-        int position = pos + position_relative;
-        if (position >= length) return '\0';
-        return input.charAt(position);
+    private char peek(final int position_relative){
+       return getCh(position_relative);
     }
 }

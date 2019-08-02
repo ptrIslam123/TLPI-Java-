@@ -1,7 +1,5 @@
 package __Preprocessor;
 
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
-
 import java.io.*;
 /*
 import java.nio.Buffer;
@@ -14,6 +12,9 @@ import java.util.regex.Pattern;
 */
 
 public class BaseClass {
+
+    private int pos, len;
+    private String text;
 
     protected String readFile(final String filename) throws IOException {
         File file = new File(filename);
@@ -29,24 +30,21 @@ public class BaseClass {
         String text = new String(data);
         return text;
     }
-    protected boolean verificat_compliance_const_expr(final char current){ // метод проверки на соответствие констаннтного выражения
-       // char charaster[] = {'_'};
-        if(Character.isLetter(current) == true)return true;
-        if(Character.isDigit(current) == true)return true;
-        if(current == '_')return true;
-        if(current == '@')return true;
-        return false;
-    }
 
-    /*
-    private List<String> str;
-    private Map<String, String> map = new HashMap<String, String>();
-    private ArrayList<String> list;
-    Pattern pattern;
-    Matcher matcher;
-    StringBuilder buffer;
-    InputStreamReader inputStreamReader;
-    BufferedReader bufferedReader;
-    Character character;
-    */
+   protected void setText(final String data){
+        text = data;
+        len = data.length();
+    }
+   protected char getCh(final int position_relative){
+        int position = pos + position_relative;
+        if(position >= len)return '\0';
+        return text.charAt(position);
+   }
+   protected int getLen(){ return len;}
+   protected int getPos(){ return pos; }
+   protected void setPos(final int _position){ pos = _position; }
+   protected void next(final int next_pos){ pos += next_pos; }
+   protected void next(){pos++;}
+
+
 }
