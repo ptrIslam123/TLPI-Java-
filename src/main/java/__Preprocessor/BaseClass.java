@@ -45,6 +45,23 @@ public class BaseClass {
    protected void setPos(final int _position){ pos = _position; }
    protected void next(final int next_pos){ pos += next_pos; }
    protected void next(){pos++;}
+   protected  void skip_char(){
+        while(getCh(0) != '\0'){
+            if(Character.isWhitespace(getCh(0)) == false)break;
+            pos++;
+        }
+   } // пропуск пустых символов
+    protected void skip_char(final char current){
+        while(getCh(0) != '\0'){
+            if(getCh(0) == current)break;
+            pos++;
+        }
+    }
 
-
+    protected void skip_char(final char current, final int shift){
+        while(getCh(0) != '\0'){
+            if(getCh(0) == current){ pos+=shift; break;}
+            pos++;
+        }
+    }
 }

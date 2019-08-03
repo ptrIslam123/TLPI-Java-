@@ -2,17 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d78d271-f74a-4e26-bf34-fc841ac1d01d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/__Preprocessor/MACROSS/Define.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/__Preprocessor/MACROSS/Macross.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/__Preprocessor/CONSTANT/Const.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/__Preprocessor/CONSTANT/Constant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/file.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/__Preprocessor/BaseClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/__Preprocessor/BaseClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/__Preprocessor/CONSTANT_DIRECTIVE/Constant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/__Preprocessor/ObjImport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/__Preprocessor/MACROSS/Macross.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/__Preprocessor/MACROSS/Macross.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/__Preprocessor/Preprocessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/__Preprocessor/Preprocessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/__Preprocessor/BaseClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/__Preprocessor/BaseClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/__Preprocessor/CONSTANT_DIRECTIVE/Constant.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/__Preprocessor/ObjImport.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/__Preprocessor/MACROSS/Macross.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/__Preprocessor/MACROSS/Macross.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/__Preprocessor/Preprocessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/__Preprocessor/Preprocessor.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -28,12 +27,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/__Preprocessor/BaseClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="48" selection-start-line="48" selection-end-line="48" />
+            <state relative-caret-position="407">
+              <caret line="62" column="49" selection-start-line="62" selection-start-column="49" selection-end-line="62" selection-end-column="49" />
               <folding>
                 <element signature="method#readFile#0;class#BaseClass#0" />
                 <element signature="method#setText#0;class#BaseClass#0" />
                 <element signature="method#getCh#0;class#BaseClass#0" />
+                <element signature="method#skip_char#0;class#BaseClass#0" />
               </folding>
             </state>
           </provider>
@@ -42,41 +42,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/__Preprocessor/Preprocessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="39" column="47" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
+            <state relative-caret-position="680">
+              <caret line="46" column="25" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1074#1075#0" expanded="true" />
-                <element signature="e#1120#1121#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/__Preprocessor/MACROSS/Macross.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16">
-              <caret line="10" column="55" lean-forward="true" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#677#685#0" expanded="true" />
-                <element signature="method#skip_blank_ch#0;class#Macross#0" />
-                <element signature="method#skip_blank_ch#1;class#Macross#0" />
-                <element signature="method#condition_true#0;class#Macross#0" />
-                <element signature="method#peek#0;class#Macross#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/__Preprocessor/MACROSS/Define.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="method#multi_line_comment#0;class#Preprocessor#0" />
+                <element signature="method#one_line_comment#0;class#Preprocessor#0" />
+                <element signature="method#same#0;class#Preprocessor#0" />
               </folding>
             </state>
           </provider>
@@ -85,8 +57,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/file.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="68">
+              <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -116,11 +88,14 @@
         <option value="$PROJECT_DIR$/src/main/java/__Preprocessor/Preprocess.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/Parser.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
-        <option value="$PROJECT_DIR$/file.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/__Preprocessor/BaseClass.java" />
         <option value="$PROJECT_DIR$/src/main/java/__Preprocessor/MACROSS/Define_table.java" />
-        <option value="$PROJECT_DIR$/src/main/java/__Preprocessor/MACROSS/Macross.java" />
         <option value="$PROJECT_DIR$/src/main/java/__Preprocessor/MACROSS/Define.java" />
+        <option value="$PROJECT_DIR$/src/main/java/__Preprocessor/CONSTANT/ConstTable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/__Preprocessor/CONSTANT/Constant.java" />
+        <option value="$PROJECT_DIR$/doc.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/__Preprocessor/BaseClass.java" />
+        <option value="$PROJECT_DIR$/src/main/java/__Preprocessor/MACROSS/Macross.java" />
+        <option value="$PROJECT_DIR$/file.txt" />
         <option value="$PROJECT_DIR$/src/main/java/__Preprocessor/Preprocessor.java" />
       </list>
     </option>
@@ -136,6 +111,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -176,6 +152,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="__Preprocessor" type="462c0819:PsiDirectoryNode" />
+              <item name="CONSTANT" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLPC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="repos" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="__Preprocessor" type="462c0819:PsiDirectoryNode" />
               <item name="MACROSS" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -190,11 +175,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564755135237" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564820409892" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -242,7 +226,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26865673" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27132195" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -251,7 +235,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.41495124" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.41495124" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -314,17 +298,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Include.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Import.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/__Preprocessor/ObjImport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="e#422#423#0" expanded="true" />
-            <element signature="e#447#448#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/__Preprocessor/ObjImport.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -333,16 +307,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/__Preprocessor/Preprocess.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/__Preprocessor/CONSTANT_DIRECTIVE/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/__Preprocessor/CONSTANT_DIRECTIVE/Constant.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -353,58 +318,91 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/__Preprocessor/MACROSS/Define.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/__Preprocessor/CONSTANT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/__Preprocessor/CONSTANT/Constant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="24" column="23" lean-forward="true" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+          <folding>
+            <element signature="method#cond#0;class#Constant#0" />
+            <element signature="e#1130#1131#0" expanded="true" />
+            <element signature="e#1177#1178#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/__Preprocessor/BaseClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        <state relative-caret-position="407">
+          <caret line="62" column="49" selection-start-line="62" selection-start-column="49" selection-end-line="62" selection-end-column="49" />
           <folding>
             <element signature="method#readFile#0;class#BaseClass#0" />
             <element signature="method#setText#0;class#BaseClass#0" />
             <element signature="method#getCh#0;class#BaseClass#0" />
+            <element signature="method#skip_char#0;class#BaseClass#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="44" lean-forward="true" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/__Preprocessor/CONSTANT/Const.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/__Preprocessor/MACROSS/Macross.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-273">
+          <caret line="29" column="31" lean-forward="true" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#cond#0;class#Macross#0" />
+            <element signature="e#2644#2645#0" expanded="true" />
+            <element signature="e#2691#2692#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/file.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/__Preprocessor/MACROSS/Macross.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="10" column="55" lean-forward="true" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#677#685#0" expanded="true" />
-            <element signature="method#skip_blank_ch#0;class#Macross#0" />
-            <element signature="method#skip_blank_ch#1;class#Macross#0" />
-            <element signature="method#condition_true#0;class#Macross#0" />
-            <element signature="method#peek#0;class#Macross#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/__Preprocessor/MACROSS/Define.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/__Preprocessor/Preprocessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="39" column="47" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
+        <state relative-caret-position="680">
+          <caret line="46" column="25" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1074#1075#0" expanded="true" />
-            <element signature="e#1120#1121#0" expanded="true" />
+            <element signature="method#multi_line_comment#0;class#Preprocessor#0" />
+            <element signature="method#one_line_comment#0;class#Preprocessor#0" />
+            <element signature="method#same#0;class#Preprocessor#0" />
           </folding>
         </state>
       </provider>

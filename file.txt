@@ -1,9 +1,8 @@
-#def @SUM(a,b){a+b};
-#def @SUB(c,d){c-d};
 
-#def @MULT(){1-2};
-
-
+// hello wrold
+/*
+print "";
+*/
 int main(){
 
     return 0;

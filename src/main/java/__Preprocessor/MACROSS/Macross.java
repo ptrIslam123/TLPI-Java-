@@ -11,6 +11,7 @@ public class Macross extends BaseClass {
     public Macross(final String input, final int pos) {
         this.input = input;
         setPos(pos);
+        setText(this.input);
     }
 
    public Define parsing_macross(){
@@ -26,7 +27,8 @@ public class Macross extends BaseClass {
 
     private StringBuilder parse_def_body() {
         StringBuilder def_body = new StringBuilder();
-        skip_blank_ch('{',1);
+        //skip_blank_ch('{',1);
+        skip_char('{',1);
         while(cond(peek(0))){
             if(peek(0) == '}' && peek(1) == ';'){
                 next(2);
@@ -58,7 +60,8 @@ public class Macross extends BaseClass {
 
     private StringBuilder parse_def_name() {
         StringBuilder def_name = new StringBuilder();
-        skip_blank_ch();
+        //skip_blank_ch();
+        skip_char();
         while(cond(peek(0))){
             if(peek(0) == '('){ next(); break; }
             def_name.append(peek(0));
@@ -67,24 +70,23 @@ public class Macross extends BaseClass {
         return def_name;
     }
 
-    private void skip_blank_ch() {
+    /*private void skip_blank_ch() {
         while(cond(peek(0))){
             if(Character.isWhitespace(peek(0))== false)break;
             next();
         }
-    }
-    private void skip_blank_ch(final char current, final int shift_pos) {
+    }*/
+   /* private void skip_blank_ch(final char current, final int shift_pos) {
         while(cond(peek(0))){
             if(peek(0) == current){next(shift_pos);break;}
             next();
         }
-    }
+    }*/
     private boolean cond(final char current){
         if(current != '\0')return true;
         else return false;
    }
     private char peek(final int position_relative){
-        setText(input);
         return getCh(position_relative);
     }
 }
