@@ -44,7 +44,7 @@ public class Constant extends BaseClass {
         }
         return const_expr_name;
     }
-
+    public int getPosition(){ return getPos(); }
     private boolean cond(final char current){
         if(current != '\0')return true;
         else return false;

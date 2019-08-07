@@ -70,18 +70,7 @@ public class Macross extends BaseClass {
         return def_name;
     }
 
-    /*private void skip_blank_ch() {
-        while(cond(peek(0))){
-            if(Character.isWhitespace(peek(0))== false)break;
-            next();
-        }
-    }*/
-   /* private void skip_blank_ch(final char current, final int shift_pos) {
-        while(cond(peek(0))){
-            if(peek(0) == current){next(shift_pos);break;}
-            next();
-        }
-    }*/
+    public int getPosition(){ return getPos(); }
     private boolean cond(final char current){
         if(current != '\0')return true;
         else return false;

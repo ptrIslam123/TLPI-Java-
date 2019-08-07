@@ -13,7 +13,6 @@ public class Main {
         Preprocessor preprocessor = new Preprocessor(file_code);
         preprocessor.preprocess();
 
-
     }
 
     private static String readFile(final String filename) throws IOException {

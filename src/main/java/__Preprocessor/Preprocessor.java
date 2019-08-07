@@ -1,5 +1,6 @@
 package __Preprocessor;
 
+import __Preprocessor.CALL.CallExpression;
 import __Preprocessor.CONSTANT.Const;
 import __Preprocessor.CONSTANT.Constant;
 import __Preprocessor.MACROSS.Define;
@@ -16,7 +17,6 @@ public class Preprocessor extends BaseClass {
     public Preprocessor(String input) {
         this.define_table = new ArrayList<Define>();
         this.const_table = new ArrayList<Const>();
-
         this.input = input;
         setText(this.input);
     }
@@ -25,16 +25,24 @@ public class Preprocessor extends BaseClass {
        StringBuilder Buffer = new StringBuilder();
         while(peek(0) != '\0'){
 
-            if(same("#def")){ // парсинг макроса
+            if(same("#def")){ /** парсинг макроса  **/
                 Macross macross = new Macross(input, getPos());
                 define_table.add(macross.parsing_macross());
+                setPos(macross.getPosition());
                 next();
                 continue;
             }
-            if(same("#const")){ // парсинг константных выражений
+            if(same("#const")){ /** парсинг константных выражений  **/
                 Constant constant = new Constant(input, getPos());
                 const_table.add(constant.parsing_const_expr());
+                setPos(constant.getPosition());
                 next();
+                continue;
+            }
+            if(peek(0) == '@') { /** парсинг вызова макросса или константного выражения **/
+                CallExpression callExpression = new CallExpression(input, getPos(), define_table, const_table);
+                Buffer.append(callExpression.getExpr());
+                setPos(callExpression.getPosition());
                 continue;
             }
 
@@ -46,14 +54,14 @@ public class Preprocessor extends BaseClass {
                 multi_line_comment();
                 continue;
             }
-
             Buffer.append(peek(0));
             next();
         }
 
-        System.out.println(Buffer.toString());
+        //System.out.println(Buffer.toString());
         return Buffer.toString();
     }
+
 
     private void multi_line_comment() {
         while(peek(0) != '\0'){
@@ -64,7 +72,6 @@ public class Preprocessor extends BaseClass {
             next();
         }
     }
-
     private void one_line_comment() {
         while(peek(0) != '\0'){
             if(peek(0) == '\n'){
@@ -74,7 +81,6 @@ public class Preprocessor extends BaseClass {
             next();
         }
     }
-
     private boolean same(final String chars){
         int tep_pos = getPos();
         for(int i=0; i<chars.length(); i++){
@@ -86,7 +92,6 @@ public class Preprocessor extends BaseClass {
         }
         return true;
     }
-
     private char peek(final int position_relative){
        return getCh(position_relative);
     }
@@ -105,7 +110,6 @@ public class Preprocessor extends BaseClass {
             System.out.println("===============");
         }
 */
-
 /*
         // ДЛЯ КОНСТАНТНЫХ ВЫРАЖЕНИЙ
         Const temp = null;
