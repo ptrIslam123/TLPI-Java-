@@ -1,0 +1,4 @@
+#import head.txt;
+int setSum(int a,int b){
+    return a+b;
+}

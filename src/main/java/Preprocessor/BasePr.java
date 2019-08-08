@@ -15,6 +15,13 @@ public class BasePr {
         this.length = this.input.length();
     }
 
+    protected boolean match_char_to_expr(final char current){
+        if(Character.isLetter(current) == true)return true;
+        if(Character.isDigit(current) == true)return true;
+        if(current == '_')return true;
+        if(current == '@')return true;
+        return false;
+    } /** проверка символа на соответствие макровыражению **/
     protected void skip_blank_characters(){
         while(getCh(0) != '\0'){
             if(Character.isWhitespace(getCh(0)) == false)break;
@@ -39,4 +46,5 @@ public class BasePr {
     protected void setLength(final int setLength){
         this.length = setLength;
     }
+
 }

@@ -1,8 +1,10 @@
+#const @VAR1=123;
+#const @var2=PI;
 #def @SUM(num1,num2){num1+num2};
-
-#def @SUB(x,c){x-c};
-
+int pi = @var2;
+int num = "hello world!"+ @VAR1 +1000/4344;
 int main(){
 
+    print @TRUE + @FALSE - @E/@PI;
     return 0;
 }

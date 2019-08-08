@@ -1,10 +1,12 @@
 package Preprocessor;
 
+import Preprocessor.CALL_EXPRESSION.ParseCall;
 import Preprocessor.CONST.Const;
 import Preprocessor.CONST.ConstExpression;
 import Preprocessor.DEFINE.Define;
 import Preprocessor.DEFINE.Defines;
-
+import Preprocessor.IMPORT_FILE.CaLLImport;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,21 +20,31 @@ public class Preprocessor extends BasePr {
         this.const_table = new ArrayList<Const>();
         this.define_table = new ArrayList<Defines>();
         setText(input);
+        initDirective();
     }
 
 
-    public StringBuilder run(){
+
+    public StringBuilder run() throws IOException {
         while(cond(peek(0))){
             if(peek(0) == '/' && peek(1) == '/'){
-                on_line_comment();
+                //on_line_comment();
                 setLen();
                 continue;
             } /** однострочный комментарий**/
             if(peek(0) == '/' && peek(1) == '*'){
-                multi_line_comment();
+                //multi_line_comment();
                 setLen();
                 continue;
             } /** многострочный комментарий***/
+
+            if(same("#import")){ /** парсинг директивы подключения внешних файлов**/
+                CaLLImport classImport = new CaLLImport(input, (getPos() + 7));
+                StringBuilder ImpotrFile = classImport.callImport();
+                input.replace(getPos(), classImport.getPosEnd(), ImpotrFile.toString());
+                setLen();
+                continue;
+            }
 
             if(same("#const")){  /** парсинг константных выражений **/
                 ConstExpression constExpr = new ConstExpression(input, (getPos() + 6));
@@ -49,47 +61,27 @@ public class Preprocessor extends BasePr {
                 continue;
             }
 
+            if(peek(0) == '@'){ /** директива вызова макровыражения **/
+                ParseCall parseCall = new ParseCall(input, getPos(), define_table, const_table);
+                StringBuilder value = parseCall.callExpressiion();
+                input.replace(getPos(), parseCall.getPosEnd(), value.toString());
+                setLen();
+                continue;
+            }
+
             next();
         }
-        System.out.println(input.toString());
+
+
+       System.out.println(input.toString());
         return input;
     }
 
-    private void deleteDefineConstExpr() {
-        int index_beg = getPos(), index_end = getPos();
-        while(cond(peek(0))){
-            if(peek(0) == ';'){
-                index_end++;
-                break;
-            }
-            index_end++;
-            next();
-        }
-        System.out.println("peek: "+peek(14));
-        System.out.println(index_beg+"\t\t"+index_end);
-        input.delete(index_beg, index_end);
-    }
-
-    private void on_line_comment() {
-        int index_end = getPos(), index_beg = getPos();
-        while(cond(peek(0))){
-            if(peek(0) == '\n')break;
-            index_end++;
-            next();
-        }
-        input.delete(index_beg, index_end);
-    }
-    private void multi_line_comment() {
-        int index_beg  = getPos(), index_end = getPos();
-        while(cond(peek(0))){
-            if(peek(0) == '*' && peek(1) == '/'){
-                index_end+=2;
-                break;
-            }
-            index_end++;
-            next();
-        }
-        input.delete(index_beg, index_end);
+    private void initDirective() { /** данный метод содержит в себе уже некоторые часто используемые константные выражения **/
+        const_table.add(new Const(new StringBuilder("@TRUE"), new StringBuilder("1")));  /** директива @TRUE = 1**/
+        const_table.add(new Const(new StringBuilder("@FALSE"), new StringBuilder("0")));  /** директива @FALSE = 1**/
+        const_table.add(new Const(new StringBuilder("@PI"), new StringBuilder("3.141592653589793238462643383279")));  /** директива содержащее в себе значение ПИ **/
+        const_table.add(new Const(new StringBuilder("@E"), new StringBuilder("2.71828182845904523536028747135")));   /** директива содержащее в себе значение Е **/
     }
     private void setLen(){
         setLength(input.length());

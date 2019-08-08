@@ -46,7 +46,6 @@ public class ConstExpression extends BasePr {
     public int getPosEnd(){
         return getPos();
     }
-
     private char peek(final int position){
         return getCh(position);
     }
