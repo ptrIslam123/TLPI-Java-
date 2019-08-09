@@ -2,23 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d78d271-f74a-4e26-bf34-fc841ac1d01d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/file1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/head.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/CallConstExpr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/CallDefine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/CallExpression.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/ParseCall.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Preprocessor/IMPORT_FILE/CaLLImport.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/file.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Preprocessor/BasePr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Preprocessor/BasePr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Preprocessor/CONST/ConstExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Preprocessor/CONST/ConstExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/CallConstExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/CallConstExpr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/CallDefine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/CallDefine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Preprocessor/DEFINE/Defines.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Preprocessor/DEFINE/Defines.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Preprocessor/Preprocessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Preprocessor/Preprocessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ConditionC.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ConditionC.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Lexer/Lexer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Lexer/Lexer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Parser/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Parser/Parser.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Preprocessor/BasePr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Preprocessor/BasePr.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Preprocessor/CALL_EXPRESSION/CallConstExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Preprocessor/CALL_EXPRESSION/CallConstExpr.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Preprocessor/CALL_EXPRESSION/CallDefine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Preprocessor/CALL_EXPRESSION/CallDefine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Preprocessor/CALL_EXPRESSION/CallExpression.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Preprocessor/CALL_EXPRESSION/CallExpression.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Preprocessor/CALL_EXPRESSION/ParseCall.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Preprocessor/CALL_EXPRESSION/ParseCall.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Preprocessor/CONST/Const.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Preprocessor/CONST/Const.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Preprocessor/CONST/ConstExpression.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Preprocessor/CONST/ConstExpression.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Preprocessor/DEFINE/Define.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Preprocessor/DEFINE/Define.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Preprocessor/DEFINE/Defines.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Preprocessor/DEFINE/Defines.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Preprocessor/IMPORT_FILE/CaLLImport.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Preprocessor/IMPORT_FILE/CaLLImport.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Preprocessor/Preprocessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Preprocessor/Preprocessor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/TMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/__Preprocessor/BaseClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/__Preprocessor/BaseClass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/__Preprocessor/CALL/CallExpression.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/__Preprocessor/CALL/CallExpression.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/__Preprocessor/CALL/RecursCallDefine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/__Preprocessor/CALL/RecursCallDefine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/__Preprocessor/CONSTANT/Const.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/__Preprocessor/CONSTANT/Const.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/__Preprocessor/CONSTANT/Constant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/__Preprocessor/CONSTANT/Constant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/__Preprocessor/MACROSS/Define.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/__Preprocessor/MACROSS/Define.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/__Preprocessor/MACROSS/Macross.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/__Preprocessor/MACROSS/Macross.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/__Preprocessor/Preprocessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/__Preprocessor/Preprocessor.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,52 +46,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="63" lean-forward="true" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/Preprocessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="91" column="43" lean-forward="true" selection-start-line="91" selection-start-column="43" selection-end-line="91" selection-end-column="43" />
+            <state relative-caret-position="343">
+              <caret line="76" column="8" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#809#911#1" />
-                <element signature="e#887#992#1" />
-                <element signature="e#2946#2947#0" expanded="true" />
-                <element signature="e#2987#2988#0" expanded="true" />
-                <element signature="e#3356#3357#0" expanded="true" />
-                <element signature="e#3394#3395#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/CONST/Const.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/CONST/ConstExpression.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
-              <folding>
-                <element signature="method#const_expr_value#0;class#ConstExpression#0" />
-                <element signature="method#const_expr_name#0;class#ConstExpression#0" />
+                <element signature="method#initDirective#0;class#Preprocessor#0" />
               </folding>
             </state>
           </provider>
@@ -85,23 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/ParseCall.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-143">
+            <state relative-caret-position="190">
               <caret line="30" column="84" selection-start-line="30" selection-start-column="84" selection-end-line="30" selection-end-column="84" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#713#728#0" expanded="true" />
-                <element signature="e#2085#2086#0" expanded="true" />
-                <element signature="e#2123#2124#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/CallConstExpr.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -112,8 +73,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/CallDefine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="12" column="41" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
+            <state relative-caret-position="289">
+              <caret line="34" column="133" selection-start-line="34" selection-start-column="133" selection-end-line="34" selection-end-column="133" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1877#2051#1" />
+                <element signature="e#2241#2285#1" />
+                <element signature="method#accordType#0;class#CallDefine#0" />
+                <element signature="method#getDefine#0;class#CallDefine#0" />
+                <element signature="method#equalsStr#0;class#CallDefine#0" />
+                <element signature="method#init_in_param#0;class#CallDefine#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -121,11 +91,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/BasePr.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="408">
               <caret line="48" selection-start-line="48" selection-end-line="48" />
               <folding>
                 <element signature="method#setText#0;class#BasePr#0" />
-                <element signature="method#match_char_to_expr#0;class#BasePr#0" />
                 <element signature="method#skip_blank_characters#0;class#BasePr#0" />
                 <element signature="method#skip_blank_characters#1;class#BasePr#0" />
                 <element signature="method#getCh#0;class#BasePr#0" />
@@ -136,13 +105,16 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/IMPORT_FILE/CaLLImport.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/DEFINE/Defines.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="54" selection-start-line="54" selection-end-line="54" />
+            <state relative-caret-position="306">
+              <caret line="18" column="64" selection-start-line="18" selection-start-column="64" selection-end-line="18" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#readFile#0;class#CaLLImport#0" />
+                <element signature="method#setIn_param#0;class#Defines#0" />
+                <element signature="method#getValueParam#0;class#Defines#0" />
+                <element signature="method#equalsStr#0;class#Defines#0" />
+                <element signature="method#initLoc_param#0;class#Defines#0" />
               </folding>
             </state>
           </provider>
@@ -151,8 +123,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/file.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+            <state relative-caret-position="85">
+              <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -198,7 +170,6 @@
         <option value="$PROJECT_DIR$/src/main/java/Preprocessor/ConstExpression.java" />
         <option value="$PROJECT_DIR$/src/main/java/Preprocessor/CONST/Const.java" />
         <option value="$PROJECT_DIR$/src/main/java/Preprocessor/DEFINE/Define.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Preprocessor/DEFINE/Defines.java" />
         <option value="$PROJECT_DIR$/src/main/java/Preprocessor/IMPORTFILE/CaLLImport.java" />
         <option value="$PROJECT_DIR$/src/main/java/TMain.java" />
         <option value="$PROJECT_DIR$/file.2.txt" />
@@ -206,11 +177,12 @@
         <option value="$PROJECT_DIR$/head.txt" />
         <option value="$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/CallExpression.java" />
         <option value="$PROJECT_DIR$/src/main/java/Preprocessor/CONST/ConstExpression.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/ParseCall.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/CallDefine.java" />
         <option value="$PROJECT_DIR$/src/main/java/Preprocessor/IMPORT_FILE/CaLLImport.java" />
         <option value="$PROJECT_DIR$/src/main/java/Preprocessor/BasePr.java" />
         <option value="$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/CallConstExpr.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Preprocessor/DEFINE/Defines.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/ParseCall.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/CallDefine.java" />
         <option value="$PROJECT_DIR$/src/main/java/Preprocessor/Preprocessor.java" />
         <option value="$PROJECT_DIR$/file.txt" />
       </list>
@@ -226,6 +198,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -285,12 +259,19 @@
               <item name="Preprocessor" type="462c0819:PsiDirectoryNode" />
               <item name="CONST" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="TLPC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="repos" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Preprocessor" type="462c0819:PsiDirectoryNode" />
+              <item name="DEFINE" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -348,8 +329,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29957357" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30597016" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -358,7 +340,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3846154" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3846154" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -596,17 +578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/DEFINE/Defines.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#initLoc_param#0;class#Defines#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/DEFINE/Define.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -627,19 +598,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="63" lean-forward="true" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/file.2.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/file.2.txt" />
     <entry file="file://$PROJECT_DIR$/file1.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -654,65 +613,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/CallExpression.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="4" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/CallDefine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="41" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/IMPORT_FILE/CaLLImport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
+        <state relative-caret-position="102">
+          <caret line="10" column="63" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#readFile#0;class#CaLLImport#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/BasePr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
-          <folding>
-            <element signature="method#setText#0;class#BasePr#0" />
-            <element signature="method#match_char_to_expr#0;class#BasePr#0" />
-            <element signature="method#skip_blank_characters#0;class#BasePr#0" />
-            <element signature="method#skip_blank_characters#1;class#BasePr#0" />
-            <element signature="method#getCh#0;class#BasePr#0" />
-            <element signature="method#cond#0;class#BasePr#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/CallConstExpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/ParseCall.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-143">
-          <caret line="30" column="84" selection-start-line="30" selection-start-column="84" selection-end-line="30" selection-end-column="84" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#713#728#0" expanded="true" />
-            <element signature="e#2085#2086#0" expanded="true" />
-            <element signature="e#2123#2124#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -720,7 +626,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/CONST/Const.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -735,26 +641,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/Preprocessor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/IMPORT_FILE/CaLLImport.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="91" column="43" lean-forward="true" selection-start-line="91" selection-start-column="43" selection-end-line="91" selection-end-column="43" />
+        <state relative-caret-position="663">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#809#911#1" />
-            <element signature="e#887#992#1" />
-            <element signature="e#2946#2947#0" expanded="true" />
-            <element signature="e#2987#2988#0" expanded="true" />
-            <element signature="e#3356#3357#0" expanded="true" />
-            <element signature="e#3394#3395#0" expanded="true" />
+            <element signature="method#readFile#0;class#CaLLImport#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/CallExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/CallConstExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#equalsStr#0;class#CallConstExpr#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/DEFINE/Defines.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="64" selection-start-line="18" selection-start-column="64" selection-end-line="18" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#setIn_param#0;class#Defines#0" />
+            <element signature="method#getValueParam#0;class#Defines#0" />
+            <element signature="method#equalsStr#0;class#Defines#0" />
+            <element signature="method#initLoc_param#0;class#Defines#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/BasePr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+          <folding>
+            <element signature="method#setText#0;class#BasePr#0" />
+            <element signature="method#skip_blank_characters#0;class#BasePr#0" />
+            <element signature="method#skip_blank_characters#1;class#BasePr#0" />
+            <element signature="method#getCh#0;class#BasePr#0" />
+            <element signature="method#cond#0;class#BasePr#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/CallDefine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="34" column="133" selection-start-line="34" selection-start-column="133" selection-end-line="34" selection-end-column="133" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1877#2051#1" />
+            <element signature="e#2241#2285#1" />
+            <element signature="method#accordType#0;class#CallDefine#0" />
+            <element signature="method#getDefine#0;class#CallDefine#0" />
+            <element signature="method#equalsStr#0;class#CallDefine#0" />
+            <element signature="method#init_in_param#0;class#CallDefine#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/CALL_EXPRESSION/ParseCall.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="30" column="84" selection-start-line="30" selection-start-column="84" selection-end-line="30" selection-end-column="84" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Preprocessor/Preprocessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="76" column="8" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#initDirective#0;class#Preprocessor#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/file.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        <state relative-caret-position="85">
+          <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
         </state>
       </provider>
     </entry>

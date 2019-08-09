@@ -12,6 +12,7 @@ public class CallConstExpr implements CallExpression {
         this.const_table = const_table;
     }
 
+    @Override
     public StringBuilder call() {
         Const constExpe = getValue();
         return constExpe.getConstValue();
@@ -25,7 +26,6 @@ public class CallConstExpr implements CallExpression {
         }
         throw new RuntimeException("NO DEFINITION FOUND: "+constExprName);
     }
-
     private boolean equalsStr(final StringBuilder expr1, final StringBuilder expr2){
         String ex1 = expr1.toString();
         String ex2 = expr2.toString();

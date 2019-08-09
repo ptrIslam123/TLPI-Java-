@@ -1,10 +1,14 @@
-#const @VAR1=123;
-#const @var2=PI;
 #def @SUM(num1,num2){num1+num2};
-int pi = @var2;
-int num = "hello world!"+ @VAR1 +1000/4344;
+
+#def @MULT(var1,var2){
+@SUM(2,4)
+var1*var2
+};
+
+
+@MULT(2,5)
+
 int main(){
 
-    print @TRUE + @FALSE - @E/@PI;
     return 0;
 }

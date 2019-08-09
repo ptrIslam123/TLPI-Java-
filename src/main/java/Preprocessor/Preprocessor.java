@@ -65,6 +65,7 @@ public class Preprocessor extends BasePr {
                 ParseCall parseCall = new ParseCall(input, getPos(), define_table, const_table);
                 StringBuilder value = parseCall.callExpressiion();
                 input.replace(getPos(), parseCall.getPosEnd(), value.toString());
+                //System.out.println("peek: " + peek(0) + peek(1) + peek(2) + peek(3) + peek(4) + peek(5) + peek(6));
                 setLen();
                 continue;
             }
@@ -73,16 +74,11 @@ public class Preprocessor extends BasePr {
         }
 
 
-       System.out.println(input.toString());
+        System.out.println(input.toString());
         return input;
     }
 
-    private void initDirective() { /** данный метод содержит в себе уже некоторые часто используемые константные выражения **/
-        const_table.add(new Const(new StringBuilder("@TRUE"), new StringBuilder("1")));  /** директива @TRUE = 1**/
-        const_table.add(new Const(new StringBuilder("@FALSE"), new StringBuilder("0")));  /** директива @FALSE = 1**/
-        const_table.add(new Const(new StringBuilder("@PI"), new StringBuilder("3.141592653589793238462643383279")));  /** директива содержащее в себе значение ПИ **/
-        const_table.add(new Const(new StringBuilder("@E"), new StringBuilder("2.71828182845904523536028747135")));   /** директива содержащее в себе значение Е **/
-    }
+
     private void setLen(){
         setLength(input.length());
     }
@@ -98,6 +94,12 @@ public class Preprocessor extends BasePr {
         setPos(tep_pos);
         return true;
     }
+    private void initDirective() {
+        const_table.add(new Const(new StringBuilder("@TRUE"), new StringBuilder("1")));  /** директива @TRUE = 1**/
+        const_table.add(new Const(new StringBuilder("@FALSE"), new StringBuilder("0")));  /** директива @FALSE = 1**/
+        const_table.add(new Const(new StringBuilder("@PI"), new StringBuilder("3.141592653589793238462643383279")));  /** директива содержащее в себе значение ПИ **/
+        const_table.add(new Const(new StringBuilder("@E"), new StringBuilder("2.71828182845904523536028747135")));   /** директива содержащее в себе значение Е **/
+    }/** данный метод содержит в себе уже некоторые часто используемые константные выражения **/
     private char peek(final int position){
         return getCh(position);
     }
