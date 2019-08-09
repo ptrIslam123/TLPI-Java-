@@ -27,16 +27,6 @@ public class Preprocessor extends BasePr {
 
     public StringBuilder run() throws IOException {
         while(cond(peek(0))){
-            if(peek(0) == '/' && peek(1) == '/'){
-                //on_line_comment();
-                setLen();
-                continue;
-            } /** однострочный комментарий**/
-            if(peek(0) == '/' && peek(1) == '*'){
-                //multi_line_comment();
-                setLen();
-                continue;
-            } /** многострочный комментарий***/
 
             if(same("#import")){ /** парсинг директивы подключения внешних файлов**/
                 CaLLImport classImport = new CaLLImport(input, (getPos() + 7));
@@ -74,7 +64,7 @@ public class Preprocessor extends BasePr {
         }
 
 
-        System.out.println(input.toString());
+        //System.out.println(input.toString());
         return input;
     }
 

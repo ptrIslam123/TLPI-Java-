@@ -1,4 +1,2 @@
+void show(int *array, const int size_arr);
 #import head.txt;
-int setSum(int a,int b){
-    return a+b;
-}

@@ -20,6 +20,8 @@ public class CallDefine implements CallExpression {
         loc_param = define.getLoc_param();
         define.setIn_param(in_param);
 
+        if(loc_param.size() == 0)return define.getBody();
+
         return replaceBody(define);
     }
 

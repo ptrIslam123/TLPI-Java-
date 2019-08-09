@@ -13,7 +13,9 @@ public class Main {
         StringBuilder file_code = readFile("file.txt");
 
         Preprocessor preprocessor = new Preprocessor(file_code);
-        preprocessor.run();
+        StringBuilder output = preprocessor.run();
+
+        System.out.println(output); /** выхлап препроцессора - это для тебя Русик(Дебаж на здоровье!!!) **/
     }
 
     private static StringBuilder readFile(final String filename) throws IOException {
