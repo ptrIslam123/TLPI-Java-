@@ -1,20 +1,30 @@
-#import file1.txt;
+#import head.txt;   // импорт файла
+#const @DEBUG=1;    // константное выражение
+#const @VAR_STR="___КАК__ТЕБЕ_РУСИК__?!";
 
-#const @VAR1=12;
-#def @SUM(a,b){a+b};
-#def @SUB(a,b){a-b};
+#def @SUM(num1,num2){num1+num2+1000};  // макроопределение считающую сумму двух чисел + 1000
 
-#def @PRNT(var){var};
+#if_def @DEBUG  // блок условной директивы if_def
 
-#def @SHOW_MSG(void){print "hello world!"};
+#const @MSG="hello Block_if_def";
+void inc(int i){i++;};
 
-int sum = @SUM(@VAR1,23);
-int sub = @SUB(@VAR1, 100);
+#els_def
+#const @MSG="hello Block_els_def";
+
+#end_def
+
+int sum = @SUM(2,5);
 int main(){
 
-    @SHOW_MSG(void);
+  print @PI+@E;   // встроенные константные выражения PI и E
 
-    print @PRNT(void);
+ @VOID_DEF(void);  // вызов макроса
 
-    return 0;
+ String var = @MSG;
+
+ @PRT(@VAR_STR);  // вызов макроса
+
+
+ return 0;
 }

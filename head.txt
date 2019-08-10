@@ -1,1 +1,2 @@
-print "hello world is fileName-> file2.txt"
+#def @PRT(str){print str};
+#def @VOID_DEF(void){variable1+variable2};

@@ -14,6 +14,7 @@ public class Preprocessor extends BasePr {
     private StringBuilder input;
     private List<Const> const_table;
     private List<Defines> define_table;
+    private boolean flage_condition_compil = false; /** флаг условной компиляций **/
 
     public Preprocessor(final StringBuilder input){
         this.input = input;
@@ -27,6 +28,24 @@ public class Preprocessor extends BasePr {
 
     public StringBuilder run() throws IOException {
         while(cond(peek(0))){
+
+            if(same("#if_def")){
+               IfDef ifDef = new IfDef(input, getPos(), define_table, const_table);
+               boolean res = ifDef.getValueConditionExpression();
+
+               def_of_conditional_block(res, ifDef.getPosEnd());
+               continue;
+            }
+
+            if(same("#end_def")){
+                skip_block_end();
+                continue;
+            }
+
+            if(same("#els_def") && flage_condition_compil == false){
+                skipblock_els();
+                continue;
+            }
 
             if(same("#import")){ /** парсинг директивы подключения внешних файлов**/
                 CaLLImport classImport = new CaLLImport(input, (getPos() + 7));
@@ -55,7 +74,6 @@ public class Preprocessor extends BasePr {
                 ParseCall parseCall = new ParseCall(input, getPos(), define_table, const_table);
                 StringBuilder value = parseCall.callExpressiion();
                 input.replace(getPos(), parseCall.getPosEnd(), value.toString());
-                //System.out.println("peek: " + peek(0) + peek(1) + peek(2) + peek(3) + peek(4) + peek(5) + peek(6));
                 setLen();
                 continue;
             }
@@ -63,11 +81,57 @@ public class Preprocessor extends BasePr {
             next();
         }
 
-
         //System.out.println(input.toString());
         return input;
     }
 
+    private void skipblock_els() {
+        int temp_pos = getPos();
+        while(cond(peek(0))){
+            if(same("#end_def")){
+                next(8);
+                break;
+            }
+            next();
+        }
+        deleteStr(temp_pos, getPos());
+        setLen();
+        setPos(temp_pos);
+    }
+
+    private void skip_block_end() {
+        int temp_pos = getPos();
+        next(8);
+        deleteStr(temp_pos, getPos());
+        setLen();
+        setPos(temp_pos);
+    }
+
+
+    private void def_of_conditional_block(final boolean value, int end_index) {
+        if(value == true){
+            flage_condition_compil = false;
+            deleteStr(getPos(), end_index);
+            setLen();
+        }else {
+            flage_condition_compil = true;
+            int temp_pos = getPos();
+            while(cond(peek(0))){
+                if(same("#els_def")){
+                    next(8);
+                    break;
+                }
+                if(same("#end_def")){
+                    next(8);
+                    break;
+                }
+                next();
+            }
+            deleteStr(temp_pos, getPos());
+            setLen();
+            setPos(temp_pos);
+        }
+    }
 
     private void setLen(){
         setLength(input.length());
@@ -92,6 +156,9 @@ public class Preprocessor extends BasePr {
     }/** данный метод содержит в себе уже некоторые часто используемые константные выражения **/
     private char peek(final int position){
         return getCh(position);
+    }
+    private void deleteStr(final int beg_i, final int end_i){
+        input.delete(beg_i, end_i);
     }
 }
 

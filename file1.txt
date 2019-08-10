@@ -1,2 +1,3 @@
 void show(int *array, const int size_arr);
+#def @PR(void){print void};
 #import head.txt;
