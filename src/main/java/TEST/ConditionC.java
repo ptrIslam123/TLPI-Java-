@@ -1,3 +1,5 @@
+package TEST;
+
 public class ConditionC {
 
     private String input;
