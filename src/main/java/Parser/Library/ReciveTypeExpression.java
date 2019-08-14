@@ -2,7 +2,7 @@ package Parser.Library;
 
 import Lexer.TypeToken;
 import Parser.BaseParser;
-import Parser.Library.VARIABLE.VariableType;
+import Parser.Library.VARIABLE.VariableExpression;
 import Parser.TYPE.*;
 import Lexer.Token;
 import java.util.List;
@@ -16,9 +16,9 @@ public class ReciveTypeExpression extends BaseParser {
     public Type getTypeExpression() {
         Type type = null;
         if(get(0).getType() == TypeToken.Word){
-            VariableType variable = new VariableType(get(0).getValue());
+            String name = get(0).getValue();
             next();
-            return variable.evalExpression();
+            return new VariableExpression(name).evalExpression(); /** получаем значение переменной по ее символьному идентификатору**/
         }
         if(get(0).getType() == TypeToken.NumInt32){
             type =  new IntegerType(get(0).getValue());
