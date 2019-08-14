@@ -45,10 +45,13 @@ public class BaseLexer {
         StringBuilder buffer_number = new StringBuilder();
         boolean flage_double = false;
         while(cond()){
-            if(peek(0) == '.' && (Character.isDigit(peek(1)) == true)){
+            if(peek(0) == '.' && (Character.isDigit(peek(1)) == true) && flage_double == false){
                 flage_double = true;
                 buffer_number.append(peek(0));
                 pos++;
+            }
+            if(peek(0) == '.' && (Character.isDigit(peek(1)) == true) && flage_double == true){
+                throw new RuntimeException("Error Type");
             }
             if(Character.isDigit(peek(0)) == false)break;
             buffer_number.append(peek(0));

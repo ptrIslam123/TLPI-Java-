@@ -1,11 +1,1 @@
-array[5] = {
-    "hello1","hello2","hello3"
-}
-
-def sumer(var1, var2){
-    return var1+var2 +120
-}
-
-
-var1 = 12 + 12.4/4*20
-var2 = var1 + 1000
+"hello" + ", world"

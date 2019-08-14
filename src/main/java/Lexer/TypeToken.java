@@ -53,6 +53,7 @@ public enum TypeToken {
     Break, // break
     Continue, // continue
 
+    sys_read, // print функция
 
     Define_func, // определение функций (метода)
     ret, // return

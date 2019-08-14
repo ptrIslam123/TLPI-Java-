@@ -1,6 +1,8 @@
 
 import Lexer.Lexer;
 import Lexer.Token;
+import Parser.Parser;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -23,11 +25,12 @@ public class Main {
         Lexer lexer = new Lexer(file_code.toString());
         List<Token> tokens = lexer.run();
 
-        Token  temp = null;
-        for(int i=0; i<tokens.size(); i++){
-            temp = tokens.get(i);
-            System.out.println(temp.getType()+" : "+temp.getValue()); /** В ЦИКЛЕ ВЫВОДИМ СПИОК ТОКЕНОВ ПОЛУЧИВШИХСЯ В РЕЗУЛЬТАТЕ ЛЕКСИЧЕСКОГО АНАЛИЗА**/
-        }
+        /** раздел "компиляций" в будущем будем сериализовывать и десиарилизовывать
+         * промежуточное представление в объектный файл**/
+        Parser parser = new Parser(tokens);
+        parser.run();
+
+
     }
 
     private static StringBuilder readFile(final String filename) throws IOException {
@@ -47,3 +50,4 @@ public class Main {
         return str;
     }
 }
+
