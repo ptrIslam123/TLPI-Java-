@@ -62,5 +62,5 @@ public enum TypeToken {
 
 
 
-    EOF, // конеч файла
+    EOF, // конец файла
 }

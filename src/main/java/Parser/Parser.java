@@ -1,12 +1,15 @@
 package Parser;
 
+import java.util.ArrayList;
 import java.util.List;
 import Lexer.Token;
 import Lexer.TypeToken;
-import Parser.TYPE.DoubleType;
-import Parser.TYPE.IntegerType;
-import Parser.TYPE.StringType;
-import Parser.TYPE.Type;
+import Parser.Library.BinaryExpression;
+import Parser.Library.ReciveTypeExpression;
+import Parser.Library.Statement;
+import Parser.Library.VARIABLE.VariableDeclaration;
+import Parser.TYPE.*;
+
 
 public class Parser extends BaseParser {
 
@@ -16,22 +19,33 @@ public class Parser extends BaseParser {
     }
 
     public void run(){
-        /*
-        for(Token it : getTokens()){
-            System.out.println(it.getType()+" : " + it.getValue());
+        List<Statement> statements = new ArrayList<Statement>();
+        while(cond()){
+            statements.add(statement());
         }
-        System.out.println("========================");
-        */
-        Type result = additive();
-        System.out.println(result.asString());
+
+        for(Statement it :statements){
+            it.execute();
+        }
     }
 
+    private Statement statement(){
+        if(get(0).getType() == TypeToken.Word && get(1).getType() == TypeToken.Equals){ /** WORD = Expression **/
+            String name = get(0).getValue(); // variable_name
+            next(2);
+            return new VariableDeclaration(name, expression());
+        }
+        throw new RuntimeException("Unknown Type Expression");
+    }
+    private Type expression(){
+        return additive();
+    }
     private Type additive(){
         Type result = multiplicative();
         while(true){
             if(get(0).getType() == TypeToken.Add){
                 next();
-                result = eval('+', result, multiplicative());
+                result = eval('+',result, multiplicative());
                 continue;
             }
             if(get(0).getType() == TypeToken.Sub){
@@ -61,27 +75,27 @@ public class Parser extends BaseParser {
         return result;
     }
 
+    private Type eval(final char operation, final Type expr1, final Type expr2){
+        return new BinaryExpression(operation,expr1,expr2).evalExpression();
+    } /** посчитать выражение **/
     private Type primary(){
-        Type temp;
-        if(get(0).getType() == TypeToken.NumInt32){
-             temp = new IntegerType(get(0).getValue());
+        if(get(0).getType() == TypeToken.Lparen){ /** парсинг  выражений в скобках **/
             next();
-            return temp;
+            Type value = expression();
+            equals_type(TypeToken.Rparen);
+            return value;
         }
-        if(get(0).getType() == TypeToken.NumDouble64){
-            temp = new DoubleType(get(0).getValue());
-            next();
-            return temp;
-        }
-        if(get(0).getType() == TypeToken.Str){
-            temp = new StringType(get(0).getValue());
-            next();
-            return temp;
-        }
-        throw new RuntimeException("Unknow Token");
-    }
+        ReciveTypeExpression temp = new ReciveTypeExpression(getTokens(), getPos());
+        Type temp_type = temp.getTypeExpression();
+        setPos(temp.getPosEnd());
+        return temp_type;
+    }   /** получить примитив в виде типа данных **/
 
-    private Type eval(char operation, Type expr1, Type expr2){
-        return new BinaryExpression(operation, expr1, expr2).eval();
-    }
+    private boolean equals_type(final TypeToken type){
+        if(get(0).getType() == type){
+            next();
+            return true;
+        }
+        else throw new RuntimeException("Unknown Type Expression");
+    } /** проверка текущего токена **/
 }

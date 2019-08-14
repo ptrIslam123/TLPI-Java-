@@ -1,31 +1,29 @@
-package Parser;
+package Parser.Library;
 
-import Parser.TYPE.DoubleType;
-import Parser.TYPE.IntegerType;
-import Parser.TYPE.StringType;
-import Parser.TYPE.Type;
+import Parser.TYPE.*;
 
-public class BinaryExpression {
+public class BinaryExpression  implements Expresssion{
     private Type expr1, expr2;
-    private char operation;
+    private final char operation;
 
-    public BinaryExpression(char operation, Type expr1, Type expr2){
+    public BinaryExpression(final char operation, final Type expr1, final Type expr2) {
         this.expr1 = expr1;
         this.expr2 = expr2;
         this.operation = operation;
     }
 
-    public Type eval(){
-        if(expr1 instanceof IntegerType){
+    @Override
+    public Type evalExpression() {
+        if(expr1 instanceof IntegerType){ /** если тип класса int **/
             switch(operation){
-                case '*': return new IntegerType(expr1.asInteger32() * expr2.asInteger32());
+                case '*' : return new IntegerType(expr1.asInteger32() * expr2.asInteger32());
                 case '/' : return new IntegerType(expr1.asInteger32() / expr2.asInteger32());
                 case '-' : return new IntegerType(expr1.asInteger32() - expr2.asInteger32());
                 default:
                     return new IntegerType(expr1.asInteger32() + expr2.asInteger32());
             }
         }
-        if(expr1 instanceof DoubleType){
+        if(expr1 instanceof DoubleType){ /** если тип класса double **/
             switch(operation){
                 case '*' : return new DoubleType(expr1.asDouble64() * expr2.asDouble64());
                 case '/' : return new DoubleType(expr1.asDouble64() / expr2.asDouble64());
@@ -33,14 +31,14 @@ public class BinaryExpression {
                 default:
                     return new DoubleType(expr1.asDouble64() + expr2.asDouble64());
             }
-
         }
-        if(expr1 instanceof StringType){
+        if(expr1 instanceof StringType){  /** если тип класса string **/
             switch(operation){
                 case '+' : return new StringType(expr1.asString() + expr2.asString());
-                default: throw new RuntimeException("Error");
+                default: throw new RuntimeException("Inaccessible Type Operation");
             }
         }
-        else throw new RuntimeException("Error");
+        else throw new RuntimeException("Unknown Type Token");
     }
+
 }

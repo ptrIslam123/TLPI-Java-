@@ -1,1 +1,2 @@
-"hello" + ", world"
+var1 = 12 +12
+var2 = 12 + var1
