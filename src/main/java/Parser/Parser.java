@@ -1,15 +1,19 @@
 package Parser;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import Lexer.Token;
 import Lexer.TypeToken;
 import Parser.Library.BinaryExpression;
 import Parser.Library.ReciveTypeExpression;
 import Parser.Library.Statement;
-import Parser.Library.VARIABLE.VariableDeclare;
-import Parser.Library.VARIABLE.VariableStatement;
+import Parser.Library.VARIABLE.VariableDeclere;
 import Parser.TYPE.*;
+
+import javax.swing.plaf.nimbus.State;
 
 
 public class Parser extends BaseParser {
@@ -34,7 +38,7 @@ public class Parser extends BaseParser {
         if(get(0).getType() == TypeToken.Word && get(1).getType() == TypeToken.Equals){ /** WORD = Expression **/
             String name = get(0).getValue(); // variable_name
             next(2);
-           return new VariableDeclare(name, expression());
+            return new VariableDeclere(name, expression());
         }
         throw new RuntimeException("Unknown Type Expression");
     }

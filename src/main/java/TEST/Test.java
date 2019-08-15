@@ -1,89 +1,131 @@
 package TEST;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import Lexer.BaseToken;
+import Lexer.Token;
+import Lexer.TypeToken;
+
 import java.util.List;
 import java.util.Map;
 
-public class Test {
 
-    private List<String> loc_param = new ArrayList<String>();
-    private List<String> in_param = new ArrayList<String>();
-    private Map<String, String> defMap = new HashMap<String, String>();
-    private String body = "num1+num2";
+public class Test {
+    private Token EOF = new BaseToken(TypeToken.EOF);
+    private List<Token> tokens;
+    private int length, pos;
+
+    public Test(List<Token> tokens) {
+        this.tokens = tokens;
+        this.length = tokens.size();
+    }
 
     public void run(){
-        StringBuilder buffer = new StringBuilder();
-        init();
-        int[] index = null;
-        int count = 0, result_equals = 0;
-        for(int i=0; true; i++){
+        //for(Token it : tokens) System.out.println(it.getType()+" = "+it.getValue());
+        //System.out.println("================");
+        //System.out.println("res = "+additive());
+        while (cond()){
+            statement();
+        }
+        System.out.println(VariableTable.getVariables().size());
+        for(Map.Entry<String, Integer> it : VariableTable.getVariables().entrySet()){
+            System.out.println(it.getKey()+" : "+it.getValue());
+        }
+    }
 
-            index =  searchP(loc_param, body.charAt(i));
-            if(cond_sum(index) > 0) {// if even true
-                count = ret_index(count, index);
-                result_equals = equals_str(body, loc_param, count, i);
-                if(result_equals != 0) {
 
-                    //System.out.println("p: "+i+"\t\tv:"+body.charAt(i));
-                    buffer.append(getValMap(loc_param.get(count)));
-                    i+=result_equals;
-                }
-                count++;
-                if(i>=body.length())break;
+    private void statement(){
+        if(get(0).getType() == TypeToken.Word && get(1).getType() == TypeToken.Equals){
+            String name = get(0).getValue();
+            pos+=2;
+            VariableTable.put(name, additive());
+        }
+    }
+
+    private int additive(){
+        int result = multiplicative();
+        while(true){
+            if(get(0).getType() == TypeToken.Add){
+                pos++;
+                result = eval('+', result,multiplicative());
+                continue;
             }
-            buffer.append(body.charAt(i));
+            if(get(0).getType() == TypeToken.Sub){
+                pos++;
+                result = eval('-',result, multiplicative());
+                continue;
+            }
+            break;
         }
-        System.out.println(buffer.toString());
+        return result;
     }
 
-    private int equals_str(String body, List<String> loc_param, int index_p, int beg){
-        int j=0;
-        int len = loc_param.get(index_p).length();
-        for(int i=beg; i<len; i++, j++){
-            if(body.charAt(i) != loc_param.get(index_p).charAt(j))return 0; // false
+    private int multiplicative() {
+        int result = primary();
+        while(true){
+            if(get(0).getType() == TypeToken.Mult){
+                pos++;
+                result = eval('*', result, primary());
+                continue;
+            }
+            if(get(0).getType() == TypeToken.Div){
+                pos++;
+                result = eval('/',result, primary());
+                continue;
+            }
+            break;
         }
-        //System.out.println("shift = " + loc_param.get(index_p).length());
-        return loc_param.get(index_p).length(); // true
+        return result;
     }
 
-    private int ret_index(int beg, int[] index){
-        for(int i=beg; i<index.length; i++){
-            if(index[i] != -1)return i;
+
+    private int primary(){
+        if(get(0).getType() == TypeToken.Lparen){
+            pos++;
+            int temp = additive();
+            if(get(0).getType() != TypeToken.Rparen)throw new RuntimeException("!!!!");
+            else pos++;
+            return temp;
         }
-        return -1;
+        if(get(0).getType() == TypeToken.Word){
+            String name = get(0).getValue();
+            pos++;
+            return VariableTable.setValue(name);
+        }
+        if(get(0).getType() == TypeToken.NumInt32){
+            int temp = Integer.parseInt(get(0).getValue());
+            pos++;
+            return temp;
+        }
+        throw new RuntimeException("Error");
     }
-    private int cond_sum(int[] arr){
-        int sum = 0;
-        for(int i=0; i<arr.length; i++){
-            if(arr[i] >= 0){
-                sum++;
+
+    private boolean cond(){
+        if(get(0).getType() == TypeToken.EOF)return false;
+        else return true;
+    }
+    private Token get(final int position_r){
+        int position = pos + position_r;
+        if(position >= length)return EOF;
+        return tokens.get(position);
+    }
+
+    private int eval(char operation, int expr1, int expr2){
+        switch (operation){
+            case '*':{
+                int temp = expr1*expr2;
+                return temp;
+            }
+            case '/':{
+                int temp = expr1/expr2;
+                return temp;
+            }
+            case '-':{
+                int temp = expr1-expr2;
+                return temp;
+            }
+            default:{
+                int temp = expr1 + expr2;
+                return temp;
             }
         }
-        return sum;
-    }
-
-    private int[] searchP(List<String> loc_param, char current){
-        int len = loc_param.size();
-        int[] index_p = new int[len];
-        for(int i=0; i<len; i++){
-            if(current == loc_param.get(i).charAt(0)){
-                index_p[i] = i;
-            }else index_p[i] = -1;
-        }
-        return index_p;
-    }
-    private String getValMap(String def_name){
-        return defMap.get(def_name);
-    }
-
-    private void init(){
-        loc_param.add("num1");
-        loc_param.add("num2");
-        in_param.add("10");
-        in_param.add("20");
-
-        defMap.put("num1","10");
-        defMap.put("num2","20");
     }
 }

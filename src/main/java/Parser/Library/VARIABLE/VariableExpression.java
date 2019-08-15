@@ -3,7 +3,6 @@ package Parser.Library.VARIABLE;
 import Parser.Library.Expresssion;
 import Parser.TYPE.Type;
 
-
 public class VariableExpression implements Expresssion {
     private String name;
 
@@ -13,17 +12,16 @@ public class VariableExpression implements Expresssion {
 
     @Override
     public Type evalExpression() {
-        if(VariableStatement.isExists(name)) throw new RuntimeException("Variable does not exists");
-        return VariableStatement.getValueVariable(name);
+        //if(!VariableTable.isExists(name))throw new RuntimeException("Variable does not exists");
+        //return VariableTable.getValue(name);
+        return VariableTable.getValue(name);
     }
 }
 
 /**
- * if (!Variables.isExists(name)) throw new RuntimeException("Constant does not exists");
- * return Variables.get(name);
- *
- *
- *  public static boolean isExists(String key) {
- *      return variables.containsKey(key);
- *  }
+ *  @Override
+ *     public Value eval() {
+ *         if (!Variables.isExists(name)) throw new RuntimeException("Constant does not exists");
+ *         return Variables.get(name);
+ *     }
  **/
