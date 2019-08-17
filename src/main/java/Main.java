@@ -29,11 +29,10 @@ public class Main {
 
         /** раздел "компиляций" в будущем будем сериализовывать и десиарилизовывать
          * промежуточное представление в объектный файл**/
-        //Parser parser = new Parser(tokens);
-        //parser.run();
+         Parser parser = new Parser(tokens);
+         parser.run();
 
-        Test test = new Test(tokens);
-        test.run();
+
 
     }
 

@@ -72,7 +72,6 @@ public class BaseLexer {
             pos++;
         }
         addToken(TypeToken.Str, buffer_str.toString());
-        pos++;
     } /** токенизация строк **/
 
 

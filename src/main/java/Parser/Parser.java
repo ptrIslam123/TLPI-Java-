@@ -1,61 +1,57 @@
 package Parser;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import Lexer.BaseToken;
+import Lexer.Token;
+import Lexer.TypeToken;
+import Parser.Lib.BinaryExpression;
+import Parser.Type.IntegerType;
+import Parser.Type.Type;
+import Parser.Variable.VariableTable;
 import java.util.List;
 import java.util.Map;
 
-import Lexer.Token;
-import Lexer.TypeToken;
-import Parser.Library.BinaryExpression;
-import Parser.Library.ReciveTypeExpression;
-import Parser.Library.Statement;
-import Parser.Library.VARIABLE.VariableDeclere;
-import Parser.TYPE.*;
+public class Parser {
+    private List<Token> tokes;
+    private Token EOF = new BaseToken(TypeToken.EOF);
+    private BinaryExpression binaryExpression;
+    private int pos,length;
 
-import javax.swing.plaf.nimbus.State;
-
-
-public class Parser extends BaseParser {
-
-    public Parser(final List<Token> tokens){
-        setTokens(tokens);
-        setPos(0);
+    public Parser(List<Token> tokes) {
+        this.tokes = tokes;
+        this.length = tokes.size();
+        this.binaryExpression = new BinaryExpression();
     }
 
     public void run(){
-        List<Statement> statements = new ArrayList<Statement>();
         while(cond()){
-            statements.add(statement());
+            parse_variable();
         }
 
-        for(Statement it :statements){
-            it.execute();
+        System.out.println("size_var_table: "+VariableTable.getVariableTable().size());
+        for(Map.Entry<String , Type> it : VariableTable.getVariableTable().entrySet()){
+            System.out.println(it.getKey()+" = "+it.getValue().asInt());
         }
     }
-
-    private Statement statement(){
-        if(get(0).getType() == TypeToken.Word && get(1).getType() == TypeToken.Equals){ /** WORD = Expression **/
-            String name = get(0).getValue(); // variable_name
-            next(2);
-            return new VariableDeclere(name, expression());
+    private void parse_variable(){
+        if(get(0).getType() == TypeToken.Word && get(1).getType() == TypeToken.Equals){
+            String name = get(0).getValue();
+            pos+=2;
+            VariableTable.addVariable(name, additive());
+            return;
         }
-        throw new RuntimeException("Unknown Type Expression");
-    }
-    private Type expression(){
-        return additive();
+        throw new RuntimeException("Unknown Expression"+get(0).getValue());
     }
     private Type additive(){
         Type result = multiplicative();
         while(true){
             if(get(0).getType() == TypeToken.Add){
-                next();
+                pos++;
                 result = eval('+',result, multiplicative());
                 continue;
             }
             if(get(0).getType() == TypeToken.Sub){
-                next();
-                result = eval('-', result, multiplicative());
+                pos++;
+                result = eval('-',result, multiplicative());
                 continue;
             }
             break;
@@ -66,13 +62,13 @@ public class Parser extends BaseParser {
         Type result = primary();
         while(true){
             if(get(0).getType() == TypeToken.Mult){
-                next();
-                result = eval('*', result, primary());
+                pos++;
+                result = eval('*',result, primary());
                 continue;
             }
             if(get(0).getType() == TypeToken.Div){
-                next();
-                result = eval('/', result, primary());
+                pos++;
+                result = eval('/',result, primary());
                 continue;
             }
             break;
@@ -80,27 +76,32 @@ public class Parser extends BaseParser {
         return result;
     }
 
-    private Type eval(final char operation, final Type expr1, final Type expr2){
-        return new BinaryExpression(operation,expr1,expr2).evalExpression();
-    } /** посчитать выражение **/
     private Type primary(){
-        if(get(0).getType() == TypeToken.Lparen){ /** парсинг  выражений в скобках **/
-            next();
-            Type value = expression();
-            equals_type(TypeToken.Rparen);
-            return value;
+        Type temp = null;
+        if(get(0).getType() == TypeToken.Word){
+            String name = get(0).getValue();
+            pos++;
+            return VariableTable.getValueVariable(name);
         }
-        ReciveTypeExpression temp = new ReciveTypeExpression(getTokens(), getPos());
-        Type temp_type = temp.getTypeExpression();
-        setPos(temp.getPosEnd());
-        return temp_type;
-    }   /** получить примитив в виде типа данных **/
+        if(get(0).getType() == TypeToken.NumInt32){
+            temp = new IntegerType(get(0).getValue());
+            pos++;
+            return temp;
+        }
+        throw new RuntimeException("Unknown Token Type");
+    }
 
-    private boolean equals_type(final TypeToken type){
-        if(get(0).getType() == type){
-            next();
-            return true;
-        }
-        else throw new RuntimeException("Unknown Type Expression");
-    } /** проверка текущего токена **/
+    private boolean cond(){
+        if(get(0).getType() != TypeToken.EOF)return true;
+        else return false;
+    }
+    private Token get(final int position_relative){
+        int position = pos + position_relative;
+        if(position >= length)return EOF;
+        return tokes.get(position);
+    }
+    private Type eval(char operation, Type expr1, Type epxr2) {
+        binaryExpression.init(operation, expr1, epxr2);
+        return binaryExpression.evalExpression();
+    }
 }
