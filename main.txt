@@ -1,3 +1,4 @@
-var1 = 12 > 3
-var2 = 12 +1 != 100
-var3 = 12 >= 13
+var1 = 12 + 2
+var2 = "res = "
+
+print str(var2 + var1)

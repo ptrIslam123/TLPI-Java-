@@ -42,6 +42,18 @@ public class Lexer extends BaseLexer {
         return getTokens();
     }
     private void tokenizeOPERANDS(){
+        if(same("str")){
+            addToken(TypeToken.Str_cast,"");
+        }
+        if(same("integer")){
+            addToken(TypeToken.Int_cast,"");
+        }
+        if(same("double")){
+            addToken(TypeToken.Double_cast,"");
+        }
+        if(same("bool")){
+            addToken(TypeToken.Boll_cast,"");
+        }
         if(same("print")){
             addToken(TypeToken.sys_read, "");
         }

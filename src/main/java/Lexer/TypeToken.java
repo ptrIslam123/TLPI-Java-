@@ -59,6 +59,11 @@ public enum TypeToken {
     ret, // return
 
 
+    Str_cast, // приведение к типу string
+    Int_cast,  // приведение к типу int
+    Double_cast,  // приведение к типу  double
+    Boll_cast,  // приведение к типу  bool
+
 
 
 

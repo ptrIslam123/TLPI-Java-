@@ -5,7 +5,12 @@ import Lexer.Token;
 import Lexer.TypeToken;
 import Parser.Lib.BinaryConditionExpression;
 import Parser.Lib.BinaryExpression;
+import Parser.Lib.Expression;
+import Parser.Lib.IOstream.ReadStatement;
+import Parser.Lib.Statement;
 import Parser.Type.*;
+import Parser.Type.CastType.CastType;
+import Parser.Variable.VariableDeclare;
 import Parser.Variable.VariableTable;
 import java.util.List;
 import java.util.Map;
@@ -13,38 +18,87 @@ import java.util.Map;
 public class Parser {
     private List<Token> tokes;
     private Token EOF = new BaseToken(TypeToken.EOF);
+    private int pos,length;
+
     private BinaryExpression binaryExpression;
     private BinaryConditionExpression binaryConditionExpr;
-    private int pos,length;
+    private ReadStatement readStatement;
 
     public Parser(List<Token> tokes) {
         this.tokes = tokes;
         this.length = tokes.size();
         this.binaryConditionExpr = new BinaryConditionExpression();
         this.binaryExpression = new BinaryExpression();
+        this.readStatement = new ReadStatement();
     }
 
     public void run(){
-        while(cond()){
-            parse_variable();
+        /*for(Token it : tokes){
+            System.out.println(it.getType() + " : "+it.getValue());
         }
+        */
 
+        while(cond()){
+            statement();
+        }
+/*
         System.out.println("size_var_table: "+VariableTable.getVariableTable().size());
         for(Map.Entry<String , Type> it : VariableTable.getVariableTable().entrySet()){
-            System.out.println(it.getKey()+" = "+it.getValue().asBool());
+            System.out.println(it.getKey()+" = "+it.getValue().asInt());
         }
+*/
     }
-    private void parse_variable(){
+
+    private Statement statement(){
+        if(get(0).getType() == TypeToken.sys_read){ // print str(expression)
+            pos++;
+            readStatement.stream(static_cast());
+            readStatement.execute();
+            return readStatement;
+        }
+        return parse_variable();
+    }
+
+    private Statement parse_variable(){
         if(get(0).getType() == TypeToken.Word && get(1).getType() == TypeToken.Equals){
             String name = get(0).getValue();
             pos+=2;
-            VariableTable.addVariable(name, conditionExpression());
-            return;
+            return new VariableDeclare(name, static_cast());
         }
         throw new RuntimeException("Unknown Expression: "+get(0).getValue());
     } /** парсинг переменных **/
-    /** будем парсить условные выражения **/
 
+
+    /** ПРИВЕДЕНИЕ ТИПОВ **/
+    private Type static_cast(){
+        if(get(0).getType() == TypeToken.Str_cast && get(1).getType() == TypeToken.Lparen){
+            pos++;
+            Type temp_val = primary();
+            Expression temp = new CastType(TypeToken.Str, temp_val);
+            return temp.evalExpression();
+        }
+        if(get(0).getType() == TypeToken.Int_cast && get(1).getType() == TypeToken.Lparen){
+            pos++;
+            Type temp_val = primary();
+            Expression temp = new CastType(TypeToken.NumInt32, temp_val);
+            return temp.evalExpression();
+        }
+        if(get(0).getType() == TypeToken.Double_cast && get(1).getType() == TypeToken.Lparen){
+            pos++;
+            Type temp_val = primary();
+            Expression temp = new CastType(TypeToken.NumDouble64, temp_val);
+            return temp.evalExpression();
+        }
+        if(get(0).getType() == TypeToken.Boll_cast && get(1).getType() == TypeToken.Lparen){
+            pos++;
+            Type temp_val = primary();
+            Expression temp = new CastType(TypeToken.Bool, temp_val);
+            return temp.evalExpression();
+        }
+        return conditionExpression();
+    }
+
+    /** будем парсить условные выражения **/
     private Type conditionExpression(){
         Type result = additive();
         while(true){
@@ -81,7 +135,7 @@ public class Parser {
             break;
         }
         return result;
-    }
+    }  /** [>], [<], [>=], [<=], [==], [!=]**/
 
 
     private Type additive(){
@@ -121,6 +175,12 @@ public class Parser {
 
     private Type primary(){
         Type temp = null;
+        if(get(0).getType() == TypeToken.Lparen){
+            pos++;
+            temp = conditionExpression();
+            equal_type(TypeToken.Rparen);
+            return temp;
+        }
         if(get(0).getType() == TypeToken.Word){
             String name = get(0).getValue();
             pos++;
@@ -165,5 +225,12 @@ public class Parser {
     private Type eval(TypeToken operation, Type expr1, Type expr2) {
         binaryConditionExpr.init(operation, expr1, expr2);
         return binaryConditionExpr.evalExpression();
+    }
+    private boolean equal_type(final TypeToken type){
+        if(get(0).getType() == type){
+            pos++;
+            return true;
+        }
+        throw new RuntimeException("Unknown Token Type: "+get(0).getType());
     }
 }
