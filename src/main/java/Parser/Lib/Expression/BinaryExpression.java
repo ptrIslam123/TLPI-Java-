@@ -1,9 +1,10 @@
-package Parser.Lib;
+package Parser.Lib.Expression;
 
 import Parser.Type.IntegerType;
+import Parser.Type.StringType;
 import Parser.Type.Type;
 
-public class BinaryExpression implements  Expression {
+public class BinaryExpression implements Expression{
     private char operation;
     private Type expr1, expr2;
 
@@ -14,7 +15,7 @@ public class BinaryExpression implements  Expression {
     }
 
     @Override
-    public Type evalExpression() {
+    public Type evalExpr() {
         if(expr1 instanceof IntegerType){
             switch (operation){
                 case '*' : return new IntegerType(String.valueOf(expr1.asInt() * expr2.asInt()));
@@ -24,6 +25,13 @@ public class BinaryExpression implements  Expression {
                     return new IntegerType(String.valueOf(expr1.asInt() + expr2.asInt()));
             }
         }
-        throw new RuntimeException("Error operation Type");
+        if(expr1 instanceof StringType){
+            switch (operation){
+                case '+' : return new StringType(expr1.asString() + expr2.asString());
+                default:
+                    throw new RuntimeException("Unknown token type");
+            }
+        }
+        throw new RuntimeException("Unknown operation type");
     }
 }

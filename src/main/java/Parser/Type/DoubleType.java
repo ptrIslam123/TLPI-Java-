@@ -18,12 +18,17 @@ public class DoubleType implements Type {
     }
 
     @Override
+    public int asBoll() {
+        return 0;
+    }
+
+    @Override
     public String asString() {
         return null;
     }
 
     @Override
-    public int asBool() {
-        return 0;
+    public void asVoid() {
+
     }
 }

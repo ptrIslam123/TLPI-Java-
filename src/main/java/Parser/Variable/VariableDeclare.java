@@ -1,20 +1,20 @@
 package Parser.Variable;
 
-import Parser.Lib.Statement;;
+import Parser.Lib.Statement.Statement;
 import Parser.Type.Type;
 
 public final class VariableDeclare implements Statement {
     private String name;
     private Type value;
 
-    public VariableDeclare(String name, Type value) {
+    public void decalre(String name, Type value) {
         this.name = name;
         this.value = value;
-        execute();
+        eval();
     }
 
     @Override
-    public void execute() {
+    public void eval() {
         VariableTable.addVariable(this.name, this.value);
     }
 }

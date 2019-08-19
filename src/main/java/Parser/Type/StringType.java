@@ -18,12 +18,17 @@ public class StringType implements Type {
     }
 
     @Override
+    public int asBoll() {
+        return 0;
+    }
+
+    @Override
     public String asString() {
         return value;
     }
 
     @Override
-    public int asBool() {
-        return 0;
+    public void asVoid() {
+
     }
 }

@@ -18,6 +18,12 @@ public class Lexer extends BaseLexer {
                 continue;
             }
 
+            if(peek(0) == '/' && peek(1) == '/'){
+                only_lini_comment();
+            }
+            if(peek(0) == '/' && peek(1) == '*'){
+                multi_line_comment();
+            }
             tokenizeOPERANDS();      /** парсинг много символьных операндов**/
 
             if(Character.isDigit(peek(0))){ /** парсинг числовых данных**/
@@ -41,7 +47,36 @@ public class Lexer extends BaseLexer {
         addToken(TypeToken.EOF,"");
         return getTokens();
     }
+
+    private void multi_line_comment() {
+        next(2);
+        while(cond()){
+            if(peek(0) == '*' && peek(1) == '/'){
+                next(2);
+                break;
+            }
+            next();
+        }
+    }
+
+    private void only_lini_comment() {
+        next(2);
+        while(cond()){
+            if(peek(0) == '\n'){ next(); break;}
+            next();
+        }
+    }
+
     private void tokenizeOPERANDS(){
+        if(same("null")){
+            addToken(TypeToken.Void,"");
+        }
+        if(same("length")){
+            addToken(TypeToken.Len,"");
+        }
+        if(same("size")){
+            addToken(TypeToken.Size,"");
+        }
         if(same("str")){
             addToken(TypeToken.Str_cast,"");
         }

@@ -1,7 +1,5 @@
 package Parser.Type;
 
-import Parser.Parser;
-
 public class BoolType implements Type {
     private String value;
 
@@ -20,12 +18,17 @@ public class BoolType implements Type {
     }
 
     @Override
+    public int asBoll() {
+        return Integer.parseInt(value);
+    }
+
+    @Override
     public String asString() {
         return null;
     }
 
     @Override
-    public int asBool() {
-        return Integer.parseInt(value);
+    public void asVoid() {
+
     }
 }

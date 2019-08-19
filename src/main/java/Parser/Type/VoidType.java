@@ -1,15 +1,11 @@
 package Parser.Type;
 
-public final class IntegerType implements Type {
-    private String value;
-
-    public IntegerType(String value) {
-        this.value = value;
-    }
+public class VoidType implements Type {
+    public VoidType() {}
 
     @Override
     public int asInt() {
-        return Integer.parseInt(value);
+        return 0;
     }
 
     @Override

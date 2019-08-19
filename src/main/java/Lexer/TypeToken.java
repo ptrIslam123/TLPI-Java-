@@ -8,6 +8,7 @@ public enum TypeToken {
 
     Bool, // логический тип
     Str, // строковый тип
+    Void, // пустой тип
 
     /** МАТЕМАТИЧЕСКИЕ ОПЕРАНДЫ **/
     Add, // +
@@ -34,6 +35,8 @@ public enum TypeToken {
     Word, // слово
     Comma,  // ,
     Point,  // .
+    Size,   // оператор вычисления размера объектов
+    Len,   // длина строки
     ShapeLparen, // {
     ShapeRparen, // }
     L_SQUareParen, // [

@@ -33,7 +33,6 @@ public class Main {
          parser.run();
 
 
-
     }
 
     private static StringBuilder readFile(final String filename) throws IOException {
