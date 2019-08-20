@@ -15,6 +15,8 @@ import Parser.Variable.VariableTable;
 import java.util.List;
 
 public class Parser {
+    private  Parser parser;
+
     private List<Token> tokens;
     private final Token EOF = new BaseToken(TypeToken.EOF);
     private int pos, length;
@@ -25,6 +27,20 @@ public class Parser {
     private WriteStatement writeStream;
     private ArrayDeclare arrDeclare;
 
+    public void initialize_parser(List<Token> tokens){
+        this.pos = 0;
+        this.tokens = tokens;
+        this.length = tokens.size();
+        this.writeStream = new WriteStatement();
+        this.varDeclare = new VariableDeclare();
+        this.binaryExpr = new BinaryExpression();
+        this.binaryCondExpr = new BinaryConditionExpression();
+        this.arrDeclare = new ArrayDeclare();
+        this.parser = new Parser();
+    }
+    public Parser(){
+
+    }
     public Parser(List<Token> tokens) {
         this.tokens = tokens;
         this.length = tokens.size();
@@ -33,13 +49,12 @@ public class Parser {
         this.binaryExpr = new BinaryExpression();
         this.binaryCondExpr = new BinaryConditionExpression();
         this.arrDeclare = new ArrayDeclare();
+        this.parser = new Parser();
     }
     public void run(){
         //for(Token it : tokens) System.out.println(it.getType()+" : "+it.getValue());
 
-        while(cond()){
-            statement();
-        }
+        while(cond())statement();
 
     }
 
@@ -64,7 +79,8 @@ public class Parser {
 
     private Statement blockStatement() {
         TokenBlock block = (TokenBlock) get(0);
-        Parser parser = new Parser(block.getTokens());
+        //Parser parser = new Parser(block.getTokens());
+        parser.initialize_parser(block.getTokens());
         parser.run();
         next(1);
         return null;

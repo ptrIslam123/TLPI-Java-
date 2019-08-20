@@ -1,5 +1,10 @@
 var1 = 12 +12
 {
     print var1
-    print "hello world is block_anonim"
 }
+var1 = 100
+{
+ print "block2"
+ print var1 + 1
+}
+print "close code file"

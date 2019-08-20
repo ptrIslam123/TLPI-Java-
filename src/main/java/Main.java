@@ -3,12 +3,9 @@ import Lexer.Lexer;
 import Lexer.Token;
 import Parser.Parser;
 import TEST.SEMANTIC_ANALIZ.Parse;
-import TEST.Test;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
