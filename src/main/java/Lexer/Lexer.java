@@ -24,6 +24,7 @@ public class Lexer extends BaseLexer {
             if(peek(0) == '/' && peek(1) == '*'){
                 multi_line_comment();
             }
+
             tokenizeOPERANDS();      /** парсинг много символьных операндов**/
 
             if(Character.isDigit(peek(0))){ /** парсинг числовых данных**/
@@ -90,7 +91,10 @@ public class Lexer extends BaseLexer {
             addToken(TypeToken.Boll_cast,"");
         }
         if(same("print")){
-            addToken(TypeToken.sys_read, "");
+            addToken(TypeToken.sys_write, "");
+        }
+        if(same("scan")){
+            addToken(TypeToken.sys_read,"");
         }
         if(same("false")){
             addToken(TypeToken.Bool, "0");

@@ -1,5 +1,5 @@
-arr[2] = null
-arr[0] = 10
-arr[1] = 20
-
-print arr[0] + arr[1] + 1
+var1 = 12 +12
+{
+    print var1
+    print "hello world is block_anonim"
+}

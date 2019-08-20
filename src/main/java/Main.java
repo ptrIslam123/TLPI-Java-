@@ -2,6 +2,7 @@
 import Lexer.Lexer;
 import Lexer.Token;
 import Parser.Parser;
+import TEST.SEMANTIC_ANALIZ.Parse;
 import TEST.Test;
 
 import java.io.File;
@@ -27,9 +28,13 @@ public class Main {
         Lexer lexer = new Lexer(file_code.toString());
         List<Token> tokens = lexer.run();
 
+
+        Parse parse = new Parse(tokens);
+        List<Token> optimaize_tokens = parse.run();
+
         /** раздел "компиляций" в будущем будем сериализовывать и десиарилизовывать
          * промежуточное представление в объектный файл**/
-         Parser parser = new Parser(tokens);
+         Parser parser = new Parser(optimaize_tokens);
          parser.run();
 
 

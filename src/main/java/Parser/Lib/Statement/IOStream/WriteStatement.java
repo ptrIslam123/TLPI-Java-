@@ -3,7 +3,7 @@ package Parser.Lib.Statement.IOStream;
 import Parser.Lib.Statement.Statement;
 import Parser.Type.*;
 
-public final class ReadStatement implements Statement {
+public final class WriteStatement implements Statement {
     private Type expression;
 
     public void stream(Type expression) {

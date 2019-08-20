@@ -7,4 +7,5 @@ public interface Token {
 
     void setType(final TypeToken type);
     void setValue(final String value);
+
 }

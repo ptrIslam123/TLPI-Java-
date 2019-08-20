@@ -56,7 +56,8 @@ public enum TypeToken {
     Break, // break
     Continue, // continue
 
-    sys_read, // print функция
+    sys_write, // print функция
+    sys_read,  // scan  функция
 
     Define_func, // определение функций (метода)
     ret, // return
@@ -68,7 +69,7 @@ public enum TypeToken {
     Boll_cast,  // приведение к типу  bool
 
 
-
+    Block,
 
     EOF, // конец файла
 }

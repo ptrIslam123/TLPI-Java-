@@ -3,7 +3,7 @@ package Parser;
 import Lexer.*;
 import Parser.Lib.Expression.BinaryConditionExpression;
 import Parser.Lib.Expression.BinaryExpression;
-import Parser.Lib.Statement.IOStream.ReadStatement;
+import Parser.Lib.Statement.IOStream.WriteStatement;
 import Parser.Lib.Statement.Statement;
 import Parser.Type.*;
 import Parser.Variable.ArrayDeclare;
@@ -12,10 +12,7 @@ import Parser.Variable.VariableDeclare;
 import Parser.Variable.VariableTable;
 
 
-import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Parser {
     private List<Token> tokens;
@@ -25,13 +22,13 @@ public class Parser {
     private VariableDeclare varDeclare;
     private BinaryExpression binaryExpr;
     private BinaryConditionExpression binaryCondExpr;
-    private ReadStatement readStrime;
+    private WriteStatement writeStream;
     private ArrayDeclare arrDeclare;
 
     public Parser(List<Token> tokens) {
         this.tokens = tokens;
         this.length = tokens.size();
-        this.readStrime = new ReadStatement();
+        this.writeStream = new WriteStatement();
         this.varDeclare = new VariableDeclare();
         this.binaryExpr = new BinaryExpression();
         this.binaryCondExpr = new BinaryConditionExpression();
@@ -43,76 +40,36 @@ public class Parser {
         while(cond()){
             statement();
         }
-        //int arr[]  ={1,2};
-        //System.out.println(arr[0] =12);
-/*
-        System.out.println("size ="+VariableTable.getVariableTable().size());
-        for(Map.Entry<String, Type> it : VariableTable.getVariableTable().entrySet()){
-            System.out.println(it.getKey()+" = " + it.getValue().asInt());
-        }*/
+
     }
+
 
     private Statement statement(){
-        return printStatement();
-    }
-
-    private Statement printStatement(){
-        if(get(0).getType() == TypeToken.sys_read){
+        if(get(0).getType() == TypeToken.Block){
+            return blockStatement();
+        }
+        if(get(0).getType() == TypeToken.sys_write){
             next(1);
-            readStrime.stream(expression());
-            return readStrime;
+            writeStream.stream(expression());
+            return writeStream;
         }
-        return parse_vairable_statement();
-    }
-    private Statement parse_vairable_statement(){
-
-        if(get(0).getType() == TypeToken.Word && get(1).getType() == TypeToken.L_SQUareParen){ // word [
-            return parse_array_statement();
-        }
-        if(get(0).getType() == TypeToken.Word && get(1).getType() == TypeToken.Equals){ // word =
+        if(get(0).getType() == TypeToken.Word && get(1).getType() == TypeToken.Equals){
             String name = get(0).getValue();
             next(2);
-            varDeclare.decalre(name,expression());
+            varDeclare.decalre(name, expression());
             return varDeclare;
         }
-        throw new RuntimeException("Unknown statement");
+        throw new RuntimeException("Error");
     }
 
-    private Statement parse_array_statement() { /** парсиинг массива данных **/
-        String name_array = get(0).getValue();
-        next(2);
-        Type capasity = null;
-        List<Type> initialize_data = null;
-        if(get(0).getType() == TypeToken.NumInt32 || get(0).getType() == TypeToken.Lparen){
-            capasity = expression(); // размер инициализаций массива
-        }
+    private Statement blockStatement() {
+        TokenBlock block = (TokenBlock) get(0);
+        Parser parser = new Parser(block.getTokens());
+        parser.run();
         next(1);
-        // =
-        equal_tyep(TypeToken.Equals);
-        if(get(0).getType() == TypeToken.ShapeLparen){  // если это инициализация массива {data1, data2, ...}
-            initialize_data = initialize_array();
-            arrDeclare.init(name_array, capasity, initialize_data);
-        }else if(get(0).getType() == TypeToken.Void){ // если по индексу массива изменяем значение элемениа arr[index]  = new_value;
-            next(1);
-            arrDeclare.init(name_array, capasity, initialize_data);
-        }else {
-            pos -=5;
-            expression();
-        }
-
-        return arrDeclare;
+        return null;
     }
 
-    private List<Type> initialize_array() {
-        next(1);
-        List<Type> initialize_data = new ArrayList<Type>();
-        while(get(0).getType() != TypeToken.ShapeRparen){
-            if(get(0).getType() == TypeToken.Comma)next(1);
-            initialize_data.add(expression());
-        }
-        next(1);
-        return initialize_data;
-    }
 
     private Type expression(){ return conditionExpression(); }
     private Type conditionExpression(){
@@ -191,29 +148,11 @@ public class Parser {
 
     private Type primary(){
         Type temp = null;
-        if(get(0).getType() == TypeToken.Lparen){
+        if(get(0).getType() == TypeToken.Lparen) {
             next(1);
             temp = expression();
             equal_tyep(TypeToken.Rparen);
             return temp;
-        }if(get(0).getType() == TypeToken.Word && get(1).getType() == TypeToken.Point){
-            //pos-=2;
-           String name_word = get(0).getValue();
-           next(2);
-           return  sys_method_word(name_word, get(0).getType());
-        }
-        if(get(0).getType() == TypeToken.Word && get(1).getType() == TypeToken.L_SQUareParen){ /** парсим массив типов, плолучение значениея по индексу **/
-            String name_array = get(0).getValue(); // получение имени массива к которому идет обращение
-            next(2);
-            Type get_index = expression(); // получение индекса обращения
-            next(1);
-            if(get(0).getType() == TypeToken.Equals){
-                next(1);
-                Type new_value = expression(); // вычисляем новое значение элемента массива
-                ArrayTable.setArrayValue(name_array, get_index, new_value);
-                return new VoidType();
-            }
-            return ArrayTable.getDataIndex(name_array,get_index);
         }
         if(get(0).getType() == TypeToken.Word){
             String name = get(0).getValue();
@@ -243,19 +182,6 @@ public class Parser {
         throw new RuntimeException("Unknown token type");
     }
 
-    private Type sys_method_word(String word, TypeToken expr) {
-       switch (expr){
-           case Size:{
-               next(1);
-               return ArrayTable.getSize(word);
-           }
-           case Len:{
-               next(1);
-               return VariableTable.getLength(word);
-           }
-       }throw new RuntimeException("Unknown operation type: " + expr);
-    }/** встроенные в язык методы для некоторых типов данных **/
-
     private void next(final int shift_pos){ pos+=shift_pos; }
     private Token get(final int position_relative){
         int position = pos + position_relative;
@@ -281,32 +207,3 @@ public class Parser {
         }else throw new RuntimeException("Unknow token type");
     }
 }
-/*
-
- String name_array = get(0).getValue();
-        next(2);
-        Type capasity = null;
-        List<Type> initialize_data = null;
-        if(get(0).getType() == TypeToken.NumInt32){
-            capasity = new IntegerType(get(0).getValue()); // размер инициализаций массива
-            next(1);
-        }
-        next(1);
-        if(get(0).getType() == TypeToken.Equals) {
-            next(1);
-            if (get(0).getType() == TypeToken.ShapeLparen) {
-                next(1);
-                //equal_tyep(TypeToken.ShapeLparen);
-                initialize_data = new ArrayList<Type>();
-                while (get(0).getType() != TypeToken.ShapeRparen) {
-                    if (get(0).getType() == TypeToken.Comma) next(1);
-                    initialize_data.add(expression());
-                }
-                next(1);
-            }
-            arrDeclare.init(name_array, capasity, initialize_data);
-        }else {
-            Type new_vale = expression();
-            ArrayTable.setArrayValue(name_array, capasity, new_vale);
-        }
- */
