@@ -18,13 +18,19 @@ public class BoolType implements Type {
     }
 
     @Override
-    public int asBoll() {
-        return Integer.parseInt(value);
+    public boolean asBoll() {
+        if(value.equalsIgnoreCase("0"))return false;
+        else return true;
     }
 
     @Override
     public String asString() {
         return null;
+    }
+
+    @Override
+    public char asChar() {
+        return 0;
     }
 
     @Override

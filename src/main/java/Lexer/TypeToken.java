@@ -8,6 +8,7 @@ public enum TypeToken {
 
     Bool, // логический тип
     Str, // строковый тип
+    Char, // символьный тип
     Void, // пустой тип
 
     /** МАТЕМАТИЧЕСКИЕ ОПЕРАНДЫ **/
@@ -55,6 +56,8 @@ public enum TypeToken {
     For, // for
     Break, // break
     Continue, // continue
+    in, // for i in 100 {...}
+    Iterator,
 
     sys_write, // print функция
     sys_read,  // scan  функция
@@ -68,6 +71,7 @@ public enum TypeToken {
     Double_cast,  // приведение к типу  double
     Boll_cast,  // приведение к типу  bool
 
+    Call, // вызов функциий
 
     Block,
 

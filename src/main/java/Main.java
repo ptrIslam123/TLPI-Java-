@@ -1,8 +1,8 @@
 
 import Lexer.Lexer;
 import Lexer.Token;
-import Parser.Parser;
-import TEST.SEMANTIC_ANALIZ.Parse;
+import Parser.*;
+import SEMANTICS_ANALYSIS.Parse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -25,14 +25,16 @@ public class Main {
         Lexer lexer = new Lexer(file_code.toString());
         List<Token> tokens = lexer.run();
 
+        //for(Token it : tokens) System.out.println(it.getType()+" : "+it.getValue());
 
         Parse parse = new Parse(tokens);
         List<Token> optimaize_tokens = parse.run();
 
         /** раздел "компиляций" в будущем будем сериализовывать и десиарилизовывать
          * промежуточное представление в объектный файл**/
-         Parser parser = new Parser(optimaize_tokens);
-         parser.run();
+        Parser parser = new Parser();
+        parser.init_parser(optimaize_tokens, false);
+        parser.run();
 
 
     }

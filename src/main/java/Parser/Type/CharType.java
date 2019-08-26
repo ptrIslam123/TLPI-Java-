@@ -1,9 +1,9 @@
 package Parser.Type;
 
-public class DoubleType implements Type {
+public class CharType implements Type {
     private String value;
 
-    public DoubleType(String value) {
+    public CharType(String value) {
         this.value = value;
     }
 
@@ -14,7 +14,7 @@ public class DoubleType implements Type {
 
     @Override
     public double asDouble() {
-        return Double.parseDouble(value);
+        return 0;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class DoubleType implements Type {
 
     @Override
     public char asChar() {
-        return 0;
+        return value.charAt(0);
     }
 
     @Override

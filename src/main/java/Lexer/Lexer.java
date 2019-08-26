@@ -18,6 +18,9 @@ public class Lexer extends BaseLexer {
                 continue;
             }
 
+            if(peek(0) == '\''){
+                tokenizeChar();
+            }
             if(peek(0) == '/' && peek(1) == '/'){
                 only_lini_comment();
             }
@@ -47,6 +50,14 @@ public class Lexer extends BaseLexer {
 
         addToken(TypeToken.EOF,"");
         return getTokens();
+    }
+
+    private void tokenizeChar() {
+        StringBuilder buffer = new StringBuilder();
+        next();
+        buffer.append(peek(0));
+        next();
+        addToken(TypeToken.Char,buffer.toString());
     }
 
     private void multi_line_comment() {
@@ -128,6 +139,9 @@ public class Lexer extends BaseLexer {
         }
         if(same("continue")){
             addToken(TypeToken.Continue,"");
+        }
+        if(same("in")){
+            addToken(TypeToken.in,"");
         }
         if(same("&&") || same("and")){
             addToken(TypeToken.And, "");

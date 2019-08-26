@@ -1,89 +1,172 @@
 package Parser;
 
+
+
+import Lexer.TypeToken;
 import Lexer.*;
-import Parser.Lib.Expression.BinaryConditionExpression;
-import Parser.Lib.Expression.BinaryExpression;
-import Parser.Lib.Statement.IOStream.WriteStatement;
-import Parser.Lib.Statement.Statement;
+import Parser.DATA_SEGMENT.AggregateType;
+import Parser.DATA_SEGMENT.ObjArray;
+import Parser.Expression.BinaryConditionExpression;
+import Parser.DATA_SEGMENT.SegmentData;
+import Parser.Statement.Statement;
+import Parser.Statement.WriteStreamStatement;
 import Parser.Type.*;
-import Parser.Variable.ArrayDeclare;
-import Parser.Variable.ArrayTable;
-import Parser.Variable.VariableDeclare;
-import Parser.Variable.VariableTable;
+import Parser.Expression.*;
+import com.sun.corba.se.impl.ior.ObjectAdapterIdArray;
 
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class Parser {
     private  Parser parser;
-
-    private List<Token> tokens;
     private final Token EOF = new BaseToken(TypeToken.EOF);
-    private int pos, length;
+    private List<Token> tokens;
+    private int pos,length;
 
-    private VariableDeclare varDeclare;
+    private boolean flage_block = false;
+
     private BinaryExpression binaryExpr;
     private BinaryConditionExpression binaryCondExpr;
-    private WriteStatement writeStream;
-    private ArrayDeclare arrDeclare;
+    private WriteStreamStatement write;
+    private ObjectExpression objectExpr;
 
-    public void initialize_parser(List<Token> tokens){
+    public Parser() {
+        this.objectExpr = new ObjectExpression();
+        this.binaryExpr = new BinaryExpression();
+        this.binaryCondExpr = new BinaryConditionExpression();
+        this.write = new WriteStreamStatement();
+    }
+
+    public void init_parser(List<Token> tokens, boolean flage_block){
+        this.tokens = tokens;
+        this.length = tokens.size();
         this.pos = 0;
-        this.tokens = tokens;
-        this.length = tokens.size();
-        this.writeStream = new WriteStatement();
-        this.varDeclare = new VariableDeclare();
-        this.binaryExpr = new BinaryExpression();
-        this.binaryCondExpr = new BinaryConditionExpression();
-        this.arrDeclare = new ArrayDeclare();
-        this.parser = new Parser();
+        this.flage_block = flage_block;
     }
-    public Parser(){
 
-    }
-    public Parser(List<Token> tokens) {
-        this.tokens = tokens;
-        this.length = tokens.size();
-        this.writeStream = new WriteStatement();
-        this.varDeclare = new VariableDeclare();
-        this.binaryExpr = new BinaryExpression();
-        this.binaryCondExpr = new BinaryConditionExpression();
-        this.arrDeclare = new ArrayDeclare();
-        this.parser = new Parser();
-    }
+
+
     public void run(){
-        //for(Token it : tokens) System.out.println(it.getType()+" : "+it.getValue());
+       for(Token it : tokens) System.out.println(it.getType()+" : "+it.getValue());
+       System.out.println("================================\n");
 
-        while(cond())statement();
+
+         while(cond())statement();
+
+        /*System.out.println("size: "+SegmentData.getTable().size());
+         for(Map.Entry<String ,Type> it : SegmentData.getTable().entrySet()){
+             System.out.println(it.getKey()+" = "+it.getValue().asInt());
+         }*/
 
     }
 
 
-    private Statement statement(){
-        if(get(0).getType() == TypeToken.Block){
-            return blockStatement();
-        }
+   private Statement statement(){
         if(get(0).getType() == TypeToken.sys_write){
             next(1);
-            writeStream.stream(expression());
-            return writeStream;
+            write.stream(expression());  // load expr
+            write.execute(); // print expr
+            return write;
         }
-        if(get(0).getType() == TypeToken.Word && get(1).getType() == TypeToken.Equals){
-            String name = get(0).getValue();
-            next(2);
-            varDeclare.decalre(name, expression());
-            return varDeclare;
+        if(get(0).getType() == TypeToken.Word) {  /** ДЕКЛАРИРОВАНИЕ ДАННЫХ(ПЕРЕМЕННЫЕ, МАССИВВЫ И Т.Д.) **/
+            String name_word = get(0).getValue(); // name_word
+            next(1);
+
+            if(get(0).getType() == TypeToken.Equals) {   /** парсим переменные **/
+                next(1);
+                return declare_variable(name_word);
+            }
+
+            if(get(0).getType() == TypeToken.L_SQUareParen) {   /** парсим массивы **/
+               next(1);
+               return declare_array(name_word);
+            }
         }
-        throw new RuntimeException("Error");
+        throw new RuntimeException("Unknown operator type: " + get(0).getType());
+   }
+
+    private Statement declare_variable(String name_var) {
+        if (flage_block == true) {  /** ЕСЛИ ЭТО БЛОК-ТЕЛО ТО ВСЕ ОБЪЕКТЫ ВЫДЕЛЯЕМ НА СТЕКЕ **/
+
+
+        }
+        /** ЕСЛИ ЭТО НЕ БЛОК-ТЕЛО ТО ВСЕ ОБЪЕКТЫ ВЫДЕЛЯЕМ В СЕГИЕНТЕ ДАННЫХ (ГЛОБАЛЬНЫЕ ОБЪЕКТЫ) **/
+        SegmentData.newObject(name_var, expression());
+        return null;
     }
 
-    private Statement blockStatement() {
-        TokenBlock block = (TokenBlock) get(0);
-        //Parser parser = new Parser(block.getTokens());
-        parser.initialize_parser(block.getTokens());
-        parser.run();
-        next(1);
+
+    private Statement declare_array(final String name_array) {
+        Type size1 = null, size2 = null;
+        List<Type> init_data = null;
+
+        if(get(0).getType() == TypeToken.NumInt32){
+            size1 = new IntegerType(get(0).getValue());
+            next(1);
+        }
+
+        if(get(0).getType() == TypeToken.L_SQUareParen){ /** если это двухмерный массив **/
+            next(1);
+            if(get(0).getType() == TypeToken.NumInt32){
+                size2 = new IntegerType(get(0).getValue());
+                next(1);
+            }
+            declare_multi_araay(name_array, size1, size2);
+            return null;
+        }
+        if(get(0).getType() == TypeToken.Equals && get(1).getType() == TypeToken.Lparen){
+            next(2);
+            init_data = parse_init_data_array();
+        }
+
+        if(flage_block == true){        /** ЕСЛИ ЭТО БЛОК-ТЕЛО ТО ВСЕ ОБЪЕКТЫ ВЫДЕЛЯЕМ НА СТЕКЕ **/
+
+        }
+        /** ЕСЛИ ЭТО НЕ БЛОК-ТЕЛО ТО ВСЕ ОБЪЕКТЫ ВЫДЕЛЯЕМ В СЕГИЕНТЕ ДАННЫХ (ГЛОБАЛЬНЫЕ ОБЪЕКТЫ) **/
+        SegmentData.newObject(name_array, size1, init_data);
         return null;
+    }
+
+    private void declare_multi_araay(String name_array, Type size1, Type size2) {
+        List<ObjArray> multiArray = null;
+        if(get(0).getType() == TypeToken.Equals && get(1).getType() == TypeToken.Lparen){
+            next(2);
+            multiArray = parse_init_data_multi_array();
+        }
+        if(flage_block == true){        /** ЕСЛИ ЭТО БЛОК-ТЕЛО ТО ВСЕ ОБЪЕКТЫ ВЫДЕЛЯЕМ НА СТЕКЕ **/
+
+        }
+        /** ЕСЛИ ЭТО НЕ БЛОК-ТЕЛО ТО ВСЕ ОБЪЕКТЫ ВЫДЕЛЯЕМ В СЕГИЕНТЕ ДАННЫХ (ГЛОБАЛЬНЫЕ ОБЪЕКТЫ) **/
+        SegmentData.newObject(name_array, size1, size2, multiArray);
+    }
+
+    private List<ObjArray> parse_init_data_multi_array() {
+       List<ObjArray> array = new ArrayList<ObjArray>();
+       while(get(0).getType() != TypeToken.Rparen){
+           if(get(0).getType() == TypeToken.Lparen){
+               next(1);
+               ObjArray objArray = new ObjArray();
+               while(get(0).getType() != TypeToken.Rparen){
+                   if(get(0).getType() == TypeToken.Comma)next(1);
+                   objArray.add(expression());
+               }
+               array.add(objArray);
+               next(1);
+           }
+           if(get(0).getType() == TypeToken.Comma)next(1);
+       }
+        next(1);
+       return array;
+    }
+
+    private List<Type> parse_init_data_array() {
+        List<Type> array = new ArrayList<Type>();
+        while(get(0).getType() != TypeToken.Rparen){
+            if(get(0).getType() == TypeToken.Comma)next(1);
+            array.add(expression());
+        }
+        next(1);
+        return array;
     }
 
 
@@ -167,21 +250,38 @@ public class Parser {
         if(get(0).getType() == TypeToken.Lparen) {
             next(1);
             temp = expression();
-            equal_tyep(TypeToken.Rparen);
+            consume(TypeToken.Rparen);
             return temp;
         }
-        if(get(0).getType() == TypeToken.Word){
+
+        if(get(0).getType() == TypeToken.Word){ /** ЕСЛИ ИДЕТ ОБРАЩЕНИЕ К ОБЪЕКТАМ **/
             String name = get(0).getValue();
             next(1);
-            return VariableTable.getValue(name);
+
+
+            if(get(0).getType() == TypeToken.L_SQUareParen){    /** обращение к массиву **/
+                next(1);
+                Type index_1, index_2;
+                index_1 = expression();
+                if(get(0).getType() == TypeToken.L_SQUareParen){    /** обращение к двумерному массиву **/
+                    next(1);
+                    index_2 = expression();
+                    objectExpr.setObject(name, index_1.asInt(), index_2.asInt());
+                    return objectExpr.eval();
+                }
+                objectExpr.setObject(name, index_1.asInt());
+                return objectExpr.eval();
+            }
+
+            objectExpr.setObject(name);     /** обращение к переменной **/
+            return objectExpr.eval();
         }
+
+
+
+        /** примитивные типы данных **/
         if(get(0).getType() == TypeToken.NumInt32){
             temp = new IntegerType(get(0).getValue());
-            next(1);
-            return temp;
-        }
-        if(get(0).getType() == TypeToken.NumDouble64){
-            temp = new DoubleType(get(0).getValue());
             next(1);
             return temp;
         }
@@ -190,8 +290,18 @@ public class Parser {
             next(1);
             return temp;
         }
+        if(get(0).getType() == TypeToken.NumDouble64){
+            temp = new DoubleType(get(0).getValue());
+            next(1);
+            return temp;
+        }
         if(get(0).getType() == TypeToken.Bool){
             temp = new BoolType(get(0).getValue());
+            next(1);
+            return temp;
+        }
+        if(get(0).getType() == TypeToken.Char){
+            temp = new CharType(get(0).getValue());
             next(1);
             return temp;
         }
@@ -205,21 +315,21 @@ public class Parser {
         return tokens.get(position);
     }
     private Type eval(char operation, Type expr1, Type expr2) {
-        binaryExpr.init(operation, expr1, expr2);
-        return binaryExpr.evalExpr();
+       binaryExpr.init(operation, expr1, expr2);
+       return binaryExpr.eval();
     }
     private Type eval(TypeToken operation, Type expr1, Type expr2) {
         binaryCondExpr.init(operation, expr1, expr2);
-        return binaryCondExpr.evalExpr();
+        return binaryCondExpr.eval();
     }
     private boolean cond() {
         if(get(0).getType() == TypeToken.EOF)return false;
         else return true;
     }
-    private boolean equal_tyep(final TypeToken type){
+    private boolean consume(final TypeToken type){
         if(get(0).getType() == type){
             next(1);
             return true;
-        }else throw new RuntimeException("Unknow token type");
+        }else throw new RuntimeException("Unknown token type");
     }
 }

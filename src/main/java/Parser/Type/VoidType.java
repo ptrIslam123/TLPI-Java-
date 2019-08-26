@@ -14,13 +14,18 @@ public class VoidType implements Type {
     }
 
     @Override
-    public int asBoll() {
-        return 0;
+    public boolean asBoll() {
+        return false;
     }
 
     @Override
     public String asString() {
         return null;
+    }
+
+    @Override
+    public char asChar() {
+        return 0;
     }
 
     @Override

@@ -3,7 +3,8 @@ package Parser.Type;
 public interface Type {
     int asInt();
     double asDouble();
-    int asBoll();
+    boolean asBoll();
     String asString();
+    char asChar();
     void asVoid();
 }
