@@ -83,6 +83,10 @@ public class SegmentData {
      if(capasity2 == null && init_data != null){
          variables.put(name, new MultiAggregateType(capasity1.asInt(), init_data.size(), init_data));
          return;
-     }else throw new RuntimeException("Incorrect Array initialization: "+name);
+     }
+     if(capasity2 != null && init_data == null){
+         variables.put(name, new MultiAggregateType(capasity1.asInt(), capasity2.asInt()));
+     }
+     else throw new RuntimeException("Incorrect Array initialization: "+name);
     }
 }

@@ -1,172 +1,140 @@
 package Parser;
 
-
-
 import Lexer.TypeToken;
 import Lexer.*;
-import Parser.DATA_SEGMENT.AggregateType;
 import Parser.DATA_SEGMENT.ObjArray;
-import Parser.Expression.BinaryConditionExpression;
+import Parser.DATA_SEGMENT.ObjectType;
 import Parser.DATA_SEGMENT.SegmentData;
 import Parser.Statement.Statement;
-import Parser.Statement.WriteStreamStatement;
 import Parser.Type.*;
-import Parser.Expression.*;
 import com.sun.corba.se.impl.ior.ObjectAdapterIdArray;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Parser {
-    private  Parser parser;
-    private final Token EOF = new BaseToken(TypeToken.EOF);
-    private List<Token> tokens;
-    private int pos,length;
-
+public class Parser extends BaseParser{
     private boolean flage_block = false;
 
-    private BinaryExpression binaryExpr;
-    private BinaryConditionExpression binaryCondExpr;
-    private WriteStreamStatement write;
-    private ObjectExpression objectExpr;
-
-    public Parser() {
-        this.objectExpr = new ObjectExpression();
-        this.binaryExpr = new BinaryExpression();
-        this.binaryCondExpr = new BinaryConditionExpression();
-        this.write = new WriteStreamStatement();
-    }
-
     public void init_parser(List<Token> tokens, boolean flage_block){
-        this.tokens = tokens;
-        this.length = tokens.size();
-        this.pos = 0;
-        this.flage_block = flage_block;
+      setTokens(tokens);
+      setLength(tokens.size());
+      setPos(0);
+      this.flage_block = flage_block;
     }
 
 
 
     public void run(){
-       for(Token it : tokens) System.out.println(it.getType()+" : "+it.getValue());
+       for(Token it : getTokens()) System.out.println(it.getType()+" : "+it.getValue());
        System.out.println("================================\n");
 
 
-         while(cond())statement();
+        while(cond()){
+           statement();
+        }
 
-        /*System.out.println("size: "+SegmentData.getTable().size());
-         for(Map.Entry<String ,Type> it : SegmentData.getTable().entrySet()){
-             System.out.println(it.getKey()+" = "+it.getValue().asInt());
-         }*/
 
     }
 
-
-   private Statement statement(){
-        if(get(0).getType() == TypeToken.sys_write){
+    private Statement statement() {
+        if(get(0).getType() == TypeToken.Alloc){
             next(1);
-            write.stream(expression());  // load expr
-            write.execute(); // print expr
-            return write;
-        }
-        if(get(0).getType() == TypeToken.Word) {  /** ДЕКЛАРИРОВАНИЕ ДАННЫХ(ПЕРЕМЕННЫЕ, МАССИВВЫ И Т.Д.) **/
-            String name_word = get(0).getValue(); // name_word
+            String name_obj = get(0).getValue();
             next(1);
 
-            if(get(0).getType() == TypeToken.Equals) {   /** парсим переменные **/
-                next(1);
-                return declare_variable(name_word);
-            }
+                if(get(0).getType() == TypeToken.Equals){   /** декларирование переменных **/
+                    next(1);
+                    return declare_variable(name_obj, expression());
+                }
 
-            if(get(0).getType() == TypeToken.L_SQUareParen) {   /** парсим массивы **/
-               next(1);
-               return declare_array(name_word);
-            }
+                if(get(0).getType() == TypeToken.L_SQUareParen){
+                    next(1);
+                    return declare_array(name_obj);
+                }
         }
-        throw new RuntimeException("Unknown operator type: " + get(0).getType());
-   }
-
-    private Statement declare_variable(String name_var) {
-        if (flage_block == true) {  /** ЕСЛИ ЭТО БЛОК-ТЕЛО ТО ВСЕ ОБЪЕКТЫ ВЫДЕЛЯЕМ НА СТЕКЕ **/
-
-
-        }
-        /** ЕСЛИ ЭТО НЕ БЛОК-ТЕЛО ТО ВСЕ ОБЪЕКТЫ ВЫДЕЛЯЕМ В СЕГИЕНТЕ ДАННЫХ (ГЛОБАЛЬНЫЕ ОБЪЕКТЫ) **/
-        SegmentData.newObject(name_var, expression());
+        primary();
         return null;
     }
 
+    private Statement declare_array(String name_obj) {
+        Type index_1 = null;
+        List<Type> init_data_array = null;
 
-    private Statement declare_array(final String name_array) {
-        Type size1 = null, size2 = null;
-        List<Type> init_data = null;
-
-        if(get(0).getType() == TypeToken.NumInt32){
-            size1 = new IntegerType(get(0).getValue());
-            next(1);
+        if(get(0).getType() == TypeToken.NumInt32 || get(0).getType() == TypeToken.Lparen){
+            index_1 = expression();
         }
 
-        if(get(0).getType() == TypeToken.L_SQUareParen){ /** если это двухмерный массив **/
-            next(1);
-            if(get(0).getType() == TypeToken.NumInt32){
-                size2 = new IntegerType(get(0).getValue());
+
+            if(get(0).getType() == TypeToken.L_SQUareParen){
                 next(1);
+                return declare_multi_array(name_obj,index_1);
             }
-            declare_multi_araay(name_array, size1, size2);
-            return null;
-        }
+
         if(get(0).getType() == TypeToken.Equals && get(1).getType() == TypeToken.Lparen){
             next(2);
-            init_data = parse_init_data_array();
+            init_data_array = initialize_array();
         }
-
-        if(flage_block == true){        /** ЕСЛИ ЭТО БЛОК-ТЕЛО ТО ВСЕ ОБЪЕКТЫ ВЫДЕЛЯЕМ НА СТЕКЕ **/
+        if(flage_block == true){     /** создание объекта на стеке **/
 
         }
-        /** ЕСЛИ ЭТО НЕ БЛОК-ТЕЛО ТО ВСЕ ОБЪЕКТЫ ВЫДЕЛЯЕМ В СЕГИЕНТЕ ДАННЫХ (ГЛОБАЛЬНЫЕ ОБЪЕКТЫ) **/
-        SegmentData.newObject(name_array, size1, init_data);
+        /** создание объекта в сегменте данных **/
+        SegmentData.newObject(name_obj, index_1, init_data_array);
         return null;
     }
 
-    private void declare_multi_araay(String name_array, Type size1, Type size2) {
-        List<ObjArray> multiArray = null;
+    private Statement declare_multi_array(String name_obj, Type index_1) {
+        Type index_2 = null;
+        List<ObjArray> init_data_multi_array = null;
+        if(get(0).getType() == TypeToken.NumInt32 || get(0).getType() == TypeToken.Lparen){
+            index_2 = expression();
+        }
+
         if(get(0).getType() == TypeToken.Equals && get(1).getType() == TypeToken.Lparen){
-            next(2);
-            multiArray = parse_init_data_multi_array();
+            next(3);
+            init_data_multi_array = init_multi_array();
         }
-        if(flage_block == true){        /** ЕСЛИ ЭТО БЛОК-ТЕЛО ТО ВСЕ ОБЪЕКТЫ ВЫДЕЛЯЕМ НА СТЕКЕ **/
+        if(flage_block == true){     /** создание объекта на стеке **/
 
         }
-        /** ЕСЛИ ЭТО НЕ БЛОК-ТЕЛО ТО ВСЕ ОБЪЕКТЫ ВЫДЕЛЯЕМ В СЕГИЕНТЕ ДАННЫХ (ГЛОБАЛЬНЫЕ ОБЪЕКТЫ) **/
-        SegmentData.newObject(name_array, size1, size2, multiArray);
+        /** создание объекта в сегменте данных **/
+        SegmentData.newObject(name_obj, index_1, index_2, init_data_multi_array);
+        return null;
     }
 
-    private List<ObjArray> parse_init_data_multi_array() {
-       List<ObjArray> array = new ArrayList<ObjArray>();
-       while(get(0).getType() != TypeToken.Rparen){
-           if(get(0).getType() == TypeToken.Lparen){
-               next(1);
-               ObjArray objArray = new ObjArray();
-               while(get(0).getType() != TypeToken.Rparen){
-                   if(get(0).getType() == TypeToken.Comma)next(1);
-                   objArray.add(expression());
-               }
-               array.add(objArray);
-               next(1);
-           }
-           if(get(0).getType() == TypeToken.Comma)next(1);
-       }
-        next(1);
-       return array;
-    }
-
-    private List<Type> parse_init_data_array() {
-        List<Type> array = new ArrayList<Type>();
-        while(get(0).getType() != TypeToken.Rparen){
+    private List<ObjArray> init_multi_array() {
+        List<ObjArray> init_data_multi_array = new ArrayList<ObjArray>();
+        while(cond(TypeToken.Rparen)) {
+            if(get(0).getType() == TypeToken.Lparen)next(1);
+            ObjArray array = new ObjArray();
+            while(cond(TypeToken.Rparen)){
+                array.add(expression());
+                if(get(0).getType() == TypeToken.Comma)next(1);
+            }
+            next(1);
+            init_data_multi_array.add(array);
             if(get(0).getType() == TypeToken.Comma)next(1);
-            array.add(expression());
         }
         next(1);
-        return array;
+        return init_data_multi_array;
+    }
+
+    private List<Type> initialize_array() {
+        List<Type> init_data_array = new ArrayList<Type>();
+        while(cond(TypeToken.Rparen)){
+            if(get(0).getType() == TypeToken.Comma)next(1);
+            init_data_array.add(expression());
+        }
+        next(1);
+        return init_data_array;
+    }
+
+    private Statement declare_variable(String name_obj, Type expression) {
+        if(flage_block == true){    /** создание объекта на стеке **/
+
+        }
+        /** создание объекта в сегменте данных **/
+        SegmentData.newObject(name_obj, expression);
+        return null;
     }
 
 
@@ -242,9 +210,6 @@ public class Parser {
         }
         return result;
     }
-
-
-
     private Type primary(){
         Type temp = null;
         if(get(0).getType() == TypeToken.Lparen) {
@@ -254,82 +219,6 @@ public class Parser {
             return temp;
         }
 
-        if(get(0).getType() == TypeToken.Word){ /** ЕСЛИ ИДЕТ ОБРАЩЕНИЕ К ОБЪЕКТАМ **/
-            String name = get(0).getValue();
-            next(1);
-
-
-            if(get(0).getType() == TypeToken.L_SQUareParen){    /** обращение к массиву **/
-                next(1);
-                Type index_1, index_2;
-                index_1 = expression();
-                if(get(0).getType() == TypeToken.L_SQUareParen){    /** обращение к двумерному массиву **/
-                    next(1);
-                    index_2 = expression();
-                    objectExpr.setObject(name, index_1.asInt(), index_2.asInt());
-                    return objectExpr.eval();
-                }
-                objectExpr.setObject(name, index_1.asInt());
-                return objectExpr.eval();
-            }
-
-            objectExpr.setObject(name);     /** обращение к переменной **/
-            return objectExpr.eval();
-        }
-
-
-
-        /** примитивные типы данных **/
-        if(get(0).getType() == TypeToken.NumInt32){
-            temp = new IntegerType(get(0).getValue());
-            next(1);
-            return temp;
-        }
-        if(get(0).getType() == TypeToken.Str){
-            temp = new StringType(get(0).getValue());
-            next(1);
-            return temp;
-        }
-        if(get(0).getType() == TypeToken.NumDouble64){
-            temp = new DoubleType(get(0).getValue());
-            next(1);
-            return temp;
-        }
-        if(get(0).getType() == TypeToken.Bool){
-            temp = new BoolType(get(0).getValue());
-            next(1);
-            return temp;
-        }
-        if(get(0).getType() == TypeToken.Char){
-            temp = new CharType(get(0).getValue());
-            next(1);
-            return temp;
-        }
-        throw new RuntimeException("Unknown token type");
-    }
-
-    private void next(final int shift_pos){ pos+=shift_pos; }
-    private Token get(final int position_relative){
-        int position = pos + position_relative;
-        if(position >= length)return EOF;
-        return tokens.get(position);
-    }
-    private Type eval(char operation, Type expr1, Type expr2) {
-       binaryExpr.init(operation, expr1, expr2);
-       return binaryExpr.eval();
-    }
-    private Type eval(TypeToken operation, Type expr1, Type expr2) {
-        binaryCondExpr.init(operation, expr1, expr2);
-        return binaryCondExpr.eval();
-    }
-    private boolean cond() {
-        if(get(0).getType() == TypeToken.EOF)return false;
-        else return true;
-    }
-    private boolean consume(final TypeToken type){
-        if(get(0).getType() == type){
-            next(1);
-            return true;
-        }else throw new RuntimeException("Unknown token type");
+        return primitive(); /** парсинг примитивных типов данных **/
     }
 }

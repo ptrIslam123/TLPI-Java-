@@ -1,5 +1,10 @@
-arr[2][2] = (
-    (90,100), (110, 120)
-)
 
-print arr[1][1]
+dec array_2[2][4] = ((12,34),(23,45))
+dec array_3[3][2+1] = ((12,23))
+
+dec var_n = 12 +2
+dec var_line = "hello islam"
+dec var_logic = 12>32
+
+dec arr_1[2] = (15)
+dec arr_2[3]

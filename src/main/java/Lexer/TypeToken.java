@@ -74,6 +74,7 @@ public enum TypeToken {
     Call, // вызов функциий
 
     Block,
+    Alloc,  // выделение (декларирование) памяти
 
     EOF, // конец файла
 }
