@@ -1,10 +1,20 @@
+dec var = 12 +3
+var = "newVar"
+print var
 
-dec array_2[2][4] = ((12,34),(23,45))
-dec array_3[3][2+1] = ((12,23))
+print "==============="
+dec arr[2] = (12,23)
+arr[0]  = 100101
+print arr[0]
+print arr[1]
 
-dec var_n = 12 +2
-dec var_line = "hello islam"
-dec var_logic = 12>32
+print "=============="
 
-dec arr_1[2] = (15)
-dec arr_2[3]
+dec array[2][1+1] = (
+    (100,110),(200,220)
+)
+array[0][0] = 111111
+print array[0][0]
+print array[0][1]
+print array[1][1]
+print array[1][1]

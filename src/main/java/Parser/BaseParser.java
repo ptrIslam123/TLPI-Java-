@@ -1,6 +1,7 @@
 package Parser;
 
 import Lexer.*;
+import Parser.DATA_SEGMENT.ObjectData;
 import Parser.Expression.BinaryConditionExpression;
 import Parser.Expression.BinaryExpression;
 import Parser.Expression.ObjectExpression;
@@ -15,11 +16,13 @@ public class BaseParser {
 
     private BinaryExpression binaryExpr;
     private BinaryConditionExpression binaryCondExpr;
-    private WriteStreamStatement write;
-    private ObjectExpression objectExpr;
-    private VoidType voidV;
+    protected WriteStreamStatement write;
+    protected ObjectExpression objectExpr;
+    protected VoidType voidV;
+    protected ObjectData objectData;
 
     public BaseParser() {
+        this.objectData = new ObjectData();
         this.objectExpr = new ObjectExpression();
         this.binaryExpr = new BinaryExpression();
         this.voidV = new VoidType();
@@ -31,6 +34,7 @@ public class BaseParser {
 
     protected Type primitive(){
         Type temp = null;
+
         /** примитивные типы данных **/
         if(get(0).getType() == TypeToken.NumInt32){
             temp = new IntegerType(get(0).getValue());
@@ -59,6 +63,8 @@ public class BaseParser {
         }
         throw new RuntimeException("Unknown token type");
     }
+
+
 
     protected Type eval(char operation, Type expr1, Type expr2) {
         binaryExpr.init(operation, expr1, expr2);

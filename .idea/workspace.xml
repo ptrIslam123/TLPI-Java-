@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/Parser/Parser.java" line="13" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/Parser/Parser.java" line="10" />
+    <bookmark url="file://$PROJECT_DIR$/doc.txt" line="75" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d78d271-f74a-4e26-bf34-fc841ac1d01d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Parser/BaseParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjectData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Parser/ExpressionEval.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc.txt" beforeDir="false" afterPath="$PROJECT_DIR$/doc.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/main.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Lexer/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Lexer/Lexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Lexer/TypeToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Lexer/TypeToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Parser/BaseParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Parser/BaseParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/AggregateType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/AggregateType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/MultiAggregateType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/MultiAggregateType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/PrimitiveType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/PrimitiveType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/SegmentData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/SegmentData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Parser/Expression/ObjectExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Parser/Expression/ObjectExpression.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Parser/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Parser/BaseParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Parser/BaseParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Parser/DATA_SEGMENT/PrimitiveType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Parser/DATA_SEGMENT/PrimitiveType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Parser/DATA_SEGMENT/SegmentData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Parser/DATA_SEGMENT/SegmentData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Parser/Expression/ObjectExpression.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Parser/Expression/ObjectExpression.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Parser/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Parser/Parser.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -24,15 +34,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Parser.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/ExpressionEval.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="114" column="57" selection-start-line="114" selection-start-column="57" selection-end-line="114" selection-end-column="57" />
+            <state relative-caret-position="739">
+              <caret line="149" column="61" selection-start-line="149" selection-start-column="61" selection-end-line="149" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2923#2933#0" expanded="true" />
-                <element signature="e#1954#1960#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -41,27 +49,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/SegmentData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="87" column="88" selection-start-line="87" selection-start-column="88" selection-end-line="87" selection-end-column="88" />
+            <state relative-caret-position="382">
+              <caret line="46" column="140" selection-start-line="46" selection-start-column="140" selection-end-line="46" selection-end-column="140" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjArray.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#185#186#0" expanded="true" />
-                <element signature="e#235#236#0" expanded="true" />
-                <element signature="e#277#278#0" expanded="true" />
-                <element signature="e#347#348#0" expanded="true" />
-                <element signature="e#375#376#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -70,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Parser/BaseParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="79" column="50" selection-start-line="79" selection-start-column="50" selection-end-line="79" selection-end-column="50" />
+            <state relative-caret-position="195">
+              <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#cond#0;class#BaseParser#0" />
@@ -81,10 +72,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjectData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" column="127" selection-start-line="23" selection-start-column="127" selection-end-line="23" selection-end-column="127" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/MultiAggregateType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="40" column="20" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
+            <state relative-caret-position="578">
+              <caret line="34" column="48" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1094#1095#0" expanded="true" />
@@ -95,19 +98,52 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.txt">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/AggregateType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" />
+            <state relative-caret-position="323">
+              <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#591#592#0" expanded="true" />
+                <element signature="e#634#635#0" expanded="true" />
+                <element signature="e#855#856#0" expanded="true" />
+                <element signature="e#895#896#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Lexer/BaseToken.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+            <state relative-caret-position="-1012">
+              <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/PrimitiveType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+              <folding>
+                <element signature="e#277#278#0" expanded="true" />
+                <element signature="e#250#251#0" expanded="true" />
+                <element signature="e#278#279#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -129,10 +165,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Parser/Variable/ArrayTable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Parser/Lib/Statement/IOStream/ReadStatement.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Parser/Variable/VariableTable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Lexer/Token.java" />
         <option value="$PROJECT_DIR$/src/main/java/Lexer/TokenBlock.java" />
         <option value="$PROJECT_DIR$/src/main/java/TEST/SEMANTIC_ANALIZ/Parse.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/Variable/DefineFunction.java" />
@@ -171,15 +203,19 @@
         <option value="$PROJECT_DIR$/src/main/java/SEMANTICS_ANALYSIS/Parse.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjArray.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/Expression/BinaryExpression.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/AggregateType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/MultiAggregateType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Parser/Expression/ObjectExpression.java" />
         <option value="$PROJECT_DIR$/src/main/java/Lexer/TypeToken.java" />
         <option value="$PROJECT_DIR$/src/main/java/Lexer/Lexer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Parser/BaseParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Parser/Expression/ObjectExpression.java" />
+        <option value="$PROJECT_DIR$/doc.txt" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/SegmentData.java" />
-        <option value="$PROJECT_DIR$/main.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/PrimitiveType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Parser/BaseParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/Parser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/AggregateType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/MultiAggregateType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjectData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Parser/ExpressionEval.java" />
+        <option value="$PROJECT_DIR$/main.txt" />
       </list>
     </option>
   </component>
@@ -204,7 +240,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -261,6 +296,15 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Parser" type="462c0819:PsiDirectoryNode" />
+              <item name="Statement" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLPC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="repos" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="SEMANTICS_ANALYSIS" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -272,10 +316,11 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1566828411318" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1566978736941" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -345,7 +390,7 @@
       <window_info id="UI Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.22654584" />
+      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.22867803" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4452871" />
@@ -436,7 +481,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Parser/Parser.java</url>
-          <line>32</line>
+          <line>27</line>
           <properties />
           <option name="timeStamp" value="46" />
         </line-breakpoint>
@@ -512,9 +557,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Lib/BinaryConditionExpression.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Lib/Statement/Statement.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Lib/Expression/Expression.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Variable/ArrayTable.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Lexer/Token.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -713,39 +755,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Statement/WriteStreamStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
-          <folding>
-            <element signature="e#177#178#0" expanded="true" />
-            <element signature="e#221#222#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/PrimitiveType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="e#278#279#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/AggregateType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#855#856#0" expanded="true" />
-            <element signature="e#895#896#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Type/IntegerType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -756,16 +765,6 @@
             <element signature="e#255#256#0" expanded="true" />
             <element signature="e#513#514#0" expanded="true" />
             <element signature="e#537#538#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Expression/ObjectExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="73" column="47" selection-start-line="73" selection-start-column="47" selection-end-line="73" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -805,28 +804,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/SegmentData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="87" column="88" selection-start-line="87" selection-start-column="88" selection-end-line="87" selection-end-column="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/MultiAggregateType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="40" column="20" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1094#1095#0" expanded="true" />
-            <element signature="e#1121#1122#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjArray.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -842,24 +819,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.txt">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Lexer/BaseToken.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
+        <state relative-caret-position="476">
+          <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Lexer/BaseToken.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Expression/ObjectExpression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+        <state relative-caret-position="654">
+          <caret line="112" column="58" selection-start-line="112" selection-start-column="58" selection-end-line="112" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="796">
+          <caret line="105" column="31" selection-start-line="105" selection-start-column="31" selection-end-line="105" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/PrimitiveType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+          <folding>
+            <element signature="e#277#278#0" expanded="true" />
+            <element signature="e#250#251#0" expanded="true" />
+            <element signature="e#278#279#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Parser/BaseParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="79" column="50" selection-start-line="79" selection-start-column="50" selection-end-line="79" selection-end-column="50" />
+        <state relative-caret-position="195">
+          <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#cond#0;class#BaseParser#0" />
@@ -867,15 +866,87 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Statement/WriteStreamStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+          <folding>
+            <element signature="e#177#178#0" expanded="true" />
+            <element signature="e#221#222#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="114" column="57" selection-start-line="114" selection-start-column="57" selection-end-line="114" selection-end-column="57" />
+        <state relative-caret-position="-1012">
+          <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2923#2933#0" expanded="true" />
-            <element signature="e#1954#1960#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/SegmentData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="46" column="140" selection-start-line="46" selection-start-column="140" selection-end-line="46" selection-end-column="140" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/AggregateType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#591#592#0" expanded="true" />
+            <element signature="e#634#635#0" expanded="true" />
+            <element signature="e#855#856#0" expanded="true" />
+            <element signature="e#895#896#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/MultiAggregateType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="48" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1094#1095#0" expanded="true" />
+            <element signature="e#1121#1122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjectData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="127" selection-start-line="23" selection-start-column="127" selection-end-line="23" selection-end-column="127" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/ExpressionEval.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="739">
+          <caret line="149" column="61" selection-start-line="149" selection-start-column="61" selection-end-line="149" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
         </state>
       </provider>
     </entry>

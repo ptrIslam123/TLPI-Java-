@@ -16,6 +16,10 @@ public class AggregateType implements ObjectType {
         init_data(array);
     }
 
+    public void setNewValueArray(final int index, final Type newValue){
+        this_Array[index] = newValue;
+    }
+
     private void init_data(List<Type> array) {
         for(int i=0; i<array.size(); i++){
             this.this_Array[i] = array.get(i);

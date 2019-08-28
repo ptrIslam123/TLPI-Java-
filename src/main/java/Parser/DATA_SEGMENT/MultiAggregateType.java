@@ -31,6 +31,10 @@ public class MultiAggregateType implements ObjectType {
         }
     }
 
+    public void setNewValueMultiArray(final int index_1, final int index_2, final Type newValue){
+        this_Array[index_1][index_2] = newValue;
+    }
+
     @Override
     public Type asPrimative() {
         return null;

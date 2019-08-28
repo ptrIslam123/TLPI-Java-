@@ -1,9 +1,6 @@
 package Parser.Expression;
 
-import Parser.DATA_SEGMENT.AggregateType;
-import Parser.DATA_SEGMENT.ObjectType;
-import Parser.DATA_SEGMENT.SegmentData;
-import Parser.DATA_SEGMENT.SteckData;
+import Parser.DATA_SEGMENT.*;
 import Parser.Type.Type;
 
 /**
@@ -64,6 +61,17 @@ public class ObjectExpression implements Expression {
         }
     }
 
+    public void setNewValueObject(final String name, final Type newValue){
+        ObjectType obj_temp = null;
+        obj_temp = SteckData.getObject(name);
+        if(obj_temp != null){
+
+        }
+        obj_temp = SegmentData.getObject(name);
+        if(obj_temp == null)throw new RuntimeException("Unknown user object type: "+name);
+
+    }
+
     public void setNewValueObject(final String name, final int index, final Type newValue){
         ObjectType obj_temp = null;
         obj_temp = SteckData.getObject(name);
@@ -78,15 +86,33 @@ public class ObjectExpression implements Expression {
     public void setNewValueObject(final String name, final int index_1, final int index_2, final Type newValue){
 
     }
-    /**
-    public ObjectType getObject(final String name){
-         ObjectType temp = null;
-         temp = SteckData.getObject(name);
-         if(temp != null)return temp;
-         else SegmentData.getObject(name);
-         return null;
+
+    public Type getValueObject(final String name){
+        ObjectType temp = null;
+        temp = SteckData.getObject(name);
+        if(temp != null){
+            return null;
+        }
+        temp = SegmentData.getObject(name);
+        if(temp != null){
+            return returnGetObject(temp,0,0);
+        }
+        throw new RuntimeException("Unknown object type: " + name);
     }
-    **/
+
+    private Type returnGetObject(ObjectType temp, final int index_1, final int index_2) {
+        if(temp instanceof PrimitiveType){
+            return temp.asPrimative();
+        }
+        if(temp instanceof AggregateType){
+            return temp.asAggregate()[index_1];
+        }
+        if(temp instanceof MultiAggregateType){
+            return temp.asMultiAggregate()[index_1][index_2];
+        }
+        throw new RuntimeException("Error type: " + temp);
+    }
+
     private ObjectType getObjectSegmentData() {
         return SegmentData.getObject(name_obj);
     }

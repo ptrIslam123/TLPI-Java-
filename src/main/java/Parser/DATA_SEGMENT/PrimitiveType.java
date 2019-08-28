@@ -9,6 +9,10 @@ public class PrimitiveType implements ObjectType {
         this.value = value;
     }
 
+    public void setValue(Type value) {
+        this.value = value;
+    }
+
     @Override
     public Type asPrimative() {
         return value;

@@ -44,15 +44,16 @@ public class SegmentData {
     }
 
 
-    public static ObjectType getObject(final String name){
-        isExists(name);
+    public static ObjectType getObject(final String name){  /********  ВОЗВРАЩАЕТ ОБЪЕКТ ПО ЕГО ИМЕНИ, ЕСЛИ ОБЪЕКТ НЕ НАЙДЕН ВОЗВРАЩВЕТ NULL ********/
+        int res = isExists(name);
+        if(res == -1)return null;
         return variables.get(name);
     }
 
 
-    private static void isExists(final String name){
-        if(variables.containsKey(name) == false)throw new RuntimeException("Unknown object: "+name);
-        return;
+    private static int isExists(final String name){
+        if(variables.containsKey(name) == false) return -1;
+        return 1;
     }
     public static Map<String, ObjectType> getTable(){ return variables; }
 

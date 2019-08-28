@@ -3,22 +3,17 @@ package Parser;
 import Lexer.TypeToken;
 import Lexer.*;
 import Parser.DATA_SEGMENT.ObjArray;
-import Parser.DATA_SEGMENT.ObjectType;
 import Parser.DATA_SEGMENT.SegmentData;
 import Parser.Statement.Statement;
 import Parser.Type.*;
-import com.sun.corba.se.impl.ior.ObjectAdapterIdArray;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class Parser extends BaseParser{
+public final class Parser extends ExpressionEval{
     private boolean flage_block = false;
 
     public void init_parser(List<Token> tokens, boolean flage_block){
-      setTokens(tokens);
-      setLength(tokens.size());
-      setPos(0);
+      init_expression_eval(tokens);
       this.flage_block = flage_block;
     }
 
@@ -37,6 +32,13 @@ public class Parser extends BaseParser{
     }
 
     private Statement statement() {
+        if(get(0).getType() == TypeToken.sys_write){
+            next(1);
+            write.stream(expression());
+            write.execute();
+            return null;
+        }
+
         if(get(0).getType() == TypeToken.Alloc){
             next(1);
             String name_obj = get(0).getValue();
@@ -53,6 +55,18 @@ public class Parser extends BaseParser{
                 }
         }
         primary();
+        return null;
+    }
+
+
+
+
+    private Statement declare_variable(String name_obj, Type expression) {
+        if(flage_block == true){    /** создание объекта на стеке **/
+
+        }
+        /** создание объекта в сегменте данных **/
+        SegmentData.newObject(name_obj, expression);
         return null;
     }
 
@@ -128,97 +142,5 @@ public class Parser extends BaseParser{
         return init_data_array;
     }
 
-    private Statement declare_variable(String name_obj, Type expression) {
-        if(flage_block == true){    /** создание объекта на стеке **/
 
-        }
-        /** создание объекта в сегменте данных **/
-        SegmentData.newObject(name_obj, expression);
-        return null;
-    }
-
-
-    private Type expression(){ return conditionExpression(); }
-    private Type conditionExpression(){
-        Type result = additive();
-        while(true){
-            if(get(0).getType() == TypeToken.Less){
-                next(1);
-                result = eval(TypeToken.Less, result, additive());
-                continue;
-            }
-            if(get(0).getType() == TypeToken.More){
-                next(1);
-                result = eval(TypeToken.More, result, additive());
-                continue;
-            }
-            if(get(0).getType() == TypeToken.LessEq){
-                next(1);
-                result = eval(TypeToken.LessEq, result, additive());
-                continue;
-            }
-            if(get(0).getType() == TypeToken.MoreEq){
-                next(1);
-                result = eval(TypeToken.MoreEq, result, additive());
-                continue;
-            }
-            if(get(0).getType() == TypeToken.Eq){
-                next(1);
-                result = eval(TypeToken.Eq, result, additive());
-                continue;
-            }
-            if(get(0).getType() == TypeToken.NoEq){
-                next(1);
-                result = eval(TypeToken.NoEq, result, additive());
-                continue;
-            }
-            break;
-        }
-        return result;
-    }
-    private Type additive(){
-        Type result = multiplivative();
-        while(true){
-            if(get(0).getType() == TypeToken.Add){
-                next(1);
-                result = eval('+',result, multiplivative());
-                continue;
-            }
-            if(get(0).getType() == TypeToken.Sub){
-                next(1);
-                result = eval('-',result, multiplivative());
-                continue;
-            }
-            break;
-        }
-        return result;
-    }
-    private Type multiplivative(){
-        Type result = primary();
-        while(true){
-            if(get(0).getType() == TypeToken.Mult){
-                next(1);
-                result = eval('*',result, primary());
-                continue;
-            }
-            if(get(0).getType() == TypeToken.Div){
-                next(1);
-                result = eval('-',result, primary());
-                continue;
-            }
-            break;
-        }
-        return result;
-    }
-    private Type primary(){
-        Type temp = null;
-        if(get(0).getType() == TypeToken.Lparen) {
-            next(1);
-            temp = expression();
-            consume(TypeToken.Rparen);
-            return temp;
-        }
-
-        return primitive(); /** парсинг примитивных типов данных **/
-    }
 }
