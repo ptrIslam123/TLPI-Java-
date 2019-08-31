@@ -1,6 +1,3 @@
-{
-    dec var1_l = 20
-    dec static var_l = 200
+static{
 }
-print var_l
-print var1_l
+else

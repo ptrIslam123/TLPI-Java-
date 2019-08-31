@@ -17,6 +17,8 @@ import java.util.List;
 public final class Parser extends ExpressionEval{
     private boolean flage_block = false;
     private boolean static_flage = false;
+    private static boolean flage_block_if_res = true, flage_execute_if = false;
+
     private Parse parse;
 
     private static int visibility = 0;
@@ -28,8 +30,8 @@ public final class Parser extends ExpressionEval{
     }
 
     public void run(){
-       //for(Token it : getTokens()) System.out.println(it.getType()+" : "+it.getValue());
-       //System.out.println("================================\n");
+       for(Token it : getTokens()) System.out.println(it.getType()+" : "+it.getValue());
+       System.out.println("================================\n");
 
 
         while(cond()){
@@ -40,6 +42,25 @@ public final class Parser extends ExpressionEval{
     }
 
     private Statement statement() {
+        if(get(0).getType() == TypeToken.If){
+            next(1);
+            return ifStatement();
+        }
+        if(get(0).getType() == TypeToken.Els){
+            if(flage_block_if_res == false  && flage_execute_if == true){
+                next(1);
+                return blockStatement();
+            }
+            if(flage_block_if_res == true  && flage_execute_if == true){
+                next(2);
+                return null;
+            }
+            throw new RuntimeException("Unknown operation token: "+get(0).getType());
+        }
+        if(get(0).getType() == TypeToken.While){
+            next(1);
+            return whileStatement();
+        }
         if(get(0).getType() == TypeToken.Block){
              blockStatement();
              next(1);
@@ -78,6 +99,28 @@ public final class Parser extends ExpressionEval{
         return null;
     }
 
+
+    private Statement ifStatement() {
+        boolean result = expression().asBoll();
+        flage_execute_if = result==true?true:false;
+        flage_block_if_res = result;
+        if(result == true){
+            blockStatement();
+        }
+        next(1);
+        return null;
+    }
+
+    private Statement whileStatement() {
+        int tep_pos = getPos();
+        while(expression().asBoll() !=  false){
+            blockStatement();
+            setPos(tep_pos);
+        }
+        next(1);
+        return null;
+    }
+
     /**** ПОКА ЧТО ВРОДЕ РАБОТАЕТ НАДО ТЕПЕРЬ РЕШИТЬ ПРОБЛЕМУ ВЫДЕЛЕНИЯ ПАМЯТИ НА СТЕКЕ И СЕГМЕНТЕ ДАННЫХ ***/
     private Statement blockStatement() {
         paser = new Parser();
@@ -85,7 +128,6 @@ public final class Parser extends ExpressionEval{
         paser.init_parser(block.getTokens(), true);
 
         visibility++;
-        //SteckData.setVisibility(visibility);
 
         paser.run();
 

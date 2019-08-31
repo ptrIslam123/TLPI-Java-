@@ -80,6 +80,9 @@ public class Lexer extends BaseLexer {
     }
 
     private void tokenizeOPERANDS(){
+        if(same("else")){
+            addToken(TypeToken.Els,"");
+        }
         if(same("static")){
             addToken(TypeToken.Static_o,"");
         }
@@ -127,12 +130,6 @@ public class Lexer extends BaseLexer {
         }
         if(same("if")){
             addToken(TypeToken.If,"");
-        }
-        if(same("elsif")){
-            addToken(TypeToken.ElsIF,"");
-        }
-        if(same("else")){
-            addToken(TypeToken.Els,"");
         }
         if(same("while")){
             addToken(TypeToken.While,"");
