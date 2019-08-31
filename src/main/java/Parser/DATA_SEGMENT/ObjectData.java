@@ -7,8 +7,13 @@ import java.security.PublicKey;
 public class ObjectData {
 
     /******************************************  МЕТОДЫ ПО УСТАНОВКЕ НОВЫХ ЗНАЧЕНИЙ ОБЪЕКТОВ *******************************************************/
-    public void setValueObject(final String name, final Type newValue){     /** УСТАНОВИТЬ ЗАНЧЕНИЕ ПЕРЕМЕННОЙ **/
-        ObjectType object = SegmentData.getObject(name);
+    public void setValueObject(final String name, final Type newValue){/** УСТАНОВИТЬ ЗАНЧЕНИЕ ПЕРЕМЕННОЙ **/
+        ObjectType object = SteckData.getObject(name);
+        if(object != null){
+            ((PrimitiveType) object).setValue(newValue);
+            return;
+        }
+        object = SegmentData.getObject(name);
         if(object != null){
             ((PrimitiveType) object).setValue(newValue);
             return;

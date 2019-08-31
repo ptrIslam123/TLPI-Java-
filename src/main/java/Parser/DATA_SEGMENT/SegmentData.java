@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SegmentData {
+public final class SegmentData {
     private static Map<String, ObjectType> variables;
     static {
         variables = new HashMap<String, ObjectType>();

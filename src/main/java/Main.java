@@ -36,7 +36,6 @@ public class Main {
         parser.init_parser(optimaize_tokens, false);
         parser.run();
 
-
     }
 
     private static StringBuilder readFile(final String filename) throws IOException {

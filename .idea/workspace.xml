@@ -1,28 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/Parser/Parser.java" line="10" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/Parser/Parser.java" line="15" />
     <bookmark url="file://$PROJECT_DIR$/doc.txt" line="75" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d78d271-f74a-4e26-bf34-fc841ac1d01d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjectData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Parser/ExpressionEval.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Parser/Expression/CallFunctionExpression.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Parser/Variable/VArrayMultiObjectType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Parser/Variable/VArrayObjectType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Parser/Variable/Variable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/SEMANTICS_ANALYSIS/Function.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/SEMANTICS_ANALYSIS/FunctionTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc.txt" beforeDir="false" afterPath="$PROJECT_DIR$/doc.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/main.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Parser/BaseParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Parser/BaseParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/AggregateType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/AggregateType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/MultiAggregateType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/MultiAggregateType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjectData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjectData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjectType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjectType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/PrimitiveType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/PrimitiveType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/SegmentData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/SegmentData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Parser/Expression/ObjectExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Parser/Expression/ObjectExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/SteckData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/SteckData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Parser/ExpressionEval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Parser/ExpressionEval.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Parser/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SEMANTICS_ANALYSIS/Parse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SEMANTICS_ANALYSIS/Parse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Parser/BaseParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Parser/BaseParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Parser/DATA_SEGMENT/PrimitiveType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Parser/DATA_SEGMENT/PrimitiveType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Parser/DATA_SEGMENT/AggregateType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Parser/DATA_SEGMENT/AggregateType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Parser/DATA_SEGMENT/ObjectData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Parser/DATA_SEGMENT/ObjectData.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Parser/DATA_SEGMENT/SegmentData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Parser/DATA_SEGMENT/SegmentData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Parser/Expression/ObjectExpression.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Parser/Expression/ObjectExpression.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Parser/DATA_SEGMENT/SteckData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Parser/DATA_SEGMENT/SteckData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Parser/ExpressionEval.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Parser/ExpressionEval.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Parser/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Parser/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SEMANTICS_ANALYSIS/Parse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SEMANTICS_ANALYSIS/Parse.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -35,10 +47,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/ExpressionEval.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="739">
-              <caret line="149" column="61" selection-start-line="149" selection-start-column="61" selection-end-line="149" selection-end-column="61" />
+            <state relative-caret-position="168">
+              <caret line="121" selection-start-line="121" selection-end-line="121" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -47,10 +59,96 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/SegmentData.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/ExpressionEval.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="46" column="140" selection-start-line="46" selection-start-column="140" selection-end-line="46" selection-end-column="140" />
+            <state relative-caret-position="176">
+              <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/SteckData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="637">
+              <caret line="96" column="73" selection-start-line="96" selection-start-column="73" selection-end-line="96" selection-end-column="73" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#350#351#0" expanded="true" />
+                <element signature="e#399#400#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Variable/Variable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="33" column="51" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#894#895#0" expanded="true" />
+                <element signature="e#927#928#0" expanded="true" />
+                <element signature="e#1035#1036#0" expanded="true" />
+                <element signature="e#1063#1064#0" expanded="true" />
+                <element signature="e#1107#1108#0" expanded="true" />
+                <element signature="e#1134#1135#0" expanded="true" />
+                <element signature="e#1183#1184#0" expanded="true" />
+                <element signature="e#1227#1228#0" expanded="true" />
+                <element signature="e#1273#1274#0" expanded="true" />
+                <element signature="e#1307#1308#0" expanded="true" />
+                <element signature="e#1354#1355#0" expanded="true" />
+                <element signature="e#1396#1397#0" expanded="true" />
+                <element signature="e#1445#1446#0" expanded="true" />
+                <element signature="e#1487#1488#0" expanded="true" />
+                <element signature="e#1543#1544#0" expanded="true" />
+                <element signature="e#1590#1591#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjectType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/AggregateType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="34" column="84" selection-start-line="34" selection-start-column="84" selection-end-line="34" selection-end-column="84" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#617#618#0" expanded="true" />
+                <element signature="e#661#662#0" expanded="true" />
+                <element signature="docComment;method#asPrimative#0;class#AggregateType#0" />
+                <element signature="e#1065#1066#0" expanded="true" />
+                <element signature="e#1092#1093#0" expanded="true" />
+                <element signature="e#1141#1142#0" expanded="true" />
+                <element signature="e#1174#1175#0" expanded="true" />
+                <element signature="e#1230#1231#0" expanded="true" />
+                <element signature="e#1257#1258#0" expanded="true" />
+                <element signature="e#1302#1303#0" expanded="true" />
+                <element signature="e#1329#1330#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Variable/VArrayObjectType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="365">
+              <caret line="22" column="33" lean-forward="true" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -61,21 +159,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Parser/BaseParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#cond#0;class#BaseParser#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjectData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="127" selection-start-line="23" selection-start-column="127" selection-end-line="23" selection-end-column="127" />
+            <state relative-caret-position="185">
+              <caret line="85" selection-start-line="85" selection-end-line="85" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,66 +169,27 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/MultiAggregateType.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Lexer/TokenBlock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="34" column="48" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
+            <state relative-caret-position="306">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1094#1095#0" expanded="true" />
-                <element signature="e#1121#1122#0" expanded="true" />
+                <element signature="e#215#216#0" expanded="true" />
+                <element signature="e#266#267#0" expanded="true" />
+                <element signature="e#335#336#0" expanded="true" />
+                <element signature="e#389#390#0" expanded="true" />
+                <element signature="e#606#607#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/AggregateType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#591#592#0" expanded="true" />
-                <element signature="e#634#635#0" expanded="true" />
-                <element signature="e#855#856#0" expanded="true" />
-                <element signature="e#895#896#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Parser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1012">
-              <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/PrimitiveType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-              <folding>
-                <element signature="e#277#278#0" expanded="true" />
-                <element signature="e#250#251#0" expanded="true" />
-                <element signature="e#278#279#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="51">
+              <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -165,17 +211,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Lexer/TokenBlock.java" />
-        <option value="$PROJECT_DIR$/src/main/java/TEST/SEMANTIC_ANALIZ/Parse.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Parser/Variable/DefineFunction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Parser/Variable/FunctionTable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Parser/Variable/FUNCTION/TypeParams.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Parser/Variable/FUNCTION/TypeArray.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Parser/Variable/FUNCTION/Primitive.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/Variable/FUNCTION/FunctionTable.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/Variable/FUNCTION/DefineFunction.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/Lib/Statement/FunctionalExpression.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Parser/Variable/Variable.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/Variable/Steck.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/Type/Type.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/Type/CharType.java" />
@@ -193,29 +231,37 @@
         <option value="$PROJECT_DIR$/src/main/java/Parser/Statement/WriteStreamStatement.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/Type/PrimitiveType.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/Type/AggregateType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/OBJECT_DATA/PrimitiveType.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/OBJECT_DATA/ObjectType.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/OBJECT_DATA/MultiAggregateType.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/OBJECT_DATA/SegmentData.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/OBJECT_DATA/AggregateType.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjectExpression.java" />
-        <option value="$PROJECT_DIR$/src/main/java/SEMANTICS_ANALYSIS/Parse.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjArray.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/Expression/BinaryExpression.java" />
         <option value="$PROJECT_DIR$/src/main/java/Lexer/TypeToken.java" />
         <option value="$PROJECT_DIR$/src/main/java/Lexer/Lexer.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/Expression/ObjectExpression.java" />
         <option value="$PROJECT_DIR$/doc.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/SegmentData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/PrimitiveType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/SEMANTICS_ANALYSIS/Function.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/BaseParser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Parser/Parser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/AggregateType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/MultiAggregateType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjectData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/SEMANTICS_ANALYSIS/FunctionTable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Parser/Expression/CallFunctionExpression.java" />
         <option value="$PROJECT_DIR$/src/main/java/Parser/ExpressionEval.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjectData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Parser/Parser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/SEMANTICS_ANALYSIS/Parse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/MultiAggregateType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/PrimitiveType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Parser/Variable/VArrayMultiObjectType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Parser/Variable/VArrayObjectType.java" />
         <option value="$PROJECT_DIR$/main.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjectType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/SteckData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Parser/Variable/Variable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/AggregateType.java" />
       </list>
     </option>
   </component>
@@ -271,14 +317,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Lexer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TLPC" type="b2602c69:ProjectViewProjectNode" />
-              <item name="repos" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Parser" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -297,7 +335,34 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Parser" type="462c0819:PsiDirectoryNode" />
+              <item name="Expression" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLPC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="repos" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Parser" type="462c0819:PsiDirectoryNode" />
               <item name="Statement" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLPC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="repos" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Parser" type="462c0819:PsiDirectoryNode" />
+              <item name="Type" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TLPC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="repos" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Parser" type="462c0819:PsiDirectoryNode" />
+              <item name="Variable" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TLPC" type="b2602c69:ProjectViewProjectNode" />
@@ -320,7 +385,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1566978736941" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1567174226318" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -382,7 +447,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="1" />
@@ -390,10 +454,10 @@
       <window_info id="UI Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.22867803" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.23933902" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4452871" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5547129" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -481,20 +545,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Parser/Parser.java</url>
-          <line>27</line>
+          <line>34</line>
           <properties />
-          <option name="timeStamp" value="46" />
+          <option name="timeStamp" value="48" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="this" language="JAVA" />
         <watch expression="this" />
-        <watch expression="objArray" />
-        <watch expression="temp.getArray().get(0)" language="JAVA" />
-        <watch expression="temp.getArray().get(1)" language="JAVA" />
-        <watch expression="ret_object_value(result)" language="JAVA" />
+        <watch expression="iterator.getValue().getVisibility()" language="JAVA" />
+        <watch expression="iterator.getKey()" language="JAVA" />
+        <watch expression="((HashMap) variables).size" language="JAVA" />
+        <watch expression="variables.get(0)" language="JAVA" />
+        <watch expression="variables.get(0)" language="JAVA" />
+        <watch expression="variables.size" language="JAVA" />
+        <watch expression="name" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
@@ -505,91 +571,59 @@
   <component name="debuggerHistoryManager">
     <expressions id="watch">
       <expression>
-        <expression-string>ret_object_value(result)</expression-string>
+        <expression-string>name</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>temp.getArray().get(1)</expression-string>
+        <expression-string>variables.size</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>temp.getArray().get(0)</expression-string>
+        <expression-string>variables.get(0)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>optimazi_tokens</expression-string>
+        <expression-string>((HashMap) variables).size</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>this</expression-string>
+        <expression-string>iterator.getKey()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>pos</expression-string>
+        <expression-string>iterator.getValue().getVisibility()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>expression().asBoll()</expression-string>
+        <expression-string>FunctionTable.getFunctions().get(0)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>array_table.get(&quot;arr&quot;)</expression-string>
+        <expression-string>variables.get(&quot;var1_l&quot;)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>array_table.get(&quot;arr&quot;).length</expression-string>
+        <expression-string>variables.get(&quot;var2_l&quot;)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>get_index.asInt()</expression-string>
+        <expression-string>variables.get(iterator)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Variable/ArrayTable.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Lexer/Token.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Variable/VariableTable.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Variable/VariableDeclare.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Variable/ArrayDeclare.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Lib/Expression/BinaryConditionExpression.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Lib/Expression/BinaryExpression.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Lexer/TokenBlock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#215#216#0" expanded="true" />
-            <element signature="e#249#250#0" expanded="true" />
-            <element signature="e#335#336#0" expanded="true" />
-            <element signature="e#356#357#0" expanded="true" />
-            <element signature="e#444#445#0" expanded="true" />
-            <element signature="e#465#466#0" expanded="true" />
-            <element signature="e#164#165#0" expanded="true" />
-            <element signature="e#191#192#0" expanded="true" />
-            <element signature="e#237#238#0" expanded="true" />
-            <element signature="e#264#265#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Variable/FUNCTION/TypeParams.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Variable/FUNCTION/TypeArray.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Variable/FUNCTION/Primitive.java" />
@@ -598,7 +632,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Lib/Statement/FunctionalExpression.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Lib/Statement/IOStream/WriteStatement.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Variable/Steck.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Variable/Variable.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Lexer/BaseLexer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1">
@@ -709,62 +742,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="43" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#readFile#0;class#Main#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="421" selection-start-line="421" selection-end-line="421" />
           <folding>
             <element signature="e#15631#15632#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/SteckData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="56" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/SEMANTICS_ANALYSIS/Parse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#cond#0;class#Parse#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjectType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="65" selection-start-line="8" selection-start-column="65" selection-end-line="8" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Type/IntegerType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#135#136#0" expanded="true" />
-            <element signature="e#169#170#0" expanded="true" />
-            <element signature="e#255#256#0" expanded="true" />
-            <element signature="e#513#514#0" expanded="true" />
-            <element signature="e#537#538#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -819,50 +802,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Lexer/BaseToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Expression/ObjectExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="112" column="58" selection-start-line="112" selection-start-column="58" selection-end-line="112" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/doc.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="796">
           <caret line="105" column="31" selection-start-line="105" selection-start-column="31" selection-end-line="105" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/PrimitiveType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-          <folding>
-            <element signature="e#277#278#0" expanded="true" />
-            <element signature="e#250#251#0" expanded="true" />
-            <element signature="e#278#279#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/BaseParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#cond#0;class#BaseParser#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -877,10 +820,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Parser.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1012">
-          <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
+        <state relative-caret-position="646">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#readFile#0;class#Main#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/HashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="1476" selection-start-line="1476" selection-end-line="1476" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Expression/CallFunctionExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/SEMANTICS_ANALYSIS/FunctionTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#484#485#0" expanded="true" />
+            <element signature="e#516#517#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/SEMANTICS_ANALYSIS/Function.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#404#405#0" expanded="true" />
+            <element signature="e#431#432#0" expanded="true" />
+            <element signature="e#513#514#0" expanded="true" />
+            <element signature="e#615#616#0" expanded="true" />
+            <element signature="e#647#648#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Expression/ObjectExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="841">
+          <caret line="112" column="58" selection-start-line="112" selection-start-column="58" selection-end-line="112" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjectData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -889,44 +897,121 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/SegmentData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="46" column="140" selection-start-line="46" selection-start-column="140" selection-end-line="46" selection-end-column="140" />
+        <state relative-caret-position="765">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/AggregateType.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/SEMANTICS_ANALYSIS/Parse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+        <state relative-caret-position="416">
+          <caret line="78" column="63" selection-start-line="78" selection-start-column="63" selection-end-line="78" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#591#592#0" expanded="true" />
-            <element signature="e#634#635#0" expanded="true" />
-            <element signature="e#855#856#0" expanded="true" />
-            <element signature="e#895#896#0" expanded="true" />
+            <element signature="method#cond#0;class#Parse#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/MultiAggregateType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="48" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
+        <state relative-caret-position="782">
+          <caret line="54" column="8" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1094#1095#0" expanded="true" />
-            <element signature="e#1121#1122#0" expanded="true" />
+            <element signature="e#1409#1410#0" expanded="true" />
+            <element signature="e#1436#1437#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjectData.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/PrimitiveType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="127" selection-start-line="23" selection-start-column="127" selection-end-line="23" selection-end-column="127" />
+        <state relative-caret-position="272">
+          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+          <folding>
+            <element signature="e#169#170#0" expanded="true" />
+            <element signature="e#203#204#0" expanded="true" />
+            <element signature="e#243#244#0" expanded="true" />
+            <element signature="e#277#278#0" expanded="true" />
+            <element signature="e#556#557#0" expanded="true" />
+            <element signature="e#583#584#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Variable/VArrayMultiObjectType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#981#982#0" expanded="true" />
+            <element signature="e#1007#1008#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Lexer/BaseToken.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Type/IntegerType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#135#136#0" expanded="true" />
+            <element signature="e#169#170#0" expanded="true" />
+            <element signature="e#255#256#0" expanded="true" />
+            <element signature="e#513#514#0" expanded="true" />
+            <element signature="e#537#538#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Lexer/TokenBlock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#215#216#0" expanded="true" />
+            <element signature="e#266#267#0" expanded="true" />
+            <element signature="e#335#336#0" expanded="true" />
+            <element signature="e#389#390#0" expanded="true" />
+            <element signature="e#606#607#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/BaseParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="121" selection-start-line="121" selection-end-line="121" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -935,18 +1020,87 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Parser/ExpressionEval.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="739">
-          <caret line="149" column="61" selection-start-line="149" selection-start-column="61" selection-end-line="149" selection-end-column="61" />
+        <state relative-caret-position="176">
+          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.txt">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Variable/VArrayObjectType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+        <state relative-caret-position="365">
+          <caret line="22" column="33" lean-forward="true" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/ObjectType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/SteckData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="96" column="73" selection-start-line="96" selection-start-column="73" selection-end-line="96" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#350#351#0" expanded="true" />
+            <element signature="e#399#400#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/Variable/Variable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="51" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#894#895#0" expanded="true" />
+            <element signature="e#927#928#0" expanded="true" />
+            <element signature="e#1035#1036#0" expanded="true" />
+            <element signature="e#1063#1064#0" expanded="true" />
+            <element signature="e#1107#1108#0" expanded="true" />
+            <element signature="e#1134#1135#0" expanded="true" />
+            <element signature="e#1183#1184#0" expanded="true" />
+            <element signature="e#1227#1228#0" expanded="true" />
+            <element signature="e#1273#1274#0" expanded="true" />
+            <element signature="e#1307#1308#0" expanded="true" />
+            <element signature="e#1354#1355#0" expanded="true" />
+            <element signature="e#1396#1397#0" expanded="true" />
+            <element signature="e#1445#1446#0" expanded="true" />
+            <element signature="e#1487#1488#0" expanded="true" />
+            <element signature="e#1543#1544#0" expanded="true" />
+            <element signature="e#1590#1591#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Parser/DATA_SEGMENT/AggregateType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="84" selection-start-line="34" selection-start-column="84" selection-end-line="34" selection-end-column="84" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#617#618#0" expanded="true" />
+            <element signature="e#661#662#0" expanded="true" />
+            <element signature="docComment;method#asPrimative#0;class#AggregateType#0" />
+            <element signature="e#1065#1066#0" expanded="true" />
+            <element signature="e#1092#1093#0" expanded="true" />
+            <element signature="e#1141#1142#0" expanded="true" />
+            <element signature="e#1174#1175#0" expanded="true" />
+            <element signature="e#1230#1231#0" expanded="true" />
+            <element signature="e#1257#1258#0" expanded="true" />
+            <element signature="e#1302#1303#0" expanded="true" />
+            <element signature="e#1329#1330#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

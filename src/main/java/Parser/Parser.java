@@ -4,24 +4,31 @@ import Lexer.TypeToken;
 import Lexer.*;
 import Parser.DATA_SEGMENT.ObjArray;
 import Parser.DATA_SEGMENT.SegmentData;
+import Parser.DATA_SEGMENT.SteckData;
 import Parser.Statement.Statement;
 import Parser.Type.*;
+import SEMANTICS_ANALYSIS.Function;
+import SEMANTICS_ANALYSIS.FunctionTable;
+import SEMANTICS_ANALYSIS.Parse;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public final class Parser extends ExpressionEval{
     private boolean flage_block = false;
+    private Parse parse;
+
+    private static int visibility = 0;
 
     public void init_parser(List<Token> tokens, boolean flage_block){
       init_expression_eval(tokens);
+      setPos(0);
       this.flage_block = flage_block;
     }
 
-
-
     public void run(){
-       for(Token it : getTokens()) System.out.println(it.getType()+" : "+it.getValue());
-       System.out.println("================================\n");
+       //for(Token it : getTokens()) System.out.println(it.getType()+" : "+it.getValue());
+       //System.out.println("================================\n");
 
 
         while(cond()){
@@ -32,6 +39,12 @@ public final class Parser extends ExpressionEval{
     }
 
     private Statement statement() {
+        if(get(0).getType() == TypeToken.Block){
+             blockStatement();
+             next(1);
+             return null;
+        }
+
         if(get(0).getType() == TypeToken.sys_write){
             next(1);
             write.stream(expression());
@@ -58,12 +71,29 @@ public final class Parser extends ExpressionEval{
         return null;
     }
 
+    /**** ПОКА ЧТО ВРОДЕ РАБОТАЕТ НАДО ТЕПЕРЬ РЕШИТЬ ПРОБЛЕМУ ВЫДЕЛЕНИЯ ПАМЯТИ НА СТЕКЕ И СЕГМЕНТЕ ДАННЫХ ***/
+    private Statement blockStatement() {
+        paser = new Parser();
+        TokenBlock block = (TokenBlock) get(0);
+        paser.init_parser(block.getTokens(), true);
 
+        visibility++;
+        SteckData.setVisibility(visibility);
+
+        paser.run();
+
+        SteckData.deleteObject(visibility);  /** ЧИСТИМ СТЕК ПОСЛЕ ВЫХОДА ИЗ ОБЛАСТИ ВИДИМОСТИ **/
+        setFlageBlock(false);       /** УСТАГАВЛИВАЕМ ФЛАГ ЧТО ВЫХОДИМ ИЗ БЛОКА STATEMENT`ОВ **/
+
+        visibility--;
+        return null;
+    }
 
 
     private Statement declare_variable(String name_obj, Type expression) {
         if(flage_block == true){    /** создание объекта на стеке **/
-
+            SteckData.newObject(name_obj, expression);
+            return null;
         }
         /** создание объекта в сегменте данных **/
         SegmentData.newObject(name_obj, expression);
@@ -89,7 +119,8 @@ public final class Parser extends ExpressionEval{
             init_data_array = initialize_array();
         }
         if(flage_block == true){     /** создание объекта на стеке **/
-
+            SteckData.newObject(name_obj, index_1, init_data_array);
+            return null;
         }
         /** создание объекта в сегменте данных **/
         SegmentData.newObject(name_obj, index_1, init_data_array);
@@ -142,5 +173,7 @@ public final class Parser extends ExpressionEval{
         return init_data_array;
     }
 
-
+    private void setFlageBlock(final boolean status){
+        this.flage_block = status;
+    }
 }

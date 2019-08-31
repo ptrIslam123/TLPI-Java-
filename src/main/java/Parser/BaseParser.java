@@ -4,6 +4,7 @@ import Lexer.*;
 import Parser.DATA_SEGMENT.ObjectData;
 import Parser.Expression.BinaryConditionExpression;
 import Parser.Expression.BinaryExpression;
+import Parser.Expression.CallFunctionExpression;
 import Parser.Expression.ObjectExpression;
 import Parser.Statement.WriteStreamStatement;
 import Parser.Type.*;
@@ -14,6 +15,9 @@ public class BaseParser {
     private int pos, length;
     private final Token EOF = new BaseToken(TypeToken.EOF);
 
+    protected Parser paser;
+
+    protected CallFunctionExpression callFuncExpr;
     private BinaryExpression binaryExpr;
     private BinaryConditionExpression binaryCondExpr;
     protected WriteStreamStatement write;
@@ -22,6 +26,8 @@ public class BaseParser {
     protected ObjectData objectData;
 
     public BaseParser() {
+        setPos(0);
+        this.callFuncExpr = new CallFunctionExpression();
         this.objectData = new ObjectData();
         this.objectExpr = new ObjectExpression();
         this.binaryExpr = new BinaryExpression();

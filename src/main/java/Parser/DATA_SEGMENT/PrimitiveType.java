@@ -27,4 +27,9 @@ public class PrimitiveType implements ObjectType {
     public Type[][] asMultiAggregate() {
         return null;
     }
+
+    @Override
+    public String getName() {
+        return null;
+    }
 }

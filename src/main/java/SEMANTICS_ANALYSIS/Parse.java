@@ -24,7 +24,7 @@ public class Parse {
             }
             if(peek(0).getType() == TypeToken.Define_func){
                 next(1);
-                //define_function();
+                define_function();
                 continue;
             }
             if(peek(0).getType() == TypeToken.Word && peek(1).getType() == TypeToken.Lparen){
@@ -34,19 +34,6 @@ public class Parse {
                 continue;
             }
             if(peek(0).getType() == TypeToken.ShapeLparen){
-                /*
-                if(pos != 0){
-                    if(peek(-1).getType() == TypeToken.Equals){
-                        optimazi_tokens.add(new BaseToken(TypeToken.ShapeLparen));
-                        next(1);
-                        continue;
-                    }
-                    if(peek(-1).getType() == TypeToken.ShapeLparen){
-
-                    }
-                }
-                next(1);
-                */
                 optimazi_tokens.add(blokeTokens());
                 continue;
             }
@@ -63,19 +50,19 @@ public class Parse {
 */
         return optimazi_tokens;
     }
-/*
+
     private void define_function() {
         String name_func = peek(0).getValue();  // function name
         next(1);
         consume(TypeToken.Lparen);
-        List<Token> local_param = parse_local_param(); // get local_param function
+        ArrayList<Token> local_param = parse_local_param(); // get local_param function
         consume(TypeToken.ShapeLparen);
         TokenBlock body = blokeTokens();
-        FunctionTable.putFunc(name_func, local_param, body);
+        FunctionTable.putFuncion(name_func, local_param, body);
     }
-*/
-    private List<Token> parse_local_param() {
-        List<Token> param = new ArrayList<Token>();
+
+    private ArrayList<Token> parse_local_param() {
+        ArrayList<Token> param = new ArrayList<Token>();
         while(peek(0).getType() != TypeToken.Rparen){
             if(peek(0).getType() == TypeToken.Comma)next(1);
             param.add(peek(0));
@@ -89,6 +76,7 @@ public class Parse {
      TokenBlock block = new TokenBlock();
      Token it = null;
      while(peek(0).getType() != TypeToken.EOF){
+         if(peek(0).getType() == TypeToken.R_SQUareParen)next(1);
          if(peek(0).getType() == TypeToken.ShapeRparen){
              pos++;
              break;

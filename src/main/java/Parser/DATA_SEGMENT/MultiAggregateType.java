@@ -49,4 +49,9 @@ public class MultiAggregateType implements ObjectType {
     public Type[][] asMultiAggregate() {
         return this_Array;
     }
+
+    @Override
+    public String getName() {
+        return null;
+    }
 }

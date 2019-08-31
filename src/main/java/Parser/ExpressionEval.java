@@ -6,6 +6,7 @@ import Parser.DATA_SEGMENT.ObjectData;
 import Parser.Type.Type;
 import com.sun.org.apache.regexp.internal.RE;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExpressionEval extends BaseParser {
@@ -96,6 +97,14 @@ public class ExpressionEval extends BaseParser {
             return temp;
         }
 
+
+
+        if(get(0).getType() == TypeToken.Call){
+            next(1);
+            return callFunction();
+        }
+
+
         /** в начале будет проведено на соответствие обращения к пользовательским объектам **/
         if(get(0).getType() == TypeToken.Word){
             String name_obj = get(0).getValue();
@@ -115,6 +124,28 @@ public class ExpressionEval extends BaseParser {
         }
 
         return primitive(); /** парсинг примитивных типов данных **/
+    }
+
+    private Type callFunction() {
+        String name_func = get(0).getValue();
+        next(1);
+
+        consume(TypeToken.Lparen);
+        ArrayList<Token> in_param = parse_in_param_def();
+
+        callFuncExpr.init(name_func, in_param);
+        return callFuncExpr.eval();
+    }
+
+    private ArrayList<Token> parse_in_param_def() {
+        ArrayList<Token> param = new ArrayList<Token>(6);
+        while(get(0).getType() != TypeToken.Rparen){
+            if(get(0).getType() == TypeToken.Comma)next(1);
+            param.add(get(0));
+            next(1);
+        }
+        next(1);
+        return param;
     }
 
     private Type setValueVariable(String name_obj, Type expression) {

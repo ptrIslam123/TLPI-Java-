@@ -1,20 +1,7 @@
-dec var = 12 +3
-var = "newVar"
-print var
 
-print "==============="
-dec arr[2] = (12,23)
-arr[0]  = 100101
-print arr[0]
-print arr[1]
+{
+    dec arr[2] = (10,34)
+}
 
-print "=============="
 
-dec array[2][1+1] = (
-    (100,110),(200,220)
-)
-array[0][0] = 111111
-print array[0][0]
-print array[0][1]
-print array[1][1]
-print array[1][1]
+
