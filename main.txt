@@ -1,3 +1,8 @@
-dec var = 12+ 12
-dec arr[2] = (10)
-dec array[2][2] = ((10,12))
+{
+    dec var1 = 10
+    dec var2 = 20
+    {
+        dec var3 = 30
+    }
+
+}

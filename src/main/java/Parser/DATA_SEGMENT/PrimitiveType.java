@@ -16,7 +16,7 @@ public class PrimitiveType implements ObjectType {
     public void setValue(Type value) {
         this.value = value;
     }
-
+    @Override
     public int getVisibility() {
         return visibility;
     }

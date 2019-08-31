@@ -1,11 +1,8 @@
 package Parser.DATA_SEGMENT;
 
 import Parser.Type.Type;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public final class SegmentData extends BaseData{
     private static int begin_initialize_size_segment_data = 4;
@@ -33,8 +30,7 @@ public final class SegmentData extends BaseData{
 
 
     public static ObjectType getObject(final String name){
-        return null;
+        setVariables(variables);
+        return getObj(name);
     }
-
-
 }

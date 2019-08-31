@@ -32,6 +32,18 @@ public class BaseData {
 
 
 
+
+    public static ObjectType getObj(final String name){
+        ObjectType iterator = null;
+        for(int i=0; i<variables.size(); i++){
+            iterator = variables.get(i);
+            if(iterator.getName().equalsIgnoreCase(name))return iterator;
+        }
+        return null;
+    }
+
+
+
     protected static void even(final String name, final Type capasity, final List<Type> init_data, final int visibility){
         if(capasity == null && init_data == null)throw new RuntimeException("Error -> Array size not specified: " + name);
         if(capasity == null){

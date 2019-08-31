@@ -33,7 +33,7 @@ public class AggregateType implements ObjectType {
     public void setNewValueArray(final int index, final Type newValue){
         this_Array[index] = newValue;
     }
-
+    @Override
     public int getVisibility() {
         return visibility;
     }

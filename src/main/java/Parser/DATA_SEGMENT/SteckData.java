@@ -30,10 +30,20 @@ public final class SteckData extends BaseData{
     }
 
     public static ObjectType getObject(final String name){
-        return null;
+       setVariables(variables);
+       return getObj(name);
     }
 
     public static void deleteObject(final int visibility){
-
+        ObjectType temp = null;
+        int i=0;
+        while(i<variables.size()){
+            temp = variables.get(i);
+            if(temp.getVisibility() == visibility){
+                variables.remove(i);
+                i--;
+            }
+            i++;
+        }
     }
 }

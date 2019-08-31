@@ -9,4 +9,5 @@ public interface ObjectType {
     Type[][] asMultiAggregate();   /** ДВУХ МЕРНЫЙ МАССИВ ТИПА ДАННЫХ**/
 
     String getName(); /**** this is test fiend ****/
+    int getVisibility(); /** область видимости для объектов **/
 }
