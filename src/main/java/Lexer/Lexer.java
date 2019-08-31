@@ -80,6 +80,9 @@ public class Lexer extends BaseLexer {
     }
 
     private void tokenizeOPERANDS(){
+        if(same("static")){
+            addToken(TypeToken.Static_o,"");
+        }
         if(same("dec")){
             addToken(TypeToken.Alloc,"");
         }

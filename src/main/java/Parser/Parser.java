@@ -10,13 +10,13 @@ import Parser.Type.*;
 import SEMANTICS_ANALYSIS.Function;
 import SEMANTICS_ANALYSIS.FunctionTable;
 import SEMANTICS_ANALYSIS.Parse;
-
 import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class Parser extends ExpressionEval{
     private boolean flage_block = false;
+    private boolean static_flage = false;
     private Parse parse;
 
     private static int visibility = 0;
@@ -55,8 +55,14 @@ public final class Parser extends ExpressionEval{
 
         if(get(0).getType() == TypeToken.Alloc){
             next(1);
-            String name_obj = get(0).getValue();
-            next(1);
+
+                if(get(0).getType() == TypeToken.Static_o){
+                    next(1);
+                    static_flage = true;
+                }
+
+                String name_obj = get(0).getValue();
+                next(1);
 
                 if(get(0).getType() == TypeToken.Equals){   /** декларирование переменных **/
                     next(1);
@@ -92,6 +98,11 @@ public final class Parser extends ExpressionEval{
 
 
     private Statement declare_variable(String name_obj, Type expression) {
+        if(static_flage == true){ /** ДЛЯ ВЫДЕЛЕНИЕ ПАМЯТИ ПОД СТАТИЧЕСКИЕ ОБЪЕКТЫ **/
+            SegmentData.newObject(name_obj, expression, 0);
+            static_flage = false;
+            return null;
+        }
         if(flage_block == true){    /** создание объекта на стеке **/
             SteckData.newObject(name_obj, expression, visibility);
             return null;
@@ -119,6 +130,12 @@ public final class Parser extends ExpressionEval{
             next(2);
             init_data_array = initialize_array();
         }
+
+        if(static_flage == true){    /** ДЛЯ ВЫДЕЛЕНИЕ ПАМЯТИ ПОД СТАТИЧЕСКИЕ ОБЪЕКТЫ **/
+            SegmentData.newObject(name_obj, index_1, init_data_array, 0);
+            static_flage = false;
+            return null;
+        }
         if(flage_block == true){     /** создание объекта на стеке **/
             SteckData.newObject(name_obj, index_1, init_data_array, visibility);
             return null;
@@ -138,6 +155,13 @@ public final class Parser extends ExpressionEval{
         if(get(0).getType() == TypeToken.Equals && get(1).getType() == TypeToken.Lparen){
             next(3);
             init_data_multi_array = init_multi_array();
+        }
+
+
+        if(static_flage == true){    /** ДЛЯ ВЫДЕЛЕНИЕ ПАМЯТИ ПОД СТАТИЧЕСКИЕ ОБЪЕКТЫ **/
+            SegmentData.newObject(name_obj, index_1, index_2, init_data_multi_array, 0);
+            static_flage = false;
+            return null;
         }
         if(flage_block == true){     /** создание объекта на стеке **/
             SteckData.newObject(name_obj, index_1, index_2, init_data_multi_array, visibility);
