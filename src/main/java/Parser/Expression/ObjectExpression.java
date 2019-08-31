@@ -61,44 +61,6 @@ public class ObjectExpression implements Expression {
         }
     }
 
-    public void setNewValueObject(final String name, final Type newValue){
-        ObjectType obj_temp = null;
-        obj_temp = SteckData.getObject(name);
-        if(obj_temp != null){
-
-        }
-        obj_temp = SegmentData.getObject(name);
-        if(obj_temp == null)throw new RuntimeException("Unknown user object type: "+name);
-
-    }
-
-    public void setNewValueObject(final String name, final int index, final Type newValue){
-        ObjectType obj_temp = null;
-        obj_temp = SteckData.getObject(name);
-        if(obj_temp != null){
-            obj_temp.asAggregate()[index] = newValue;
-            return;
-        }
-        obj_temp = SegmentData.getObject(name);
-        obj_temp.asAggregate()[index] = newValue;
-    }
-
-    public void setNewValueObject(final String name, final int index_1, final int index_2, final Type newValue){
-
-    }
-
-    public Type getValueObject(final String name){
-        ObjectType temp = null;
-        temp = SteckData.getObject(name);
-        if(temp != null){
-            return null;
-        }
-        temp = SegmentData.getObject(name);
-        if(temp != null){
-            return returnGetObject(temp,0,0);
-        }
-        throw new RuntimeException("Unknown object type: " + name);
-    }
 
     private Type returnGetObject(ObjectType temp, final int index_1, final int index_2) {
         if(temp instanceof PrimitiveType){
@@ -114,7 +76,8 @@ public class ObjectExpression implements Expression {
     }
 
     private ObjectType getObjectSegmentData() {
-        return SegmentData.getObject(name_obj);
+        //return SegmentData.getObject(name_obj);
+        return null;
     }
 
     private ObjectType getObjectSteckData() {

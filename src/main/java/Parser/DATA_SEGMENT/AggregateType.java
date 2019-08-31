@@ -5,44 +5,39 @@ import Parser.Type.Type;
 import java.util.List;
 
 public class AggregateType implements ObjectType {
-    private String name; /****/
+    private String name;
     private int capasity;
+    private int visibility;
     private Type[] this_Array = null;
 
-    public AggregateType(final String name, int capasity, final List<Type> array) {
-        if(capasity < array.size())throw new RuntimeException("Out of bounds Array: "+name+" :index["+array.size()+"]");
+    public AggregateType(final String name, final int capasity, final List<Type> init_data, final int visibility) {
+        this.name = name;
         this.capasity = capasity;
-        this.this_Array = new Type[capasity];
-
-        init_data(array);
+        this.visibility = visibility;
+        init_data(init_data);
     }
 
+    public AggregateType(final String name, final int capasity, final int visibility) {
+        this.name = name;
+        this.capasity = capasity;
+        this.visibility = visibility;
+        this_Array = new Type[capasity];
+    }
+
+    private void init_data(List<Type> array) {
+        this_Array = new Type[capasity];
+        for(int i=0; i<array.size(); i++){
+            this_Array[i] = array.get(i);
+        }
+    }
     public void setNewValueArray(final int index, final Type newValue){
         this_Array[index] = newValue;
     }
 
-    private void init_data(List<Type> array) {
-        for(int i=0; i<array.size(); i++){
-            this.this_Array[i] = array.get(i);
-        }
+    public int getVisibility() {
+        return visibility;
     }
 
-    public AggregateType(final int capasity) {
-        this.capasity = capasity;
-        this.this_Array = new Type[capasity];
-    }
-    /****/
-    public AggregateType(final String name, final int capasity, final int visibility) {
-        this.capasity = capasity;
-        this.name = name;
-        this.this_Array = new Type[capasity];
-    }
-    /****/
-/**
-    public Type getIndexValue(final int index){
-        return this_Array[index];
-    }
-**/
     @Override
     public Type asPrimative() {
         return null;
@@ -60,14 +55,6 @@ public class AggregateType implements ObjectType {
 
     @Override
     public String getName() {
-        return null;
-    }
-
-
-    public void init(final String name, int _capasity_, final List<Type> array) {
-        if(capasity < array.size())throw new RuntimeException("Out of bounds Array: "+name+" :index["+array.size()+"]");
-        capasity = _capasity_;
-        this.this_Array = new Type[capasity];
-        init_data(array);
+        return name;
     }
 }

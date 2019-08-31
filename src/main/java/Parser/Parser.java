@@ -11,6 +11,7 @@ import SEMANTICS_ANALYSIS.Function;
 import SEMANTICS_ANALYSIS.FunctionTable;
 import SEMANTICS_ANALYSIS.Parse;
 
+import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,7 +79,7 @@ public final class Parser extends ExpressionEval{
         paser.init_parser(block.getTokens(), true);
 
         visibility++;
-        SteckData.setVisibility(visibility);
+        //SteckData.setVisibility(visibility);
 
         paser.run();
 
@@ -92,11 +93,11 @@ public final class Parser extends ExpressionEval{
 
     private Statement declare_variable(String name_obj, Type expression) {
         if(flage_block == true){    /** создание объекта на стеке **/
-            SteckData.newObject(name_obj, expression);
+            SteckData.newObject(name_obj, expression, visibility);
             return null;
         }
         /** создание объекта в сегменте данных **/
-        SegmentData.newObject(name_obj, expression);
+        SegmentData.newObject(name_obj, expression, 0);
         return null;
     }
 
@@ -119,11 +120,11 @@ public final class Parser extends ExpressionEval{
             init_data_array = initialize_array();
         }
         if(flage_block == true){     /** создание объекта на стеке **/
-            SteckData.newObject(name_obj, index_1, init_data_array);
+            SteckData.newObject(name_obj, index_1, init_data_array, visibility);
             return null;
         }
         /** создание объекта в сегменте данных **/
-        SegmentData.newObject(name_obj, index_1, init_data_array);
+        SegmentData.newObject(name_obj, index_1, init_data_array, 0);
         return null;
     }
 
@@ -139,10 +140,11 @@ public final class Parser extends ExpressionEval{
             init_data_multi_array = init_multi_array();
         }
         if(flage_block == true){     /** создание объекта на стеке **/
-
+            SteckData.newObject(name_obj, index_1, index_2, init_data_multi_array, visibility);
+            return null;
         }
         /** создание объекта в сегменте данных **/
-        SegmentData.newObject(name_obj, index_1, index_2, init_data_multi_array);
+        SegmentData.newObject(name_obj, index_1, index_2, init_data_multi_array, 0);
         return null;
     }
 

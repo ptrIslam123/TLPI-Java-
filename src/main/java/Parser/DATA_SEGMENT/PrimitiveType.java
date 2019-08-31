@@ -3,14 +3,22 @@ package Parser.DATA_SEGMENT;
 import Parser.Type.Type;
 
 public class PrimitiveType implements ObjectType {
-    private Type value;
+   private String name;
+   private Type value;
+   private int visibility;
 
-    public PrimitiveType(Type value) {
+    public PrimitiveType(String name, Type value, int visibility) {
+        this.name = name;
         this.value = value;
+        this.visibility = visibility;
     }
 
     public void setValue(Type value) {
         this.value = value;
+    }
+
+    public int getVisibility() {
+        return visibility;
     }
 
     @Override
@@ -30,6 +38,6 @@ public class PrimitiveType implements ObjectType {
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 }
