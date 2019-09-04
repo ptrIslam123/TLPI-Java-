@@ -26,6 +26,7 @@ public class Main {
         List<Token> tokens = lexer.run();
 
         //for(Token it : tokens) System.out.println(it.getType()+" : "+it.getValue());
+        //System.out.println("-----------------------------");
 
         Parse parse = new Parse(tokens);
         List<Token> optimaize_tokens = parse.run();

@@ -30,8 +30,8 @@ public final class Parser extends ExpressionEval{
     }
 
     public void run(){
-       for(Token it : getTokens()) System.out.println(it.getType()+" : "+it.getValue());
-       System.out.println("================================\n");
+       //for(Token it : getTokens()) System.out.println(it.getType()+" : "+it.getValue());
+       //System.out.println("================================\n");
 
 
         while(cond()){
@@ -45,17 +45,6 @@ public final class Parser extends ExpressionEval{
         if(get(0).getType() == TypeToken.If){
             next(1);
             return ifStatement();
-        }
-        if(get(0).getType() == TypeToken.Els){
-            if(flage_block_if_res == false  && flage_execute_if == true){
-                next(1);
-                return blockStatement();
-            }
-            if(flage_block_if_res == true  && flage_execute_if == true){
-                next(2);
-                return null;
-            }
-            throw new RuntimeException("Unknown operation token: "+get(0).getType());
         }
         if(get(0).getType() == TypeToken.While){
             next(1);
@@ -102,12 +91,19 @@ public final class Parser extends ExpressionEval{
 
     private Statement ifStatement() {
         boolean result = expression().asBoll();
-        flage_execute_if = result==true?true:false;
-        flage_block_if_res = result;
+
         if(result == true){
             blockStatement();
         }
         next(1);
+
+        if(get(0).getType() == TypeToken.Els){
+            next(1);
+            if(result == false){
+                blockStatement();
+            }
+            next(1);
+        }
         return null;
     }
 

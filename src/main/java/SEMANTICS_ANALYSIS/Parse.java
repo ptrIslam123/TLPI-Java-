@@ -1,6 +1,7 @@
 package SEMANTICS_ANALYSIS;
 
 import Lexer.*;
+import jdk.nashorn.internal.parser.TokenType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,9 @@ public class Parse {
                 continue;
             }
             if(peek(0).getType() == TypeToken.ShapeLparen){
+                /******/
+                next(1);
+                /******/
                 optimazi_tokens.add(blokeTokens());
                 continue;
             }
@@ -75,7 +79,8 @@ public class Parse {
     private TokenBlock blokeTokens() {
      TokenBlock block = new TokenBlock();
      Token it = null;
-     while(peek(0).getType() != TypeToken.EOF){
+     while (peek(0).getType() != TypeToken.EOF){
+
          if(peek(0).getType() == TypeToken.R_SQUareParen)next(1);
          if(peek(0).getType() == TypeToken.ShapeRparen){
              pos++;
@@ -91,6 +96,24 @@ public class Parse {
      }
      return block;
     }
+
+    /**
+     *   while(peek(0).getType() != TypeToken.EOF){
+     *          if(peek(0).getType() == TypeToken.R_SQUareParen)next(1);
+     *          if(peek(0).getType() == TypeToken.ShapeRparen){
+     *              pos++;
+     *              break;
+     *          }
+     *          if(peek(0).getType() == TypeToken.ShapeLparen){
+     *              pos++;
+     *              block.putBlock(blokeTokens());
+     *              continue;
+     *          }
+     *          block.putToken(peek(0).getType(), peek(0).getValue());
+     *          pos++;
+     *      }
+     * @param shift_pos
+     */
 
     private void next(final int shift_pos){ pos+=shift_pos; }
     private boolean consume(final TypeToken type){
