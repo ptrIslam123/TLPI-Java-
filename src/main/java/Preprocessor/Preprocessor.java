@@ -161,24 +161,3 @@ public class Preprocessor extends BasePr {
         input.delete(beg_i, end_i);
     }
 }
-
-/*
-        // ТАБЛИЦА МАКРООПРЕДЕЛЕНИЙ //
-        Defines temp = null;
-        for(int i=0; i<define_table.size(); i++){
-            temp = define_table.get(i);
-            System.out.println(temp.getName()+"\n(");
-            for(StringBuilder it : temp.getLoc_param()) System.out.println(it);
-            System.out.println(")"+temp.getBody()+"\n================");
-        }
-*/
-
-
-/*
-        // ТАБЛИЦА КОНСТАНТНЫХ ВЫРАЖЕНИЙ //
-        Const temp = null;
-        for(int i=0; i<const_table.size(); i++){
-            temp = const_table.get(i);
-            System.out.println(temp.getConstName()+" : "+temp.getConstValue());
-        }
-*/

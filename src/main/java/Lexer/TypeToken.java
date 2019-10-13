@@ -11,6 +11,14 @@ public enum TypeToken {
     Char, // символьный тип
     Void, // пустой тип
 
+    integer_t,
+    double_t,
+    char_t,
+    string_t,
+    bool_t,
+
+    Struct, // структурный тип данных
+
     /** МАТЕМАТИЧЕСКИЕ ОПЕРАНДЫ **/
     Add, // +
     Sub, // -
@@ -43,6 +51,13 @@ public enum TypeToken {
     L_SQUareParen, // [
     R_SQUareParen, // ]
 
+
+    Push,
+
+    Object,
+    Array,
+    MultiArray,
+
     Incr, // ++
     Decr, // --
     IncrSomeNum, // +=
@@ -61,15 +76,18 @@ public enum TypeToken {
 
     sys_write, // print функция
     sys_read,  // scan  функция
+    sys_readln, // println функция
 
     Define_func, // определение функций (метода)
     ret, // return
 
 
+    /**  операторы приведения типов  **/
     Str_cast, // приведение к типу string
     Int_cast,  // приведение к типу int
     Double_cast,  // приведение к типу  double
     Boll_cast,  // приведение к типу  bool
+    Char_cast,  // приведение к типу char
 
     Call, // вызов функциий
 

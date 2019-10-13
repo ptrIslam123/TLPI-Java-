@@ -1,6 +1,7 @@
 package Lexer;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class BaseLexer {
@@ -10,11 +11,11 @@ public class BaseLexer {
     private List<Token> tokens;
 
     public BaseLexer(){
-        this.tokens = new ArrayList<Token>();
+        this.tokens = new LinkedList<Token>();
     }
 
     protected final char[] single_chars_operand = {     /** массив односимвольных операндов**/
-       '+','-','/','*','=','!',',','.','>','<','(',')','{','}','[',']'
+       '+','-','/','*','=','!',',','.','>','<','(',')','{','}','['
     } ;
     protected final TypeToken[] SINGLE_TYPE_OPERAND = {     /** массив односимвольных токенов (лексем) операндов**/
       TypeToken.Add, TypeToken.Sub, TypeToken.Div,

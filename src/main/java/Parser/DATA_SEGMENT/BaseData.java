@@ -1,86 +1,111 @@
 package Parser.DATA_SEGMENT;
 
-import Parser.Type.Type;
+import Parser.Type.Integral.IntegerType;
+import Parser.Type.PrimitiveType;
+import Parser.Type.StructType.Struct.Struct;
+import Parser.Type.Types.Type;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class BaseData {
-    private static ArrayList<ObjectType> variables;
+   private static ArrayList<DataType> objectTable;
 
-    public static void setVariables(ArrayList<ObjectType> variables) {
-        BaseData.variables = variables;
+    public static void setObjectTable(ArrayList<DataType> objectTable) {
+        BaseData.objectTable = objectTable;
     }
-
+    /**
+     *  Методы по добавлению объектов на стек
+     * @param name
+     * @param value
+     * @param visibility
+     */
     protected static void push(final String name, final Type value, final int visibility){
-        int res = isExists(name);
-        if(res != -1)throwException("Multiple character",name);
-        variables.add(new PrimitiveType(name, value, visibility));
+        int res  = isExists(name);
+        if(res != -1)throwException("Multiple character definition",name);
+        addDataType(name, value, visibility);
     }
 
-    protected static void push(final String name, final Type capasity, final List<Type> init_data, final int visibility){
-        int res = isExists(name);
-        if(res != -1)throwException("Multiple character",name);
-        even(name, capasity, init_data, visibility);
+    protected static void push(final String name, Type capasity, ArrayList<Type> init_data, final int visibility){
+        int res  = isExists(name);
+        if(res != -1)throwException("Multiple character definition",name);
+        addDataType(name, capasity, init_data, visibility);
+    }
+    protected static void push(final String name, Type capasity_1, Type capasity_2, ArrayList<ObjectArray> init_data, final int visibility){
+        int res  = isExists(name);
+        if(res != -1)throwException("Multiple character definition",name);
+        addDataType(name, capasity_1, capasity_2, init_data, visibility);
     }
 
-    protected static void push(final String name, final Type capasity_1, final Type capasity_2, final List<ObjArray> init_data, final int visibility){
+    /******************************************************
+     * ПУШИМ СТРУКТУРНЫЙ ТИП ДАННЫХ И ЕЕ ОБЛАСТЬ ВИИДМОСТИ
+     *
+     * @param struct
+     * @param visibility
+     *****************************************************/
+    protected static void push(final String name_struct, final String name, final Struct struct, final int visibility){
         int res = isExists(name);
-        if(res != -1)throwException("Multiple character",name);
-        even(name, capasity_1, capasity_2, init_data, visibility);
+        if(res != -1)throwException("Multiple character definition",name);
+        addDataType(name_struct, name, struct, visibility);
     }
 
-
-
-
-
-    public static ObjectType getObj(final String name){
-        ObjectType iterator = null;
-        for(int i=0; i<variables.size(); i++){
-            iterator = variables.get(i);
-            if(iterator.getName().equalsIgnoreCase(name))return iterator;
+    /**
+     *  Метод по получению объекта из стека по символьной информацийи
+     * @param
+     * @return
+     */
+    protected static DataType getObject(final ArrayList<DataType> arrayData, final String name_obj){
+        DataType iterator = null;
+        for(int i=0; i<arrayData.size(); i++){
+            iterator = arrayData.get(i);
+            if(iterator.getName().equalsIgnoreCase(name_obj))return iterator;
         }
         return null;
     }
 
 
-
-    protected static void even(final String name, final Type capasity, final List<Type> init_data, final int visibility){
-        if(capasity == null && init_data == null)throw new RuntimeException("Error -> Array size not specified: " + name);
-        if(capasity == null){
-            variables.add(new AggregateType(name, init_data.size(), init_data, visibility));
-            return;
-        }
-        if(init_data == null){
-            variables.add(new AggregateType(name, capasity.asInt(), visibility));
-            return;
-        }else {
-            variables.add(new AggregateType(name, capasity.asInt(), init_data, visibility));
-            return;
-        }
-    }
-    protected static void even(final String name, final Type capasity1, final Type capasity2, final List<ObjArray> init_data, final int visibility){
-        if(capasity1 == null) throw new RuntimeException("Incorrect Array initialization: "+name);
-        if(capasity2 != null && init_data != null){
-            variables.add(new MultiAggregateType(name, capasity1.asInt(), capasity2.asInt(), init_data, visibility));
-            return;
-        }
-        if(capasity2 == null && init_data != null){
-            variables.add(new MultiAggregateType(name, capasity1.asInt(), init_data.size(), init_data, visibility));
-            return;
-        }
-        if(capasity2 != null && init_data == null){
-            variables.add(new MultiAggregateType(name, capasity1.asInt(), capasity2.asInt(), visibility));
-        }
-        else throw new RuntimeException("Incorrect Array initialization: "+name);
-    }
-
+    /**
+     *  Набор вспомогательных методов
+     * @param name
+     * @return
+     */
     protected static int isExists(final String name){
-        for(int i=0; i<variables.size(); i++){
-            if(variables.get(i).getName().equalsIgnoreCase(name))return i;
+        for(int i=0; i<objectTable.size(); i++){
+            if(objectTable.get(i).getName().equalsIgnoreCase(name))return i;
         }
         return -1;
     }
-    protected static void throwException(final String except_msg, final String name_obj){
+    private static void throwException(final String except_msg, final String name_obj){
         throw new RuntimeException(except_msg+": "+name_obj);
+    }
+
+    private static void addDataType(final String name_struct, final String name, final Struct struct, final int visibility){
+        objectTable.add(new DataType(name_struct, name, struct, visibility));
+    }
+    private static void addDataType(final String name, final Type value, final int visibility){
+        objectTable.add(new DataType(name, value, visibility));
+    }
+    private static void addDataType(final String name, Type capasity, ArrayList<Type> init_data, final int visibility){
+        if(capasity == null && init_data == null)
+            showMessageError("");
+        else if(capasity == null){
+            capasity = new PrimitiveType(new IntegerType(String.valueOf(init_data.size())));
+        }
+        objectTable.add(new DataType(name, capasity, init_data, visibility));
+    }
+
+    private static void addDataType(final String name, Type capasity_1, Type capasity_2, ArrayList<ObjectArray> init_data, final int visibility){
+        if(capasity_1 == null)
+            showMessageError("");
+        else if(capasity_1 == null && init_data == null)
+            showMessageError("");
+        else if(capasity_2 == null){
+            int length = init_data.get(0).getArray().size();
+            capasity_2 = new PrimitiveType(new IntegerType(String.valueOf(length)));
+        }
+        objectTable.add(new DataType(name, capasity_1, capasity_2, init_data, visibility));
+    }
+
+    private static void showMessageError(String msg) {
+        throw new RuntimeException(msg);
     }
 }

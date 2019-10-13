@@ -1,36 +1,49 @@
 package Parser.DATA_SEGMENT;
 
-import Parser.Type.Type;
+import Parser.Type.StructType.Struct.Struct;
+import Parser.Type.Types.Type;
 import java.util.ArrayList;
-import java.util.List;
 
 public final class SegmentData extends BaseData{
     private static int begin_initialize_size_segment_data = 4;
-    private static ArrayList<ObjectType> variables;
-
+    private static ArrayList<DataType> segmentData;
     static {
-        variables = new ArrayList<ObjectType>(begin_initialize_size_segment_data);
-
+        segmentData = new ArrayList<>(begin_initialize_size_segment_data);
     }
 
+    /**
+     *  КЛАСС ОТВЕЧАЮЩИЙ ЗА АЛОКАЦИЮ ОБЪЕКТОВ В СЕГМЕНТЕ ДАННЫХ
+     *  ИСПОЛЬЗУЕТ МЕТОДЫ NEWOBJECT ДЛЯ ВЫДЕЛЕНИЯ ПАМЯТИ
+     *
+     * @param name
+     * @param value
+     * @param visibility
+     */
     public static void newObject(final String name, final Type value, final int visibility){
-        setVariables(variables);
-        push(name,value, visibility);
+        setObjectTable(segmentData);
+        push(name, value, visibility);
     }
 
-    public static void newObject(final String name, final Type capasity, final List<Type> init_data, final int visibility){
-        setVariables(variables);
-        push(name,capasity, init_data, visibility);
+    public static void newObject(final String name, final Type capasity, final ArrayList<Type> init_data, final int visibility){
+        setObjectTable(segmentData);
+        push(name, capasity, init_data, visibility);
     }
 
-    public static void newObject(final String name, final Type capasity_1, final Type capasity_2, final List<ObjArray> init_data, final int visibility){
-        setVariables(variables);
-        push(name,capasity_1, capasity_2, init_data, visibility);
+    public static void newObject(final String name, final Type capasity_1, final Type capasity_2, final ArrayList<ObjectArray> init_data, final int visibility){
+        setObjectTable(segmentData);
+        push(name, capasity_1, capasity_2, init_data, visibility);
     }
 
+    public static void newObject(final String name_struct, final String name, final Struct struct, final int visibility){
+        setObjectTable(segmentData);
+        push(name_struct, name, struct, visibility);
+    }
 
-    public static ObjectType getObject(final String name){
-        setVariables(variables);
-        return getObj(name);
+    public static DataType getObjectData(final String name){
+        return getObject(segmentData, name);
+    }
+
+    public static ArrayList<DataType> getSegmentData() {
+        return segmentData;
     }
 }

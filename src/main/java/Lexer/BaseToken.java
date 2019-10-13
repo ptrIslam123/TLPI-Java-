@@ -1,6 +1,8 @@
 package Lexer;
 
-public class BaseToken implements Token {
+import java.io.Serializable;
+
+public class BaseToken implements Token, Serializable {
     private TypeToken type;
     private String value;
 

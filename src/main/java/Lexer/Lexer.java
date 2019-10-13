@@ -1,5 +1,7 @@
 package Lexer;
 
+import SemanticsAnalyzer.TokenAnalyzer.BaseInterface;
+
 import java.util.List;
 
 public class Lexer extends BaseLexer {
@@ -80,6 +82,9 @@ public class Lexer extends BaseLexer {
     }
 
     private void tokenizeOPERANDS(){
+        if(same("struct")){
+            addToken(TypeToken.Struct,"");
+        }
         if(same("else")){
             addToken(TypeToken.Els,"");
         }
@@ -92,23 +97,11 @@ public class Lexer extends BaseLexer {
         if(same("null")){
             addToken(TypeToken.Void,"");
         }
-        if(same("length")){
-            addToken(TypeToken.Len,"");
-        }
         if(same("size")){
             addToken(TypeToken.Size,"");
         }
-        if(same("str")){
-            addToken(TypeToken.Str_cast,"");
-        }
-        if(same("integer")){
-            addToken(TypeToken.Int_cast,"");
-        }
-        if(same("double")){
-            addToken(TypeToken.Double_cast,"");
-        }
-        if(same("bool")){
-            addToken(TypeToken.Boll_cast,"");
+        if(same("println")){
+            addToken(TypeToken.sys_readln,"");
         }
         if(same("print")){
             addToken(TypeToken.sys_write, "");

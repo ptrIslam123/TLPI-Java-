@@ -1,49 +1,65 @@
 package Parser.DATA_SEGMENT;
 
-import Parser.Type.Type;
+import Parser.Type.StructType.Struct.Struct;
+import Parser.Type.Types.Type;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public final class SteckData extends BaseData{
-    private static int visibility;
-    private static int begin_initialize_size_steck_data = 4;
-
-    private static ArrayList<ObjectType> variables;
-
+    /*** НАЧАЛЬНЫ ЙРАЗМЕР СТЕКА ПОД ОБЪЕКТЫ ***/
+    private static int begin_initialize_size_steck_data = 256;
+    private static ArrayList<DataType> steckData;
     static {
-        variables = new ArrayList<ObjectType>(begin_initialize_size_steck_data);
+        steckData = new ArrayList<>(begin_initialize_size_steck_data);
     }
 
+    /**
+     * КЛАСС ОТВЕЧАЮЩИЙ ЗА АЛОКАЦИЮ ОБЪЕКТОВ НА СТЕКЕ
+     * ИСПОЛЬЗУЕТ МЕТОДЫ NEWOBJECT ДЛЯ ВЫДЕЛЕНИЯ ПАМЯТИ
+     *
+     * @param name
+     * @param value
+     * @param visibility
+     */
     public static void newObject(final String name, final Type value, final int visibility){
-        setVariables(variables);
+        setObjectTable(steckData);
         push(name,value, visibility);
     }
 
-    public static void newObject(final String name, final Type capasity, final List<Type> init_data, final int visibility){
-        setVariables(variables);
+    public static void newObject(final String name, final Type capasity, final ArrayList<Type> init_data, final int visibility){
+        setObjectTable(steckData);
         push(name,capasity, init_data, visibility);
     }
 
-    public static void newObject(final String name, final Type capasity_1, final Type capasity_2, final List<ObjArray> init_data, final int visibility){
-        setVariables(variables);
+    public static void newObject(final String name, final Type capasity_1, final Type capasity_2, final ArrayList<ObjectArray> init_data, final int visibility){
+        setObjectTable(steckData);
         push(name,capasity_1, capasity_2, init_data, visibility);
     }
 
-    public static ObjectType getObject(final String name){
-       setVariables(variables);
-       return getObj(name);
+    public static void newObject(final String name_struct, final String name, final Struct struct, final int visibility){
+        setObjectTable(steckData);
+        push(name_struct, name, struct, visibility);
+    }
+
+
+    public static DataType getObjectData(final String name){
+       return getObject(steckData, name);
     }
 
     public static void deleteObject(final int visibility){
-        ObjectType temp = null;
-        int i=0;
-        while(i<variables.size()){
-            temp = variables.get(i);
-            if(temp.getVisibility() == visibility){
-                variables.remove(i);
-                i--;
-            }
-            i++;
-        }
+       DataType temp = null;
+       int i=0;
+       while(i<steckData.size()){
+           temp = steckData.get(i);
+           if(temp.getVisibility() == visibility){
+               steckData.remove(i);
+               i--;
+           }
+           i++;
+       }
+    }
+
+    public static ArrayList<DataType> getSteckData() {
+        return steckData;
     }
 }

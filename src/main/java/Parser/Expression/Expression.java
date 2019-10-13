@@ -1,7 +1,8 @@
 package Parser.Expression;
 
-import Parser.Type.Type;
+import Parser.Type.Types.Type;
 
 public interface Expression {
+
     Type eval();
 }

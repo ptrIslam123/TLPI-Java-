@@ -62,20 +62,10 @@ public class CallDefine implements CallExpression {
 
     private int equals_str(StringBuilder body, int current_pos, int index) { /** **/
         int j=0, size = loc_param.get(index).length(), end_index = current_pos + size;
-/*
-        if(current_pos > 0) {
-            if(accordType(body.charAt(current_pos - 1)) == false){
-                return -1;
-            }
-        } /** проверка символа стоящего до обьявления локального параметра**/
 
         for(int i=current_pos; j<size; i++, j++){
             if(body.charAt(i) != loc_param.get(index).charAt(j))return -1;
         }
-/*
-        if(end_index < body.length()){
-            if(accordType(body.charAt(end_index)) == false)return -1;
-        }  /**  проверка символа стоящего после обьявления локального параметра**/
         return index;
     }
 
