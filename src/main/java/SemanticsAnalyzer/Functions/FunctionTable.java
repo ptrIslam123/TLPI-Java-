@@ -4,20 +4,20 @@ import java.util.ArrayList;
 
 public class FunctionTable {
     private static int begin_size_function_table = 50;
-    private static ArrayList<Function> functions;
+    private static ArrayList<DefFunction> defFunctions;
 
     static {
-        functions = new ArrayList<Function>(begin_size_function_table);
+        defFunctions = new ArrayList<DefFunction>(begin_size_function_table);
     }
 
-    public static void add(final Function function) {
-        functions.add(function);
+    public static void add(final DefFunction defFunction) {
+        defFunctions.add(defFunction);
     }
 
-    public static Function getFunction(final String name, final int LENGTH_LOCAL_PARAMS_FUNCTION){
-       Function iterator = null;
-       for(int i=0; i<functions.size(); i++){
-           iterator = functions.get(i);
+    public static DefFunction getFunction(final String name, final int LENGTH_LOCAL_PARAMS_FUNCTION){
+       DefFunction iterator = null;
+       for(int i = 0; i< defFunctions.size(); i++){
+           iterator = defFunctions.get(i);
            if(iterator.getName().equalsIgnoreCase(name)){
                if(iterator.getLengthLocalParams() == LENGTH_LOCAL_PARAMS_FUNCTION)return iterator;
            }
@@ -26,7 +26,7 @@ public class FunctionTable {
     }
 
 
-    public static ArrayList<Function> getFunctions() {
-        return functions;
+    public static ArrayList<DefFunction> getDefFunctions() {
+        return defFunctions;
     }
 }

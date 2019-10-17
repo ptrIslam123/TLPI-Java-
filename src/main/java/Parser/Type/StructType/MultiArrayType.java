@@ -1,6 +1,7 @@
 package Parser.Type.StructType;
 
 import Parser.DATA_SEGMENT.ObjectArray;
+import Parser.Type.Integral.IntegerType;
 import Parser.Type.PrimitiveType;
 import Parser.Type.Types.Aggregate;
 import Parser.Type.Types.Primitive;
@@ -77,5 +78,15 @@ public class MultiArrayType implements Aggregate {
     @Override
     public Primitive[][] asMultiArray() {
         return array;
+    }
+
+    @Override
+    public Type getLengthArray() {
+        for(int i=0; i<array.length; i++){
+            if(array[i] == null){
+                return new PrimitiveType(new IntegerType(String.valueOf(i)));
+            }
+        }
+        return new PrimitiveType(new IntegerType(String.valueOf(capasity_1)));
     }
 }

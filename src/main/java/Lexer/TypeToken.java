@@ -51,6 +51,8 @@ public enum TypeToken {
     L_SQUareParen, // [
     R_SQUareParen, // ]
 
+    Index,
+
 
     Push,
 
@@ -76,7 +78,7 @@ public enum TypeToken {
 
     sys_write, // print функция
     sys_read,  // scan  функция
-    sys_readln, // println функция
+    sys_writeln, // println функция
 
     Define_func, // определение функций (метода)
     ret, // return

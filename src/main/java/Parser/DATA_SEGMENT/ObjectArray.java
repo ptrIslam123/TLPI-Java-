@@ -18,4 +18,5 @@ public class ObjectArray {
     public ArrayList<Type> getArray() {
         return array;
     }
+    public int getLengthArray(){ return array.size(); }
 }

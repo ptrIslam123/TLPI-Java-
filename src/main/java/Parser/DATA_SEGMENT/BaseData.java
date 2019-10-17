@@ -5,6 +5,7 @@ import Parser.Type.PrimitiveType;
 import Parser.Type.StructType.Struct.Struct;
 import Parser.Type.Types.Type;
 
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class BaseData {
@@ -37,7 +38,7 @@ public class BaseData {
     }
 
     /******************************************************
-     * ПУШИМ СТРУКТУРНЫЙ ТИП ДАННЫХ И ЕЕ ОБЛАСТЬ ВИИДМОСТИ
+     * ПИШИМ СТРУКТУРНЫЙ ТИП ДАННЫХ И ЕЕ ОБЛАСТЬ ВИИДМОСТИ
      *
      * @param struct
      * @param visibility
@@ -93,19 +94,52 @@ public class BaseData {
         objectTable.add(new DataType(name, capasity, init_data, visibility));
     }
 
-    private static void addDataType(final String name, Type capasity_1, Type capasity_2, ArrayList<ObjectArray> init_data, final int visibility){
-        if(capasity_1 == null)
+    private static void addDataType(final String name, Type capasityFirst, Type capasitySecond, ArrayList<ObjectArray> init_data, final int visibility){
+        if(capasityFirst == null && capasitySecond == null && init_data == null)
             showMessageError("");
-        else if(capasity_1 == null && init_data == null)
-            showMessageError("");
-        else if(capasity_2 == null){
-            int length = init_data.get(0).getArray().size();
-            capasity_2 = new PrimitiveType(new IntegerType(String.valueOf(length)));
+        else if(capasityFirst == null && capasitySecond != null && init_data != null){
+            capasityFirst = getPrimitiveValue(init_data.size());
         }
-        objectTable.add(new DataType(name, capasity_1, capasity_2, init_data, visibility));
+        else if(capasitySecond == null && capasityFirst != null && init_data != null){
+            capasitySecond = getPrimitiveValue(getMaxSizeObjectArray(init_data));
+        }
+        else if(capasityFirst == null && capasitySecond == null && init_data != null){
+            capasityFirst = getPrimitiveValue(init_data.size());
+            capasitySecond = getPrimitiveValue(getMaxSizeObjectArray(init_data));
+        }
+        objectTable.add(new DataType(name, capasityFirst, capasitySecond, init_data, visibility));
+    }
+
+    private static int getMaxSizeObjectArray(ArrayList<ObjectArray> init_data) {
+        int maxLengthObjectArray = 0, currentLengthObjArray = 0;
+        ObjectArray it = null;
+        for(int i=0; i<init_data.size(); i++){
+            it = init_data.get(i);
+            currentLengthObjArray = it.getLengthArray();
+            if(currentLengthObjArray > maxLengthObjectArray){
+                maxLengthObjectArray = currentLengthObjArray;
+            }
+        }
+        return maxLengthObjectArray;
+    }
+
+    private static Type getPrimitiveValue(final int size) {
+        return new PrimitiveType(new IntegerType(String.valueOf(size)));
     }
 
     private static void showMessageError(String msg) {
         throw new RuntimeException(msg);
     }
 }
+
+/*
+     if(capasityFirst == null)
+            showMessageError("");
+        else if(capasityFirst == null && init_data == null)
+            showMessageError("");
+        else if(capasitySecond == null){
+            int length = init_data.get(0).getArray().size();
+            capasitySecond = new PrimitiveType(new IntegerType(String.valueOf(length)));
+        }
+        objectTable.add(new DataType(name, capasityFirst, capasitySecond, init_data, visibility));
+ */

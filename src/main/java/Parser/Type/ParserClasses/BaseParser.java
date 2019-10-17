@@ -107,6 +107,7 @@ public class BaseParser {
     }
 
     protected boolean cond(){
+        if(getPos() >= length)return false;
         if(get(0).getType() == TypeToken.EOF)return false;
         return true;
     }
@@ -122,6 +123,7 @@ public class BaseParser {
     }
     protected void setTokens(ArrayList<Token> tokens) {
         this.tokens = tokens;
+        this.length = tokens.size();
     }
     protected void setPos(int pos) {
         this.pos = pos;

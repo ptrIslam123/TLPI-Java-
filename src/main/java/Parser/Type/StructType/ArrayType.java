@@ -62,6 +62,17 @@ public class ArrayType implements Aggregate {
     public Primitive[][] asMultiArray() {
         return null;
     }
+
+    @Override
+    public Type getLengthArray() {
+        for(int i=0; i<array.length; i++){
+            if(array[i] == null){
+                return new PrimitiveType(new IntegerType(String.valueOf(i)));
+            }
+        }
+      return new PrimitiveType(new IntegerType(String.valueOf(capasity)));
+
+    }
     /** проверка выхода за границы массива **/
    /** private void verification_size_capasity(final int capasity_1, final int capasity_2){
         if(capasity_1 < capasity_2)throw new RuntimeException("Out of bounds Array");

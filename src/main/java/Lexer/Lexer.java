@@ -95,19 +95,13 @@ public class Lexer extends BaseLexer {
             addToken(TypeToken.Alloc,"");
         }
         if(same("null")){
-            addToken(TypeToken.Void,"");
-        }
-        if(same("size")){
-            addToken(TypeToken.Size,"");
+            addToken(TypeToken.NumInt32,"0");
         }
         if(same("println")){
-            addToken(TypeToken.sys_readln,"");
+            addToken(TypeToken.sys_writeln,"");
         }
         if(same("print")){
             addToken(TypeToken.sys_write, "");
-        }
-        if(same("scan")){
-            addToken(TypeToken.sys_read,"");
         }
         if(same("false")){
             addToken(TypeToken.Bool, "0");
@@ -135,10 +129,10 @@ public class Lexer extends BaseLexer {
         }
         if(same("continue")){
             addToken(TypeToken.Continue,"");
-        }
+        }/*
         if(same("in")){
             addToken(TypeToken.in,"");
-        }
+        }*/
         if(same("&&") || same("and")){
             addToken(TypeToken.And, "");
         }

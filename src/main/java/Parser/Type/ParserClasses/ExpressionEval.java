@@ -1,19 +1,22 @@
 package Parser.Type.ParserClasses;
 
 import Lexer.Token;
+import Lexer.TokenIndex;
 import Lexer.TypeToken;
 import Parser.DATA_SEGMENT.SteckData;
 import Parser.Statement.ControlConstruction.ReturnStatement;
-import Parser.SystemFunction.SysFuncInterface.SysFunction;
+import Parser.SystemFunction.SysFuncInterface.Function;
 import Parser.SystemFunction.SysFuncInterface.SysFunctionTable;
+import Parser.SystemFunction.SysFuncInterface.UserFunction;
 import Parser.Type.StructType.Struct.StructType;
 import Parser.Type.StructType.Struct.Struct_t;
 import Parser.Type.Types.Type;
-import SemanticsAnalyzer.Functions.Function;
+import SemanticsAnalyzer.Functions.DefFunction;
 import SemanticsAnalyzer.Functions.FunctionTable;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExpressionEval extends BaseParser {
     public void init_expression_eval(ArrayList<Token> tokens){
@@ -28,7 +31,7 @@ public class ExpressionEval extends BaseParser {
 
     private Type evalLogicalFunction() throws IOException {
         Type result = conditionEval();
-        while(true){
+        while(cond()){
             if(get(0).getType() == TypeToken.And){
                 next(1);
                 result = evalLogicalFucntionExpression(TypeToken.And, result, conditionEval());
@@ -48,7 +51,7 @@ public class ExpressionEval extends BaseParser {
     protected Type conditionEval() throws IOException {
         Type result = additive();
 
-        while(true){
+        while(cond()){
             if(get(0).getType() == TypeToken.Less){
                 next(1);
                 result = eval(TypeToken.Less, result, additive());
@@ -87,7 +90,7 @@ public class ExpressionEval extends BaseParser {
     protected Type additive() throws IOException {
         Type result = multiplicative();
 
-        while(true){
+        while(cond()){
             if(get(0).getType() == TypeToken.Add){
                 next(1);
                 result = eval('+', result, multiplicative());
@@ -106,7 +109,7 @@ public class ExpressionEval extends BaseParser {
     protected Type multiplicative() throws IOException {
         Type result = primary();
 
-        while(true){
+        while(cond()){
             if(get(0).getType() == TypeToken.Mult){
                 next(1);
                 result = eval('*',result, primary());
@@ -153,12 +156,12 @@ public class ExpressionEval extends BaseParser {
         if(get(0).getType() == TypeToken.Word){
             String name_obj = get(0).getValue();
             next(1);
-            return getObjectOrSetNewValue(name_obj);
+            return workWithObject(name_obj);
         }
         return primitive();
     }
 
-    /*********************************************************************
+    /************************************************************************************************************
      * Работа с вызовами функций
      * @return
      * Метод по вызову функций и ее исполнения.
@@ -168,25 +171,28 @@ public class ExpressionEval extends BaseParser {
      * начинаем исполнять тело функций до последней инструкции или же пока не встретим токен return, после чего
      * записываем в возвращаемую переменную результат вычислений функций и возвращаемся в то место откуда нас вызвали.
      * @return
-     */
+     ***************************************************************************************************************/
     private Type callFunctionStatement() throws IOException {
-        String nameFunc = getNameCallFunc();
+        /** получаем имя вызываемой функций. Если это ананимная функция
+         *  возвращаем null(так мы сигнализируем что это ананимная функция)**/
+        String name = getNameCallFunc();
+        /** Парсим список входных параметров, результат
+         * функций - возвращаем список значений переданнх функций **/
         ArrayList<Type> listInputParams = parseInputDataFunction();
-
-        Function currentFunc = searchFunction(nameFunc, listInputParams.size());
-
-        if(currentFunc != null){
-            return executeUserFunc(currentFunc, listInputParams);
-        }
-        return executeSysFunc(nameFunc, listInputParams);
+        /** Метод по созданию объекта(представляющегося функцией) реализующий
+         * интерфейс функцийй для удобного вызоваи инициализаций локальных, входных параметров **/
+        Function function = createFuncObj(name, listInputParams);
+        /** вызываем метод по исполнению тела функций **/
+        return function.executeBody();
     }
-
+    /** метод по получению имени вызываемой функции, или же
+     *  если это ананимная функций возвращаем null**/
     protected String getNameCallFunc() {
         String name = get(0).getValue();
         next(1);
         return name;
     }
-
+    /** метод по парсингу значений вхлдных аргументов передаваемых в функцию **/
     protected ArrayList<Type> parseInputDataFunction() throws IOException {
         final int BEGIN_SIZE_LOCAL_PARAMS = 6;
         ArrayList<Type> listInputDataParams = new ArrayList<>(BEGIN_SIZE_LOCAL_PARAMS);
@@ -201,14 +207,46 @@ public class ExpressionEval extends BaseParser {
         return listInputDataParams;
     }
 
-    protected Function searchFunction(final String nameFunction, final int lengtInputlParams) {
-        return FunctionTable.getFunction(nameFunction, lengtInputlParams);
+    /*** Метод по созданию класс. В зависимости от того какая это функция
+     *  то создаем объект- функцию ли бо пользовательскую, либо системную ***/
+    private Function createFuncObj(final String name, final ArrayList<Type> listInputParams) {
+        DefFunction defFunction = searchUserFunction(name, listInputParams.size());
+        if(defFunction != null){
+            return createUserFuncObj(defFunction, listInputParams);
+        }
+        return createSysFunc(name, listInputParams);
     }
 
-    protected void initializationLocalParamCurrentFunction(final Function function, final ArrayList<Type> initData) {
+    /**  создаем пользовательскую функцию и пердаем в объект - функцию **/
+    private Function createUserFuncObj(final DefFunction defFunction, final ArrayList<Type> listInputParams) {
+        initializationLocalParamCurrentFunction(defFunction, listInputParams);
+        Function userFunc = new UserFunction(defFunction, executeBodyFunction(defFunction));
+        return userFunc;
+    }
+    /** создаем системную функцию и возвращаем результат **/
+    private Function createSysFunc(String name, ArrayList<Type> listInputParams) {
+        Function sysFunc = searchSysFunction(name);
+        if(sysFunc == null){
+            throw new RuntimeException("Not defined function: {"+name+"} with this set of input parameters");
+        }
+        sysFunc.setInputParams(listInputParams);
+        return sysFunc;
+    }
+    /*** Метод по поиску вызываемой функции в таблице пользовательских функций ***/
+    protected DefFunction searchUserFunction(final String nameFunction, final int lengthInputParams) {
+        return FunctionTable.getFunction(nameFunction, lengthInputParams);
+    }
+    /*** Метод по поиску вызываемой функции в таблице системных функций ***/
+    protected Function searchSysFunction(final String name){
+        return SysFunctionTable.getSysFunc(name);
+    }
+    /** Метод инициализаций локальных объктов передоваемых аргументов по значению в вызываемую функцию.
+     * Данный метод работает в цикле. Принимает символьную информацию создаваемого локального объкта
+     * и его значение внутри этой фнукций по итерационно. Цикл продолжаеться столько сколько у нас входных аргументов **/
+    protected void initializationLocalParamCurrentFunction(final DefFunction defFunction, final ArrayList<Type> initData) {
         visibility++;
         for(int i=0; i<initData.size(); i++){
-            String nameNewLocalParam = function.getLocalParams().get(i);
+            String nameNewLocalParam = defFunction.getLocalParams().get(i);
             Type valueNewLocalParam = initData.get(i);
             createLocalObject(nameNewLocalParam, valueNewLocalParam);
         }
@@ -218,10 +256,11 @@ public class ExpressionEval extends BaseParser {
         SteckData.newObject(name, value, visibility);
     }
 
-    protected Type executeBodyFunction(Function currentFunction) {
+    /*** Метод который исполняет тело вызываемой функций  ***/
+    protected Type executeBodyFunction(DefFunction currentDefFunction) {
         try {
             paser = new Parser();
-            paser.init_parser(currentFunction.getBody().getTokens(), true);
+            paser.init_parser(currentDefFunction.getBody().getTokens(), true);
             paser.run();
 
             SteckData.deleteObject(visibility);  /** ЧИСТИМ СТЕК ПОСЛЕ ВЫХОДА ИЗ ОБЛАСТИ ВИДИМОСТИ **/
@@ -237,25 +276,6 @@ public class ExpressionEval extends BaseParser {
             e.printStackTrace();
         }
         return null;
-    }
-
-
-    protected Type executeSysFunc(final String nameFunc, final ArrayList<Type> listInputParams) throws IOException {
-        SysFunction sysFunc = getCurrentSysFunc(nameFunc);
-        sysFunc.setInputParams(listInputParams);
-        return sysFunc.executeBody();
-    }
-
-    protected SysFunction getCurrentSysFunc(final String nameFunc) {
-        SysFunction sysFunc = SysFunctionTable.getSysFunc(nameFunc);
-        if(sysFunc == null)
-            throw new RuntimeException("this function is not defined: "+nameFunc);
-        return sysFunc;
-    }
-
-    protected Type executeUserFunc(final Function currentFunc, final ArrayList<Type> listInputParams) {
-        initializationLocalParamCurrentFunction(currentFunc, listInputParams);
-        return executeBodyFunction(currentFunc);
     }
 
     /*********************************************************************
@@ -453,7 +473,7 @@ public class ExpressionEval extends BaseParser {
 
 
     private Struct_t getNextStructField() throws IOException {
-        if(get(0).getType() == TypeToken.Word && get(1).getType() == TypeToken.L_SQUareParen){
+        if(get(0).getType() == TypeToken.Word && get(1).getType() == TypeToken.Index){
             return parseStructFieldArray();
         }
         return parseStructFieldWord();
@@ -469,11 +489,10 @@ public class ExpressionEval extends BaseParser {
      */
     private Struct_t parseStructFieldArray() throws IOException {
         String name = get(0).getValue();
-        next(2);
-        Type index = expression();
+        next(1);
+        Type index = evalIndexToken((TokenIndex) get(0));
 
-            if(get(0).getType() == TypeToken.L_SQUareParen){
-                next(1);
+            if(get(0).getType() == TypeToken.Index){
                 return parseStructFieldMultiArray(name, index);
             }
 
@@ -494,7 +513,7 @@ public class ExpressionEval extends BaseParser {
      * @return
      */
     private Struct_t parseStructFieldMultiArray(String name, Type indexFirst) throws IOException {
-        Type indexSecond = expression();
+        Type indexSecond = evalIndexToken((TokenIndex) get(0));
 
         Struct_t struct_t = new Struct_t();
         struct_t.setNameAndField(name);
@@ -577,44 +596,64 @@ public class ExpressionEval extends BaseParser {
     /**************************************************************************************
      * РАБОТА С ПРИМИТИВНЫМИ И АГРЕГИРУЮЩИМИ ТИПАМИ ДАННЫХ
      * (ПЕРЕМЕННЫЕ, МАССИВЫ)
-     * @param name_obj
+     * @param
      * @return
      ******************************************************/
-    private Type getObjectOrSetNewValue(String name_obj) throws IOException {
-        if(get(0).getType() == TypeToken.L_SQUareParen){
-            next(1);
-            return getArrayOrSetNewValue(name_obj);
+
+    private Type workWithObject(String nameObj) throws IOException {
+        if(get(0).getType() == TypeToken.Index){
+            return workWithArray(nameObj);
         }
         if(get(0).getType() == TypeToken.Equals){
             next(1);
-            return setNewValueVariable(name_obj, expression());
+            return setNewValueVariable(nameObj, expression());
         }
 
-        return getValueObject(name_obj);
+        return getValueObject(nameObj);
     }
 
 
-    private Type getArrayOrSetNewValue(String name_obj) throws IOException {
-        Type index = expression();
-        if(get(0).getType() == TypeToken.L_SQUareParen){
-            next(1);
-            return getMultiArrayOrSetNewValue(name_obj, index);
+    private Type workWithArray(String nameObj) throws IOException {
+        Type index = evalIndexToken((TokenIndex) get(0));
+        if(get(0).getType() == TypeToken.Index){
+            return getMultiArrayOrSetNewValue(nameObj, index);
         }
         if(get(0).getType() == TypeToken.Equals){
             next(1);
-            return setNewValueArray(name_obj, index, expression());
+            return setNewValueArray(nameObj, index, expression());
         }
 
-        return getValueArray(name_obj, index);
+        return getValueArray(nameObj, index);
     }
 
     private Type getMultiArrayOrSetNewValue(String name_obj, Type indexFirst) throws IOException {
-        Type indexSecond = expression();
+        Type indexSecond = evalIndexToken((TokenIndex) get(0));
         if(get(0).getType() == TypeToken.Equals){
             next(1);
             return setNewValueMultiArray(name_obj, indexFirst, indexSecond, expression());
         }
         return getValueMultiArray(name_obj, indexFirst, indexSecond);
+    }
+
+
+    protected Type evalIndexToken(TokenIndex tokenIndex) throws IOException {
+        int beginPos = getPos();
+        List<Token> tempTokens = getTokens();
+        Type indexValue = null;
+
+        if(tokenIndex.getSize() == 0) {
+            next(1);
+            return indexValue;
+        }
+        setPos(0);
+        setTokens(tokenIndex.getTokens());
+
+        indexValue = expression();
+
+        setPos(beginPos);
+        setTokens((ArrayList<Token>) tempTokens);
+        next(1);
+        return indexValue;
     }
 
     /**     установка новых значений объектов   **/

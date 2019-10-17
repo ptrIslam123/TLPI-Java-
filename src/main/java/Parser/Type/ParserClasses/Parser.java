@@ -73,7 +73,7 @@ public class Parser extends ExpressionEval {
             next(1);
             return null;
         }
-        if(get(0).getType() == TypeToken.sys_readln){
+        if(get(0).getType() == TypeToken.sys_writeln){
             next(1);
             writeStream.streamInitialize(expression(), true);
             writeStream.execute();
@@ -153,14 +153,15 @@ public class Parser extends ExpressionEval {
 
     /** декларирование объектов **/
     private Statement declareObject(final String name_obj) throws IOException {
+       if(get(0).getType() == TypeToken.Index){
+           return declareArray(name_obj);
+       }
+
        if(get(0).getType() == TypeToken.Equals){
            next(1);
            return declareVariable(name_obj, expression());
        }
-       if(get(0).getType() == TypeToken.L_SQUareParen){
-           next(1);
-           return declareArray(name_obj);
-       }
+
        if(get(0).getType() == TypeToken.Word){
            String name_struct_dec = get(0).getValue();
            next(1);
@@ -177,14 +178,10 @@ public class Parser extends ExpressionEval {
 
     /** ДЕКЛОРИРОВАНИЕ МАССИВА **/
     private Statement declareArray(String name_obj) throws IOException {
-        Type capasity = null;
+        Type capasity = evalIndexToken((TokenIndex)get(0));
         ArrayList<Type> init_data = null;
-        if(isCapasity() == true){
-            capasity = expression();
-        }
 
-        if(get(0).getType() == TypeToken.L_SQUareParen){
-            next(1);
+        if(get(0).getType() == TypeToken.Index){
             return declareMultiArray(name_obj, capasity);
         }
 
@@ -206,18 +203,15 @@ public class Parser extends ExpressionEval {
         return array_data;
     }
     /** ДЕКЛАРИРОВАНИЕ ДВУМЕРНОГО МАССИВА **/
-    private Statement declareMultiArray(String name_obj, Type capasity_1) throws IOException {
-        Type capasity_2 = null;
+    private Statement declareMultiArray(String name_obj, Type capasityFirst) throws IOException {
+        Type capasitySecond = evalIndexToken((TokenIndex) get(0));
         ArrayList<ObjectArray> init_data = null;
-        if(isCapasity() == true){
-            capasity_2 = expression();
-        }
 
         if(get(0).getType() == TypeToken.Equals && get(1).getType() == TypeToken.Lparen){
             next(3);
             init_data = parse_init_data_multi_array();
         }
-        createObject(name_obj, capasity_1, capasity_2, init_data);
+        createObject(name_obj, capasityFirst, capasitySecond, init_data);
         return null;
     }
 
@@ -257,6 +251,7 @@ public class Parser extends ExpressionEval {
         }
         SegmentData.newObject(name_struct, name, struct, visibility);
     }
+    /** Декларирование переменной **/
     private void createObject(final String name_obj, final Type value){
         if(isFlage_struct() == true){
             structBody.put(name_obj, value, -1);
@@ -273,7 +268,7 @@ public class Parser extends ExpressionEval {
         }
         SegmentData.newObject(name_obj, value, visibility);
     }
-
+    /** Декларирование объкта массива  **/
     private void createObject(final String name_obj, final Type capasity, final ArrayList<Type> init_data){
         if(isFlage_struct() == true){
             structBody.put(name_obj, capasity, init_data,  -1);
@@ -290,6 +285,7 @@ public class Parser extends ExpressionEval {
         }
         SegmentData.newObject(name_obj, capasity, init_data, visibility);
     }
+    /** Декларирование объекта двумерного массива  **/
     private void createObject(final String name_obj, final Type capasity_1, final Type capasity_2, final ArrayList<ObjectArray> init_data){
         if(isFlage_struct() == true){
             structBody.put(name_obj, capasity_1, capasity_2, init_data,  -1);

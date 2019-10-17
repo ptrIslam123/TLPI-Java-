@@ -1,16 +1,15 @@
 package Parser.SystemFunction.SysFunctionForWorkingWithFiles;
 
 import Parser.SystemFunction.SysFuncInterface.BaseInterface;
-import Parser.SystemFunction.SysFuncInterface.SysFunction;
+import Parser.SystemFunction.SysFuncInterface.Function;
 import Parser.Type.Integral.BoolType;
 import Parser.Type.PrimitiveType;
 import Parser.Type.Types.Primitive;
 import Parser.Type.Types.Type;
 import java.io.File;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-public class DeleteFile extends BaseInterface implements SysFunction {
+public class DeleteFile extends BaseInterface implements Function {
     private Primitive fileName;
     @Override
     public void setInputParams(ArrayList<Type> args) {

@@ -1,7 +1,7 @@
 package Parser.SystemFunction.SysFunctionForWorkingWithFiles;
 
 import Parser.SystemFunction.SysFuncInterface.BaseInterface;
-import Parser.SystemFunction.SysFuncInterface.SysFunction;
+import Parser.SystemFunction.SysFuncInterface.Function;
 import Parser.Type.Integral.BoolType;
 import Parser.Type.PrimitiveType;
 import Parser.Type.Types.Primitive;
@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-public class WriteFile extends BaseInterface implements SysFunction {
+public class WriteFile extends BaseInterface implements Function {
     private Primitive fileName;
     private Type readData;
     @Override

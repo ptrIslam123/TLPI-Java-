@@ -1,5 +1,7 @@
 package Lexer;
 
+import Parser.Type.Integral.CharType;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,7 +17,7 @@ public class BaseLexer {
     }
 
     protected final char[] single_chars_operand = {     /** массив односимвольных операндов**/
-       '+','-','/','*','=','!',',','.','>','<','(',')','{','}','['
+       '+','-','/','*','=','!',',','.','>','<','(',')','{','}','[',']'
     } ;
     protected final TypeToken[] SINGLE_TYPE_OPERAND = {     /** массив односимвольных токенов (лексем) операндов**/
       TypeToken.Add, TypeToken.Sub, TypeToken.Div,
@@ -129,6 +131,15 @@ public class BaseLexer {
         for(int i=0; i<str.length(); i++, pos++){
             if(peek(0) != str.charAt(i)){ pos = temp_pos; return false;}
         }
+        if(!verifyNextChar(peek(0))){
+            pos = temp_pos; return false;
+        }
         return true;
+    }
+
+    private boolean verifyNextChar(final char chars_operand) {
+        if(pos >= length)return true;
+        if(Character.isLetter(chars_operand))return false;
+       return true;
     }
 }

@@ -4,20 +4,21 @@ import Parser.SystemFunction.SysFunctionForWorkingWithFiles.*;
 import Parser.SystemFunction.SysFunctionForWorkingWithType.ClassesCastType.*;
 import Parser.SystemFunction.SysFunctionForWorkingWithThreads.CreateThreadFunction;
 import Parser.SystemFunction.SysFunctionForWorkingWithType.LengthArray;
+import Parser.SystemFunction.SysFunctionForWorkingWithType.ScannerFunction;
 import Parser.SystemFunction.SysFunctionForWorkingWithType.ThrowException;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class SysFunctionTable {
-    private static Map<String, SysFunction> sysFunctionT;
+    private static Map<String, Function> sysFunctionT;
 
-    public static SysFunction getSysFunc(final String name){
+    public static Function getSysFunc(final String name){
         return sysFunctionT.get(name);
     }
 
     static {
-        sysFunctionT = new HashMap<String, SysFunction>();
+        sysFunctionT = new HashMap<String, Function>();
 
         sysFunctionT.put("readf", new ReadFile());
         sysFunctionT.put("writef", new WriteFile());
@@ -33,6 +34,7 @@ public class SysFunctionTable {
         sysFunctionT.put("char", new CharCast());
         sysFunctionT.put("bool", new BoolCast());
 
+        sysFunctionT.put("scanner", new ScannerFunction());
         sysFunctionT.put("length", new LengthArray());
         sysFunctionT.put("throw_exception", new ThrowException());
 

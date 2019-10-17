@@ -1,7 +1,7 @@
 package Parser.SystemFunction.SysFunctionForWorkingWithFiles;
 
 import Parser.SystemFunction.SysFuncInterface.BaseInterface;
-import Parser.SystemFunction.SysFuncInterface.SysFunction;
+import Parser.SystemFunction.SysFuncInterface.Function;
 import Parser.Type.Integral.StringType;
 import Parser.Type.PrimitiveType;
 import Parser.Type.Types.Primitive;
@@ -11,7 +11,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ReadFile extends BaseInterface implements SysFunction {
+public class ReadFile extends BaseInterface implements Function {
     private Primitive fileName;
 
     @Override

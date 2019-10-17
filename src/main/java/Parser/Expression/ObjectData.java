@@ -15,6 +15,8 @@ import Parser.Type.Types.Aggregate;
 import Parser.Type.Types.Primitive;
 import Parser.Type.Types.Type;
 
+import java.lang.reflect.Array;
+
 public class ObjectData {
     /******************************************
      *  МЕТОДЫ ПО ПОЛУЧЕНИЯ ЗНАЧЕНИЙ ОБЪЕКТОВ
@@ -67,9 +69,24 @@ public class ObjectData {
 
     public Type getObject(final String name_obj, final Type index){     // ARRAY
         DataType res_obj = searchObject(name_obj);
-        Primitive[] value = res_obj.getValue().asAggregate().asArray();
-        return new PrimitiveType(value[index.asPrimitive().asInt()]);
+
+        Type value = res_obj.getValue();
+        Aggregate aggregate = value.asAggregate();
+        if(aggregate instanceof MultiArrayType){
+            return getArrayType(aggregate.asMultiArray(), index);
+        }
+
+        Primitive[] array = value.asAggregate().asArray();
+        return new PrimitiveType(array[index.asPrimitive().asInt()]);
     }
+
+    private Type getArrayType(final Primitive[][] primitives, final Type index) {
+        int indexValue = index.asPrimitive().asInt();
+        Primitive[] primitive = primitives[indexValue];
+        ArrayType arrayType = new ArrayType(primitive, primitive.length);
+        return new AggregateType(arrayType);
+    }
+
     public Type getObject(final String name_obj, final Type indexFirst, final Type indexSecond){ //MULTI_ARRAY
         DataType res_obj = searchObject(name_obj);
         Primitive[][] value = res_obj.getValue().asAggregate().asMultiArray();
@@ -101,7 +118,7 @@ public class ObjectData {
     }
 
     /***  метод для получения конкретного типа объекта  ***/
-    private DataType getObjectType(final String name_obj, final TypeToken type){
+    /*private DataType getObjectType(final String name_obj, final TypeToken type){
       //////////////////////
         throw new RuntimeException("Unknown object: "+name_obj);
     }

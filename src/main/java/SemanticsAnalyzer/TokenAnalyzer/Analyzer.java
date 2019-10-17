@@ -1,12 +1,9 @@
 package SemanticsAnalyzer.TokenAnalyzer;
 
 import Lexer.*;
-import SemanticsAnalyzer.Functions.Function;
+import SemanticsAnalyzer.Functions.DefFunction;
 import SemanticsAnalyzer.Functions.FunctionTable;
-import javafx.scene.Camera;
-
 import java.util.ArrayList;
-import java.util.EventListener;
 import java.util.List;
 
 public class Analyzer extends BaseInterface {
@@ -23,15 +20,8 @@ public class Analyzer extends BaseInterface {
 
         addFunctionDefineFunctionTable();
 
-/*
-       for(Token it : getTokens()){
-           System.out.println(it.getType()+" : "+it.getValue());
-       }
-       System.out.println("===================");
-*/
         return getTokens();
    }
-
 
 
 
@@ -40,6 +30,12 @@ public class Analyzer extends BaseInterface {
      ************************************************************/
     public void parseDefineOrCallFunction(){
         while(!evenToken(TypeToken.EOF)){
+            if(getType(0) == TypeToken.L_SQUareParen){
+                removeToken();
+                insertToken(getPos(), parseIndexToken());
+                continue;
+            }
+
             if(getType(0) == TypeToken.Word && getType(1) == TypeToken.Lparen){
                 defineOrCallCurrentFunction();
                 parsePushInputData();
@@ -49,9 +45,26 @@ public class Analyzer extends BaseInterface {
         }
     }
 
+    private Token parseIndexToken() {
+        TokenIndex index = new TokenIndex();
+        while(getType(0) != TypeToken.R_SQUareParen){
+            index.add(getType(0), getValue(0));
+            removeToken();
+        }
+        removeToken();
+        return index;
+    }
+
     private void parsePushInputData() {
         addPushIfNextNoEqTokenRparen();
         while(getType(0) != TypeToken.Rparen){
+            /////
+            if(getType(0) == TypeToken.L_SQUareParen){
+                removeToken();
+                insertToken(getPos(), parseIndexToken());
+                continue;
+            }
+            ////
             if(getType(0) == TypeToken.Comma){
                 setTokenType(getPos(), new BaseToken(TypeToken.Push));
             }
@@ -111,7 +124,7 @@ public class Analyzer extends BaseInterface {
         TokenBlock body = (TokenBlock) get(0);
         removeToken();
         /** Вданном метсте мы инстанцируем объект Function который содержит в себе все атрибуты одной функции  **/
-        Function function = new Function(name, localParams, body);
+        DefFunction function = new DefFunction(name, localParams, body);
         /** Данной строчкой кода мы загружаем в таблицу функции: FunctionTable созданный нами ранне объект function  **/
         FunctionTable.add(function);
     }
@@ -177,7 +190,8 @@ public class Analyzer extends BaseInterface {
                 removeToken();
                 continue;
             }
-            block.put(getType(0), getValue(0));
+            //block.put(getType(0), getValue(0));
+            block.put(get(0));
             removeToken();
         }
         insertToken(getPos(), block);

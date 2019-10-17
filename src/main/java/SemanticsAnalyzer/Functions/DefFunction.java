@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class Function {
+public class DefFunction {
     private String name;
     private ArrayList<String> localParams;
     private TokenBlock body;
     private final int LENGTH_LOCAL_PARAMS_FUNCTION;
 
-    public Function(final String name, final List<String> localParams, final TokenBlock body) {
+    public DefFunction(final String name, final List<String> localParams, final TokenBlock body) {
         this.name = name;
         LENGTH_LOCAL_PARAMS_FUNCTION = localParams.size();
         initLocalParams(localParams);

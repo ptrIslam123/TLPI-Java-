@@ -7,4 +7,5 @@ public interface Aggregate {
 
     Primitive[] asArray();
     Primitive[][] asMultiArray();
+    Type getLengthArray();
 }

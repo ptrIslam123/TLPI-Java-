@@ -5,6 +5,7 @@ import Parser.Type.AggregateType;
 import Parser.Type.Integral.StringType;
 import Parser.Type.PrimitiveType;
 import Parser.Type.StructType.ArrayType;
+import Parser.Type.StructType.MultiArrayType;
 import Parser.Type.Types.Aggregate;
 import Parser.Type.Types.Primitive;
 import Parser.Type.Types.Type;
@@ -23,9 +24,17 @@ public class BaseInterface {
             Aggregate aggregate = expr.asAggregate();
             return aggregate;
         }
-        showErrorMsg("error cast type(string) "+expr);
         return null;
     }
+    protected static Aggregate getMultiArrayType(final Type expr){
+        if(expr instanceof Aggregate){
+            Aggregate aggregate = expr.asAggregate();
+            Primitive[][] primitives = aggregate.asMultiArray();
+            return new MultiArrayType(primitives, primitives.length, primitives[0].length);
+        }
+        return null;
+    }
+
     protected String asString(final Primitive expr){
         if(expr instanceof StringType){
             return expr.asString();

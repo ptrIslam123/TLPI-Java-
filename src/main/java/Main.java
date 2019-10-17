@@ -1,62 +1,28 @@
-
 import Lexer.Lexer;
 import Lexer.Token;
 import Parser.Type.ParserClasses.Parser;
 import Preprocessor.Preprocessor;
 import SemanticsAnalyzer.TokenAnalyzer.TokenAnalyzer;
 import SerializableClass.ByteClass;
-import com.sun.corba.se.impl.encoding.CodeSetConversion;
-import com.sun.corba.se.impl.util.PackagePrefixChecker;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-import javafx.scene.Parent;
-
 import java.io.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Main {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        StringBuilder file = readFile(createFile("main.txt"));
-        Preprocessor preprocessor = new Preprocessor(file);
-        StringBuilder run = preprocessor.run();
-        Lexer lexer = new Lexer(run.toString());
-        List<Token> resLexer = lexer.run();
-
-        TokenAnalyzer tokenAnalyzer = new TokenAnalyzer(resLexer);
-        tokenAnalyzer.run();
-        ArrayList<Token> resAnalyzer = tokenAnalyzer.getArrayTokens();
-
-        Parser parser = new Parser();
-        parser.init_parser(resAnalyzer, false);
-        parser.run();
-
+        verifyCountInputArgs(args.length < 3);
+        String flage = args[0];
+        String fileInput = args[1];
+        String fileOutput = args[2];
+        executeProcess(flage, fileInput, fileOutput, args.length);
     }
 
-
-    private static void test(final String fileName) throws IOException {
-        StringBuilder fileData = readFile(createFile(fileName));
-
-        Preprocessor preprocessor = new Preprocessor(fileData);
-        StringBuilder res = preprocessor.run();
-
-        Lexer lexer = new Lexer(res.toString());
-        List<Token> resLexer = lexer.run();
-
-        TokenAnalyzer tokenAnalyzer = new TokenAnalyzer(resLexer);
-        tokenAnalyzer.run();
-        ArrayList<Token> resTokenAnalyzer = tokenAnalyzer.getArrayTokens();
-
-        Parser parser = new Parser();
-        parser.init_parser(resTokenAnalyzer, false);
-        parser.run();
-
-    }
-    private static void executeProcess(final String flage, final String fileInput, final String fileOutput) throws IOException, ClassNotFoundException {
+    private static void executeProcess(final String flage, final String fileInput, final String fileOutput, int length) throws IOException, ClassNotFoundException {
         /**  -Е ЗАПУСК ПРЕПРОЦЕССОРА  **/
-        if(flage.equals("-e")){
+        if(flage.equals("-p")){
+            verifyCountInputArgs(length == 3);
             /**  для начало читаем даные из файла и передаем препроцессору **/
             StringBuilder data = readFile(getFile(fileInput));
             /** запускаем препроцессор с переданными данными **/
@@ -68,6 +34,7 @@ public class Main {
         }
         /**  -С ЗАПУСК ПРОЦЕССА КОМПИЛЯЦИЙ И СОЗДАНИЯ ОЪЕКТНОГ ФАЙЛА СОДЕРЖАЩЕГО БАЙТ КОД  **/
         else if(flage.equals("-c")){
+            verifyCountInputArgs(length == 3);
             /**  для начало читаем даные из файла и передаем препроцессору **/
             StringBuilder data = readFile(getFile(fileInput));
             /** запускаем препроцессор с переданными данными **/
@@ -84,10 +51,15 @@ public class Main {
         }
         /**  -О ЗАПУСК ПРОЦЕССА ЛИНКОВКИ(СКЛЕИВАНИЕ ОБЪЕКТНИКОВ) И СОЗДАНИЕ ИСПОЛНЯЕМОГО ПРОЦЕССА(ФАЙЛА)  **/
         else if(flage.equals("-o")){
+            verifyCountInputArgs(length == 3);
             /** Десериализуем содержимое переданного файла, в следствие чего возвращаем вектор токенов
              *  и затемподаем на вход парсеру который выстройт синтаксическое дерево и распарсит и исполнит его **/
             List<Token> output = deserialize(fileInput);
             callParser(output);
+        }
+        else if(flage.equals("-v")){
+            verifyCountInputArgs(length == 1);
+            System.out.println("version: 2.0");
         }
         else {
             throw new RuntimeException("Error!");
@@ -175,6 +147,10 @@ public class Main {
         StringBuilder str = new StringBuilder(len);
         str.append(text);
         return str;
+    }
+
+    private static void verifyCountInputArgs(final boolean res){
+        if(!res)throw new RuntimeException("error: unrecognized command line option");
     }
 }
 

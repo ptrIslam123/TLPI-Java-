@@ -1,12 +1,12 @@
 package Parser.SystemFunction.SysFunctionForWorkingWithType.ClassesCastType;
 
 import Lexer.TypeToken;
-import Parser.SystemFunction.SysFuncInterface.SysFunction;
+import Parser.SystemFunction.SysFuncInterface.Function;
 import Parser.Type.Types.Type;
 
 import java.util.ArrayList;
 
-public class IntCast extends BaseClassCastType implements SysFunction {
+public class IntCast extends BaseClassCastType implements Function {
     private Type valueCast;
     @Override
     public void setInputParams(ArrayList<Type> args) {

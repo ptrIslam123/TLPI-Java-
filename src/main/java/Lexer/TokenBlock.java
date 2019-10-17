@@ -27,12 +27,13 @@ public class TokenBlock implements Token, Serializable {
         }
     }
      **/
-    public void put(final BaseToken baseToken){
+    public void put(final Token baseToken){
         tokens.add(baseToken);
     }
+    /*
     public void put(final TokenBlock tokenBlock){
         tokens.add(tokenBlock);
-    }
+    }*/
     public void put(final TypeToken typeToken, final String tokenValue){
         tokens.add(new BaseToken(typeToken, tokenValue));
     }

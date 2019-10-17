@@ -2,7 +2,7 @@ package Parser.SystemFunction.SysFunctionForWorkingWithThreads;
 
 import Parser.Type.ParserClasses.Parser;
 import Parser.Type.Types.Type;
-import SemanticsAnalyzer.Functions.Function;
+import SemanticsAnalyzer.Functions.DefFunction;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class ThreadFunction extends Parser implements Runnable {
 
     @Override
     public void run() {
-        Function currentFunc = searchFunction(nameFunc, listInputParams.size());
+       /* DefFunction currentFunc = searchFunction(nameFunc, listInputParams.size());
         if(currentFunc != null){
             result =  executeUserFunc(currentFunc, listInputParams);
         }
@@ -28,9 +28,11 @@ public class ThreadFunction extends Parser implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        */
     }
 
     public Type getResultExecuteFuncBody(){
-        return result;
+        //return result;
+        return null;
     }
 }

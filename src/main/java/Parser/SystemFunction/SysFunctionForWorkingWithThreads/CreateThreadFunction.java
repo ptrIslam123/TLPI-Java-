@@ -1,13 +1,13 @@
 package Parser.SystemFunction.SysFunctionForWorkingWithThreads;
 
 import Parser.SystemFunction.SysFuncInterface.BaseInterface;
-import Parser.SystemFunction.SysFuncInterface.SysFunction;
+import Parser.SystemFunction.SysFuncInterface.Function;
 import Parser.Type.Types.Primitive;
 import Parser.Type.Types.Type;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class CreateThreadFunction extends BaseInterface implements SysFunction {
+public class CreateThreadFunction extends BaseInterface implements Function {
     private ThreadFunction threadFunc;
     @Override
     public void setInputParams(ArrayList<Type> args) {
